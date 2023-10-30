@@ -13,6 +13,7 @@ $routes->get('/', 'Auths::index');
 
 $routes->get('users', 'Users::index');
 $routes->get('users/coba', 'Users::coba');
+$routes->add('loginform', 'Auths::form_login');
 $routes->add('login', 'Auths::login');
 $routes->add('logout', 'Auths::logout');
 $routes->get('admins', 'Admins::index');

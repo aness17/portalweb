@@ -28,14 +28,20 @@
             </thead>
             <tbody class="list">
               <?php $no = 1;
-              foreach ($new as $u) : ?>
+              foreach ($new as $u) :
+                $a = str_replace('<p>', '', $u['isi_berita']);
+                $b = str_replace('</p>', '', $a);
+                $c = str_replace('<blockquote>', '', $b);
+                $d = str_replace('<br>', '', $c);
+                $result = str_replace('</blockquote>', '', $d);
+              ?>
                 <tr style="text-align: center;">
                   <td><?= $no; ?></td>
                   <td><?= $u['name_user'] ?></td>
                   <td><img class="img-fluid" src="<?= base_url('foto/') . $u['doc'] ?>" alt="" style="width:75px ;"></td>
                   <td><span class="d-inline-block text-truncate" style="max-width: 200px;max-height: 100px;"><?= $u['title_berita'] ?></span></td>
                   <td>
-                    <span class="d-inline-block text-truncate" style="max-width: 250px;"><?= $u['isi_berita'] ?></span>
+                    <span class="d-inline-block text-truncate" style="max-width: 250px;"><?= $result ?></span>
                   </td>
                   <td><?= $u['jadwal_tayang'] ?></td>
                   <td><?= $u['name_kategori'] ?></td>

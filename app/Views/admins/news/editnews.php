@@ -4,7 +4,7 @@
             <br />
             <!-- Vertical Form -->
             <?php $validation = \Config\Services::validation(); ?>
-            <form method="POST" action="<?= base_url('addnews') ?>" class="row g-3" enctype="multipart/form-data">
+            <form method="POST" action="<?= base_url('editnews/' . $new['id']) ?>" class="row g-3" enctype="multipart/form-data">
                 <div class="list-group-item p-3">
                     <div class="row align-items-start">
                         <div class="col-md-2 mb-8pt mb-md-0">
@@ -48,7 +48,7 @@
                             </div>
                         </div>
                         <div class="col mb-8pt mb-md-0">
-                            <textarea id="news" name="news"></textarea>
+                            <textarea id="news" name="news"><?= $new['isi_berita'] ?></textarea>
                         </div>
                     </div>
                 </div>

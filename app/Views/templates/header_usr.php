@@ -78,10 +78,14 @@
                     </a>
                 </div>
                 <div class="d-flex align-items-center">
-                    <a class="nav-link collapsed" href="<?= base_url('login') ?>">
-                        <i class="fa fa-sign-in" aria-hidden="true"></i> <span>Sign In</span>
-                    </a>
+                    <a class="nav-link collapsed" href="<?= base_url('auths/login') ?>">
 
+                    </a>
+                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user" aria-hidden="true"></i> <span>Profile</span></a>
+                    <div class="dropdown-menu ml-5">
+                        <a href="<?= base_url('setting') ?>" class="dropdown-item">Setting</a>
+                        <a href="<?= base_url('logout') ?>" class="dropdown-item">Logout</a>
+                    </div>
                 </div>
             </div>
         </nav>

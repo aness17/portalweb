@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\News_model;
 use \App\Models\Users_model;
 
 use CodeIgniter\Exceptions\PageNotFoundException; // Add this line
@@ -12,8 +13,21 @@ class Auths extends BaseController
     public function __construct()
     {
         $this->user = new Users_model();
+        $this->news = new News_model();
     }
     public function index()
+    {
+        $news = $this->news->select();
+
+        $data = [
+            'new' => $news
+        ];
+        // return view('welcome_message');
+        return view('templates/header')
+            . view('users/index', $data)
+            . view('templates/footer');
+    }
+    public function form_login()
     {
         // return view('welcome_message');
         return view('login');
@@ -57,15 +71,17 @@ class Auths extends BaseController
                     $session->set($data);
                     if ($user['role_user'] == 1) {
                         echo "<script>location.href='" . base_url('admins') . "';alert('You are already logged in as an Superadmin');</script>";
-                    } elseif ($user['role_user'] == 2) {
+                    } elseif ($user['role_user'] == 3) {
+                        echo "<script>location.href='" . base_url('users') . "';alert('You are already logged in as an User');</script>";
+                    } else {
                         echo "<script>location.href='" . base_url('users') . "';alert('You are already logged in as an Admin');</script>";
                     }
                 } else {
-                    return redirect()->route('/');
+                    return redirect()->route('loginform');
                 }
             }
         } else {
-            return redirect()->route('/');
+            return redirect()->route('loginform');
         }
         // return view('welcome_message');
     }
