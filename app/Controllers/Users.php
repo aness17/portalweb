@@ -18,14 +18,24 @@ class Users extends BaseController
         $data = [
             'header' => 'dasbooard',
             'users' => $this->users->find(),
-            'news' => $this->news->find()
+            'new' => $this->news->select()
         ];
         return view('templates/header_usr')
             . view('users/index', $data)
             . view('templates/footer');
     }
-    public function coba()
+    public function search()
     {
-        echo "cobaaa";
+        $search = $this->request->getVar('nama');
+
+        $data = [
+            'header' => 'dasbooard',
+            'new' => $this->news->selectnews($search)
+        ];
+        var_dump($data);
+        die;
+        return view('templates/header_usr')
+            . view('users/search', $data)
+            . view('templates/footer');
     }
 }

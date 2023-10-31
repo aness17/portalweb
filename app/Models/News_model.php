@@ -29,6 +29,23 @@ class News_model extends Model
             return $builder->get()->getResultArray();
         }
     }
+    public function selectnews($sc = NULL)
+    {
+        if ($sc === null) {
+            $builder = $this->db->table($this->table);
+            $builder->select('B.id as kategori, tberita.id as berita, A.*, B.*, tberita.*');
+            $builder->join('tuser A', 'tberita.id_user = A.id_user');
+            $builder->join('tkategori B', 'tberita.id_kategori = B.id');
+            return $builder->get()->getResultArray();
+        } else {
+            $builder = $this->db->table($this->table);
+            $builder->select('B.id as kategori, tberita.id as berita, A.*, B.*, tberita.*');
+            $builder->join('tuser A', 'tberita.id_user = A.id_user');
+            $builder->join('tkategori B', 'tberita.id_kategori = B.id');
+            $builder->where('tberita.title_berita like', '%' . $sc . '%');
+            return $builder->get()->getResultArray();
+        }
+    }
     // public function sumUser()
     // {
     //     $builder = $this->db->table($this->table);

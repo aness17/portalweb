@@ -17,11 +17,14 @@ class Auths extends BaseController
     }
     public function index()
     {
-        $news = $this->news->select();
+        $search = $this->request->getVar('search');
+        $news = $this->news->selectnews($search);
 
         $data = [
             'new' => $news
         ];
+        // var_dump($search);
+        // die;
         // return view('welcome_message');
         return view('templates/header')
             . view('users/index', $data)

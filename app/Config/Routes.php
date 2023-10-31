@@ -7,7 +7,7 @@ use Config\App\Controllers\Users;
  * @var RouteCollection $routes
  */
 // $routes->get('/', 'Home::index');
-$routes->get('/', 'Auths::index');
+$routes->add('/', 'Auths::index');
 // $routes->get('/Auth/(:any)', 'Auth::index/$1');
 // $routes->get('/Admin/(:any)', 'Admin::index/$1');
 
@@ -48,3 +48,6 @@ $routes->add('addcomment', 'Admins::addcomment'); //add data comment
 $routes->add('editcomment/(:num)', 'Admins::editcomment/$1'); //edit data comment
 $routes->get('deletecomment/(:any)', 'Admins::deletecomment/$1'); // delete data comment
 $routes->get('detailcomment/(:any)', 'Admins::detailcomment/$1'); // delete data comment
+
+//Search
+// $routes->add('search', 'Users::search'); //edit data comment
