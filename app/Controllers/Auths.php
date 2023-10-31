@@ -19,14 +19,16 @@ class Auths extends BaseController
     {
         $search = $this->request->getVar('search');
         $news = $this->news->selectnews($search);
+        $breknew = $this->news->breaking_news();
 
         $data = [
-            'new' => $news
+            'new' => $news,
+            'breknew' => $breknew
         ];
         // var_dump($search);
         // die;
         // return view('welcome_message');
-        return view('templates/header')
+        return view('templates/header', $data)
             . view('users/index', $data)
             . view('templates/footer');
     }
@@ -47,17 +49,10 @@ class Auths extends BaseController
         if ($isDataValid) {
             $email = $this->request->getVar('email');
             $password = $this->request->getVar('password');
-
             $user = $this->user->where('email_user', $email)->first();
-            // var_dump($user);
-            // die;
+
             if ($user) {
-                // var_dump($user);
-                // die;
                 if (password_verify($password, $user['password_user'])) {
-                    // var_dump($user);
-                    // die;
-                    //create session
                     $session = session();
 
                     $data = [
@@ -69,15 +64,14 @@ class Auths extends BaseController
                         'divisi' => $user['divisi_user'],
                         'role' => $user['role_user'],
                     ];
-                    // var_dump($data);
-                    // die;
+
                     $session->set($data);
                     if ($user['role_user'] == 1) {
                         echo "<script>location.href='" . base_url('admins') . "';alert('You are already logged in as an Superadmin');</script>";
-                    } elseif ($user['role_user'] == 3) {
-                        echo "<script>location.href='" . base_url('users') . "';alert('You are already logged in as an User');</script>";
+                    } elseif ($user['role_user'] == 2) {
+                        echo "<script>location.href='" . base_url('admins') . "';alert('You are already logged in as an Admin');</script>";
                     } else {
-                        echo "<script>location.href='" . base_url('users') . "';alert('You are already logged in as an Admin');</script>";
+                        echo "<script>location.href='" . base_url('users') . "';alert('You are already logged in as an User');</script>";
                     }
                 } else {
                     return redirect()->route('loginform');

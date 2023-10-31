@@ -38,11 +38,18 @@ class Users_model extends Model
         // $this->db->where($this->primary, $id);
         // return $this->db->delete($this->table);
     }
-    public function sumUser()
+    public function usercount()
     {
         $builder = $this->db->table($this->table);
-        $builder->selectSum('id_user');
-        $builder->where('id_role', 2);
-        return $builder->get();
+        $builder->selectCount('id_user');
+        $builder->where('role_user', 3);
+        return $builder->get()->getResult();
+    }
+    public function authorsrcount()
+    {
+        $builder = $this->db->table($this->table);
+        $builder->selectCount('id_user');
+        $builder->where('role_user', 2);
+        return $builder->get()->getResult();
     }
 }

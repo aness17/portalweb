@@ -24,14 +24,56 @@ class Admins extends BaseController
     }
     public function index()
     {
-        $data = [
-            'header' => 'dashboard'
-        ];
+        // var_dump(session('role'));
+        // die;
+        if (session('role') == '1' || session('role') == '2') {
+            if (session('role') == 1) {
+                $new = $this->news->select();
+                $countnews = $this->news->selectcountnews()[0]->id;
+                $publishnews = $this->news->publishcountnews()[0]->id;
+                $unpublishnews = $this->news->unpublishcountnews()[0]->id;
+                $usercount = $this->user->usercount()[0]->id_user;
+                $authorsrcount = $this->user->authorsrcount()[0]->id_user;
 
-        return view('templates/admins/header_adm')
-            . view('templates/admins/sidebar', $data)
-            . view('admins/dashboard', $data)
-            . view('templates/admins/footer_adm');
+                $data = [
+                    'news' => $new,
+                    'header' => 'dashboard',
+                    'countnews' => $countnews,
+                    'publishnews' => $publishnews,
+                    'unpublishnews' => $unpublishnews,
+                    'usercount' => $usercount,
+                    'authorsrcount' => $authorsrcount
+                ];
+                // var_dump($usercount);
+                // die;
+                return view('templates/admins/header_adm')
+                    . view('templates/admins/sidebar', $data)
+                    . view('admins/dashboard', $data)
+                    . view('templates/admins/footer_adm');
+            } else {
+                $id = session('id_user');
+                $new = $this->news->selectbyUser($id);
+                $countnews = $this->news->selectcountnews($id)[0]->id;
+                $publishnews = $this->news->publishcountnews($id)[0]->id;
+                $unpublishnews = $this->news->unpublishcountnews($id)[0]->id;
+
+                $data = [
+                    'news' => $new,
+                    'header' => 'dashboard',
+                    'countnews' => $countnews,
+                    'publishnews' => $publishnews,
+                    'unpublishnews' => $unpublishnews
+                ];
+                // var_dump($countnews);
+                // die;
+                return view('templates/admins/header_adm')
+                    . view('templates/admins/sidebar', $data)
+                    . view('admins/dashboard', $data)
+                    . view('templates/admins/footer_adm');
+            }
+        } else {
+            echo "<script>location.href='" . base_url('auth') . "';alert('Your not authorized.');</script>";
+        }
     }
 
     // user 
@@ -66,8 +108,7 @@ class Admins extends BaseController
             'password_user' => password_hash($this->request->getVar('password'), PASSWORD_DEFAULT),
             'role_user' => $this->request->getVar('role')
         ];
-        // var_dump($data);
-        // die;
+
         $result = $this->user->create($data);
         if ($result > 0) {
             echo "<script>location.href='" . base_url('datauser') . "';alert('Success to add data');</script>";
@@ -85,8 +126,7 @@ class Admins extends BaseController
         $data = [
             'user' => $users
         ];
-        // var_dump($data);
-        // die;
+
         return view('templates/admins/header_adm')
             . view('templates/admins/sidebar', $datas = ['header' => 'user'])
             . view('admins//user/edituser', $data)
@@ -103,8 +143,7 @@ class Admins extends BaseController
             'password_user' => password_hash($this->request->getVar('password'), PASSWORD_DEFAULT),
             'role_user' => $this->request->getVar('role')
         ];
-        // var_dump($id);
-        // die;
+
         $result = $this->user->edit($data);
         if ($result > 0) {
             echo "<script>location.href='" . base_url('datauser') . "';alert('Success to add data');</script>";
@@ -134,8 +173,7 @@ class Admins extends BaseController
             'kategori' => $kategoris,
             'header' => 'cat'
         ];
-        // var_dump($data);
-        // die;
+
         return view('templates/admins/header_adm')
             . view('templates/admins/sidebar', $data)
             . view('admins/category/datacategory', $data)
@@ -153,8 +191,7 @@ class Admins extends BaseController
         $data = [
             'name_kategori' => $this->request->getVar('nama'),
         ];
-        // var_dump($data);
-        // die;
+
         $result = $this->kategori->insert($data);
         if ($result > 0) {
             echo "<script>location.href='" . base_url('datakategori') . "';alert('Success to add data');</script>";
@@ -167,10 +204,8 @@ class Admins extends BaseController
     }
     public function editkategori($id)
     {
-        // $kategoris = $this->kategori->where('id_kategori', $id)->first();
         $kategoris = $this->kategori->find($id);
-        // var_dump($kategoris);
-        // die;
+
         $data = [
             'kategori' => $kategoris,
             'header' => 'cat'
@@ -181,17 +216,12 @@ class Admins extends BaseController
         ]);
         $isDataValid = $validation->withRequest($this->request)->run();
 
-        // var_dump($isDataValid);
-        // die;
         if ($isDataValid) {
             $db = [
                 'name_kategori' => $this->request->getVar('nama')
             ];
-            // var_dump($id);
-            // die;
             $result = $this->kategori->update($id, $db);
-            // var_dump($result);
-            // die;
+
             if ($result > 0) {
                 echo "<script>location.href='" . base_url('datakategori') . "';alert('Success to add data');</script>";
             } else {
@@ -217,175 +247,192 @@ class Admins extends BaseController
     // News 
     public function datanews()
     {
-        $news = $this->news->select();
+        if (session('role') == '1' || session('role') == '2') {
+            if (session('role') == '1') {
+                $news = $this->news->select();
 
-        $data = [
-            'new' => $news,
-            'header' => 'news'
-        ];
-        // var_dump($data);
-        // die;
-        return view('templates/admins/header_adm')
-            . view('templates/admins/sidebar', $data)
-            . view('admins/news/datanews', $data)
-            . view('templates/admins/footer_adm');
+                $data = [
+                    'new' => $news,
+                    'header' => 'newsp'
+                ];
+
+                return view('templates/admins/header_adm')
+                    . view('templates/admins/sidebar', $data)
+                    . view('admins/news/datanews', $data)
+                    . view('templates/admins/footer_adm');
+            } else {
+                $id = session('id_user');
+                $news = $this->news->selectbyUser($id);
+                $data = [
+                    'new' => $news,
+                    'header' => 'newsp'
+                ];
+
+                return view('templates/admins/header_adm')
+                    . view('templates/admins/sidebar', $data)
+                    . view('admins/news/datanews', $data)
+                    . view('templates/admins/footer_adm');
+            }
+        } else {
+            echo "<script>location.href='" . base_url('auth') . "';alert('Your not authorized.');</script>";
+        }
     }
-    // public function detail($id_berita = null)
-    // {
-    //     $news = $this->news->select($id_berita);
-    //     return $this->response->setJSON([
-    //         'error' => false,
-    //         'message' => $news
-    //     ]);
-    // }
+
     public function detailnews()
     {
-        $id_berita = (int)$_POST['id_berita'];
-        $news = $this->news->select($id_berita);
+        if (session('role') == '1' || session('role') == '2') {
+            $id_berita = (int)$_POST['id_berita'];
+            $news = $this->news->select($id_berita);
 
+            $isi[] = '';
 
-        $content =  '';
-        $isi[] = '';
-        // $isi_table .= '<td>' . str_replace('\n\n', '<div>&nbsp;</div>', $news) . '</td>';
-        // $isi .= $news;
-        // die;
-        // $isi = json_encode($isi);
-
-        if (empty($news)) {
-            $isi .= 'No Record';
+            if (empty($news)) {
+                $isi .= 'No Record';
+            } else {
+                $isi = $news;
+            }
+            $isi = json_encode($isi);
+            echo $isi;
         } else {
-            $isi = $news;
+            echo "<script>location.href='" . base_url('auth') . "';alert('Your not authorized.');</script>";
         }
-        // $content .= $isi;
-        $isi = json_encode($isi);
-        // $isi = json_encode($data);
-        echo $isi;
     }
     public function addnews()
     {
-        $news = $this->news->findAll();
-        $kategoris = $this->kategori->findAll();
+        if (session('role') == '1' || session('role') == '2') {
 
-        $data = [
-            'new' => $news,
-            'cat' => $kategoris,
-            'header' => 'news'
-        ];
+            $news = $this->news->findAll();
+            $kategoris = $this->kategori->findAll();
 
-        $validation =  \Config\Services::validation();
-        $validation->setRules([
-            'title' => 'required',
-            'cat' => 'required',
-            'news' => 'required',
-            'brosche' => 'required'
-        ]);
-        $isDataValid = $validation->withRequest($this->request)->run();
-
-        if ($isDataValid) {
-
-            $dataBerkas = $this->request->getFile('foto');
-            $fileName = $dataBerkas->getRandomName();
-            $db = [
-                'id_user' => session('id_user'),
-                'title_berita' => $this->request->getPost('title'),
-                'isi_berita' => $this->request->getPost('news'),
-                'id_kategori' => $this->request->getVar('cat'),
-                'status' => 'Published',
-                'doc' => $fileName,
-                'jadwal_tayang' => $this->request->getVar('brosche'),
-                'slug' => url_title($this->request->getVar('title'), '-', TRUE)
+            $data = [
+                'new' => $news,
+                'cat' => $kategoris,
+                'header' => 'newsp'
             ];
-            // var_dump($file);
-            // die;
-            $result = $this->news->insert($db);
-            $dataBerkas->move('foto/', $fileName);
-            if ($result > 0) {
-                echo "<script>location.href='" . base_url('datanews') . "';alert('Success to add data');</script>";
+
+            $validation =  \Config\Services::validation();
+            $validation->setRules([
+                'title' => 'required',
+                'cat' => 'required',
+                'news' => 'required',
+                'brosche' => 'required',
+                'brenews' => 'required'
+            ]);
+            $isDataValid = $validation->withRequest($this->request)->run();
+
+            if ($isDataValid) {
+
+                $dataBerkas = $this->request->getFile('foto');
+                $fileName = $dataBerkas->getRandomName();
+                $db = [
+                    'id_user' => session('id_user'),
+                    'title_berita' => $this->request->getPost('title'),
+                    'isi_berita' => $this->request->getPost('news'),
+                    'id_kategori' => $this->request->getVar('cat'),
+                    'status' => 'Published',
+                    'doc' => $fileName,
+                    'jadwal_tayang' => $this->request->getVar('brosche'),
+                    'slug' => url_title($this->request->getVar('title'), '-', TRUE),
+                    'breaking_news' => $this->request->getVar('brenews'),
+                ];
+
+                $result = $this->news->insert($db);
+                $dataBerkas->move('foto/', $fileName);
+                if ($result > 0) {
+                    echo "<script>location.href='" . base_url('datanews') . "';alert('Success to add data');</script>";
+                } else {
+                    return view('templates/admins/header_adm')
+                        . view('templates/admins/sidebar', $data)
+                        . view('admins/news/addnews', $data)
+                        . view('templates/admins/footer_adm');
+                    echo "<script>alert('Failed to add data');</script>";
+                }
             } else {
                 return view('templates/admins/header_adm')
                     . view('templates/admins/sidebar', $data)
                     . view('admins/news/addnews', $data)
                     . view('templates/admins/footer_adm');
-                echo "<script>alert('Failed to add data');</script>";
             }
         } else {
-            return view('templates/admins/header_adm')
-                . view('templates/admins/sidebar', $data)
-                . view('admins/news/addnews', $data)
-                . view('templates/admins/footer_adm');
+            echo "<script>location.href='" . base_url('auth') . "';alert('Your not authorized.');</script>";
         }
     }
     public function editnews($id)
     {
-        $kategoris = $this->kategori->findAll();
-        $news = $this->news->find($id);
-        // var_dump($news);
-        // die;
-        $data = [
-            'cat' => $kategoris,
-            'new' => $news,
-            'header' => 'news'
-        ];
-        $validation =  \Config\Services::validation();
-        $validation->setRules([
-            'title' => 'required',
-            'cat' => 'required',
-            'news' => 'required',
-            'brosche' => 'required',
-        ]);
-        $isDataValid = $validation->withRequest($this->request)->run();
+        if (session('role') == '1' || session('role') == '2') {
+            $kategoris = $this->kategori->findAll();
+            $news = $this->news->find($id);
+            $breknew = $this->news->breaking_news();
 
-        // var_dump($isDataValid);
-        // die;
-        $fileName = $this->request->getVar('oldFile');
-
-        if ($isDataValid) {
-            if ($this->request->getFile('foto') != "") {
-                $dataBerkas = $this->request->getFile('foto');
-                $fileName = $dataBerkas->getRandomName();
-                $dataBerkas->move('foto/', $fileName);
-            }
-
-            $db = [
-                'id_user' => session('id_user'),
-                'title_berita' => $this->request->getPost('title'),
-                'isi_berita' => $this->request->getPost('news'),
-                'id_kategori' => $this->request->getVar('cat'),
-                'status' => 'Published',
-                'doc' => $fileName,
-                'jadwal_tayang' => $this->request->getVar('brosche'),
-                'slug' => url_title($this->request->getVar('title'), '-', TRUE)
+            $data = [
+                'cat' => $kategoris,
+                'new' => $news,
+                'breknew' => $breknew,
+                'header' => 'newsp'
             ];
-            // var_dump($db);
-            // die;
-            $result = $this->news->update($id, $db);
+            $validation =  \Config\Services::validation();
+            $validation->setRules([
+                'title' => 'required',
+                'cat' => 'required',
+                'news' => 'required',
+                'brosche' => 'required',
+                'brenews' => 'required'
+            ]);
+            $isDataValid = $validation->withRequest($this->request)->run();
 
-            // var_dump($result);
-            // die;
-            if ($result > 0) {
-                echo "<script>location.href='" . base_url('datanews') . "';alert('Success to Edit data');</script>";
+            $fileName = $this->request->getVar('oldFile');
+
+            if ($isDataValid) {
+                if ($this->request->getFile('foto') != "") {
+                    $dataBerkas = $this->request->getFile('foto');
+                    $fileName = $dataBerkas->getRandomName();
+                    $dataBerkas->move('foto/', $fileName);
+                }
+
+                $db = [
+                    'id_user' => session('id_user'),
+                    'title_berita' => $this->request->getPost('title'),
+                    'isi_berita' => $this->request->getPost('news'),
+                    'id_kategori' => $this->request->getVar('cat'),
+                    'status' => 'Published',
+                    'doc' => $fileName,
+                    'jadwal_tayang' => $this->request->getVar('brosche'),
+                    'slug' => url_title($this->request->getVar('title'), '-', TRUE),
+                    'breaking_news' => $this->request->getVar('brenews')
+                ];
+
+                $result = $this->news->update($id, $db);
+
+                if ($result > 0) {
+                    echo "<script>location.href='" . base_url('datanews') . "';alert('Success to Edit data');</script>";
+                } else {
+                    echo "<script>location.href='" . base_url('datanews') . "';alert('Failed to Edit data');</script>";
+                }
             } else {
-                echo "<script>location.href='" . base_url('datanews') . "';alert('Failed to Edit data');</script>";
+                return view('templates/admins/header_adm')
+                    . view('templates/admins/sidebar', $data)
+                    . view('admins/news/editnews', $data)
+                    . view('templates/admins/footer_adm');
             }
         } else {
-            return view('templates/admins/header_adm')
-                . view('templates/admins/sidebar', $data)
-                . view('admins/news/editnews', $data)
-                . view('templates/admins/footer_adm');
+            echo "<script>location.href='" . base_url('auth') . "';alert('Your not authorized.');</script>";
         }
     }
     public function deletenews($id)
     {
-        $db = [
-            'status' => 'Unpublished'
-        ];
-        // var_dump($id);
-        // die;
-        $result = $this->news->update($id, $db);
-        if ($result > 0) {
-            echo "<script>location.href='" . base_url('datanews') . "';alert('Success to delete data');</script>";
+        if (session('role') == '1' || session('role') == '2') {
+            $db = [
+                'status' => 'Unpublished'
+            ];
+
+            $result = $this->news->update($id, $db);
+            if ($result > 0) {
+                echo "<script>location.href='" . base_url('datanews') . "';alert('Success to Unpublished data');</script>";
+            } else {
+                echo "<script>location.href='" . base_url('datanews') . "';alert('Failed to Unpublished data');</script>";
+            }
         } else {
-            echo "<script>location.href='" . base_url('datanews') . "';alert('Failed to delete data');</script>";
+            echo "<script>location.href='" . base_url('auth') . "';alert('Your not authorized.');</script>";
         }
     }
 
@@ -398,8 +445,7 @@ class Admins extends BaseController
             'cmt' => $comment,
             'header' => 'comment'
         ];
-        // var_dump($data);
-        // die;
+
         return view('templates/admins/header_adm')
             . view('templates/admins/sidebar', $data)
             . view('admins/comment/datacomment', $data)
@@ -440,8 +486,7 @@ class Admins extends BaseController
                 'jadwal_tayang' => $this->request->getVar('brosche'),
                 'slug' => url_title($this->request->getVar('title'), '-', TRUE)
             ];
-            // var_dump($file);
-            // die;
+
             $result = $this->comment->insert($db);
             $dataBerkas->move('foto/', $fileName);
             if ($result > 0) {
@@ -464,8 +509,7 @@ class Admins extends BaseController
     {
         $kategoris = $this->kategori->findAll();
         $comment = $this->comment->find($id);
-        // var_dump($comment);
-        // die;
+
         $data = [
             'cat' => $kategoris,
             'cmt' => $comment,
@@ -480,8 +524,6 @@ class Admins extends BaseController
         ]);
         $isDataValid = $validation->withRequest($this->request)->run();
 
-        // var_dump($isDataValid);
-        // die;
         $fileName = $this->request->getVar('oldFile');
 
         if ($isDataValid) {
@@ -501,12 +543,9 @@ class Admins extends BaseController
                 'jadwal_tayang' => $this->request->getVar('brosche'),
                 'slug' => url_title($this->request->getVar('title'), '-', TRUE)
             ];
-            // var_dump($db);
-            // die;
+
             $result = $this->comment->update($id, $db);
 
-            // var_dump($result);
-            // die;
             if ($result > 0) {
                 echo "<script>location.href='" . base_url('datacomment') . "';alert('Success to Edit data');</script>";
             } else {
@@ -524,8 +563,7 @@ class Admins extends BaseController
         $db = [
             'status' => 'Unpublished'
         ];
-        // var_dump($id);
-        // die;
+
         $result = $this->comment->update($id, $db);
         if ($result > 0) {
             echo "<script>location.href='" . base_url('datacomment') . "';alert('Success to delete data');</script>";

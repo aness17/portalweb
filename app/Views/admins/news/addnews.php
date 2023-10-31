@@ -47,6 +47,27 @@
                         <div class="col-md-2 mb-8pt mb-md-0">
                             <div class="media align-items-left">
                                 <div class="d-flex flex-column media-body media-middle">
+                                    <label for="brenews" class="form-label"><span class="card-title">Breaking News</span></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col mb-8pt mb-md-0">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="brenews" id="status1" value="1">
+                                <label class="form-check-label" for="status1">Yes</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="brenews" id="status2" value="0">
+                                <label class="form-check-label" for="status2">No</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="list-group-item p-3">
+                    <div class="row align-items-start">
+                        <div class="col-md-2 mb-8pt mb-md-0">
+                            <div class="media align-items-left">
+                                <div class="d-flex flex-column media-body media-middle">
                                     <span class="card-title">Content</span>
                                 </div>
                             </div>

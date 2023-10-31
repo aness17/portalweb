@@ -12,62 +12,144 @@
 
   <section class="section dashboard">
     <div class="row">
-
-      <!-- Left side columns -->
-      <div class="col-lg-12">
-        <div class="row">
-
-          <!-- Sales Card -->
-          <div class="col-xxl-4 col-md-4">
-            <div class="card info-card sales-card">
-
-              <div class="card-body">
-                <h5 class="card-title">Attendance <span>| Today</span></h5>
-                <div class="d-flex align-items-center">
-                  <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                    <i class="bi bi-calendar-event"></i>
-                  </div>
-                  <div class="ps-3">
-                    <h6></h6>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div><!-- End Sales Card -->
-          <!-- Sales Card -->
-          <div class="col-xxl-4 col-md-4">
-            <div class="card info-card sales-card">
-
-              <div class="card-body">
-                <h5 class="card-title">Employee <span>| Today</span></h5>
-                <div class="d-flex align-items-center">
-                  <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                    <i class="bi bi-calendar-event"></i>
-                  </div>
-                  <div class="ps-3">
-                    <!-- <h6></h6> -->
+      <?php if (session('role') == '1' || session('role') == '2') { ?>
+        <!-- Left side columns -->
+        <div class="col-lg-12">
+          <div class="row">
+            <div class="col-xxl-<?php if (session('role') == 1) {
+                                  echo "2";
+                                } else {
+                                  echo "3";
+                                } ?> col-md-4">
+              <div class="card info-card sales-card">
+                <div class="card-body">
+                  <h5 class="card-title">News</h5>
+                  <div class="d-flex align-items-center">
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                      <i class="bi bi-newspaper"></i>
+                    </div>
+                    <div class="ps-3">
+                      <h6><?= $countnews ?></h6>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </div><!-- End Sales Card -->
-          <!-- Sales Card -->
-          <div class="col-xxl-4 col-md-4">
-            <div class="card info-card sales-card">
+            </div><!-- End Sales Card -->
+            <!-- Sales Card -->
+            <div class="col-xxl-<?php if (session('role') == 1) {
+                                  echo "2";
+                                } else {
+                                  echo "3";
+                                } ?> col-md-4">
+              <div class="card info-card sales-card">
 
-              <div class="card-body">
-                <h5 class="card-title">Employee</h5>
-                <div class="d-flex align-items-center">
-                  <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                    <i class="bi bi-calendar-event"></i>
-                  </div>
-                  <div class="ps-3">
-                    <!-- <h6></h6> -->
+                <div class="card-body">
+                  <h5 class="card-title">Published</h5>
+                  <div class="d-flex align-items-center">
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                      <i class="bi bi-newspaper"></i>
+                    </div>
+                    <div class="ps-3">
+                      <h6><?= $publishnews ?></h6>
+                    </div>
                   </div>
                 </div>
               </div>
+            </div><!-- End Sales Card -->
+            <div class="col-xxl-4 col-md-6">
+              <div class="card info-card sales-card">
+                <div class="card-body">
+                  <h5 class="card-title">Sales <span>| Today</span></h5>
+
+                  <div class="d-flex align-items-center">
+                    <!-- <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                      <i class="bi bi-cart"></i>
+                    </div> -->
+                    <div class="ps-3">
+                      <h6><?= $publishnews ?></h6>
+                      <span class="text-muted small pt-2 ps-1">Published</span>
+                    </div>
+                    <div class="ps-3">
+                      <h6><?= $unpublishnews ?></h6>
+                      <span class="text-muted small pt-2 ps-1">Unpublished</span>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
             </div>
-          </div><!-- End Sales Card -->
+            <div class="col-xxl-<?php if (session('role') == 1) {
+                                  echo "2";
+                                } else {
+                                  echo "3";
+                                } ?> col-md-4">
+              <div class="card info-card sales-card">
+                <div class="card-body">
+                  <h5 class="card-title">Unpublished</h5>
+                  <div class="d-flex align-items-center">
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                      <i class="bi bi-newspaper"></i>
+                    </div>
+                    <div class="ps-3">
+                      <h6><?= $unpublishnews ?></h6>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div><!-- End Sales Card -->
+            <div class="col-xxl-<?php if (session('role') == 1) {
+                                  echo "2";
+                                } else {
+                                  echo "3";
+                                } ?> col-md-4">
+              <div class="card info-card sales-card">
+                <div class="card-body">
+                  <h5 class="card-title">Read</h5>
+                  <div class="d-flex align-items-center">
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                      <i class="bi bi-newspaper"></i>
+                    </div>
+                    <div class="ps-3">
+                      <h6><?= $unpublishnews ?></h6>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div><!-- End Sales Card -->
+          <?php }
+        if (session('role') == '1') {
+          ?>
+            <div class="col-xxl-2 col-md-4">
+              <div class="card info-card sales-card">
+                <div class="card-body">
+                  <h5 class="card-title">Users</h5>
+                  <div class="d-flex align-items-center">
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                      <i class="bi bi-person"></i>
+                    </div>
+                    <div class="ps-3">
+                      <h6><?= $usercount ?></h6>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div><!-- End Sales Card -->
+            <div class="col-xxl-2 col-md-4">
+              <div class="card info-card sales-card">
+                <div class="card-body">
+                  <h5 class="card-title">Authors</h5>
+                  <div class="d-flex align-items-center">
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                      <i class="bi bi-person-lines-fill"></i>
+                    </div>
+                    <div class="ps-3">
+                      <h6><?= $authorsrcount ?></h6>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div><!-- End Sales Card -->
+          <?php } ?>
 
           <!-- Top Selling -->
           <div class="col-12">
@@ -96,8 +178,8 @@
             </div>
           </div><!-- End Top Selling -->
 
-        </div>
-      </div><!-- End Left side columns -->
+          </div>
+        </div><!-- End Left side columns -->
 
     </div>
   </section>

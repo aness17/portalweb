@@ -32,7 +32,13 @@
                   <td><?= $u['name_user'] ?></td>
                   <td><?= $u['divisi_user'] ?></td>
                   <td><?= $u['email_user'] ?></td>
-                  <td><?= $u['role_user'] ?></td>
+                  <td><?php if ($u['role_user'] == 1) {
+                        echo "Superadmin";
+                      } elseif ($u['role_user'] == 2) {
+                        echo "Admin";
+                      } else {
+                        echo "User";
+                      } ?></td>
                   <td class="text-center">
                     <a href="<?= base_url('form_edituser/' . $u['id_user']) ?>" type="button" class="bi bi-pencil-square" style="color:limegreen">
                     </a>

@@ -6,13 +6,9 @@
                     <div class="col-12">
                         <div class="section-title">
                             <div class="input-group ml-auto d-none d-lg-flex" style="width: 100%; max-width: 800px">
-                                <form action="<?= base_url('/') ?>" method="post" class="p-2">
+                                <form action="<?= base_url('/') ?>" method="post" class="input-group ml-auto d-none d-lg-flex">
                                     <input type="text" class="form-control border-1" name="search" placeholder="Search..." />
-                                    <div class="i00nput-group-append">
-                                        <button class="input-group-text bg-primary text-dark border-0 px-3">
-                                            <i class="fa fa-search"></i>
-                                        </button>
-                                    </div>
+                                    <button class="input-group-text bg-primary text-dark border-0 px-3"><i class="fa fa-search"></i></button>
                                 </form>
                             </div>
                         </div>

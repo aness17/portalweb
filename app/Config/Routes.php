@@ -49,5 +49,5 @@ $routes->add('editcomment/(:num)', 'Admins::editcomment/$1'); //edit data commen
 $routes->get('deletecomment/(:any)', 'Admins::deletecomment/$1'); // delete data comment
 $routes->get('detailcomment/(:any)', 'Admins::detailcomment/$1'); // delete data comment
 
-//Search
-// $routes->add('search', 'Users::search'); //edit data comment
+//Setting
+$routes->add('setting', 'Admins::index');

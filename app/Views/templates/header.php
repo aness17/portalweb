@@ -122,14 +122,14 @@
                             Breaking News
                         </div>
                         <div class="owl-carousel tranding-carousel position-relative d-inline-flex align-items-center ml-3" style="width: calc(100% - 170px); padding-right: 90px">
-                            <div class="text-truncate">
-                                <a class="text-dark text-uppercase font-weight-semi-bold" href="">DUKUNG KTT KE-43 ASEAN, JAS TANGANI 20 PENERBANGAN VVIP DELEGASI ENAM NEGARA PESERTA
-                                </a>
-                            </div>
-                            <div class="text-truncate">
-                                <a class="text-dark text-uppercase font-weight-semi-bold" href="">LATIHAN MILITER GABUNGAN ‘SUPER GARUDA SHIELD 2023’ PERCAYAKAN JAS TANGANI KONTINGEN AMERIKA
-                                </a>
-                            </div>
+                            <?php $i = 1;
+                            foreach ($breknew as $bn) :   ?>
+                                <div class="text-truncate">
+                                    <a class="text-dark text-uppercase font-weight-semi-bold" href=""><?= $bn['title_berita'] ?>
+                                    </a>
+                                </div>
+                            <?php $i++;
+                            endforeach; ?>
                         </div>
                     </div>
                 </div>
