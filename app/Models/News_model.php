@@ -63,6 +63,15 @@ class News_model extends Model
             return $builder->get()->getResultArray();
         }
     }
+    public function getPageSlug($slug)
+    {
+        $builder = $this->db->table($this->table);
+        $builder->select('B.id as kategori, tberita.id as berita, A.*, B.*, tberita.*');
+        $builder->join('tuser A', 'tberita.id_user = A.id_user');
+        $builder->join('tkategori B', 'tberita.id_kategori = B.id');
+        $builder->where('tberita.slug like', '%' . $slug . '%');
+        return $builder->get()->getResultArray();
+    }
     public function breaking_news()
     {
         $builder = $this->db->table($this->table);

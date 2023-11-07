@@ -30,7 +30,7 @@
                                         <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href=""><?= $u['name_kategori'] ?></a>
                                         <span class="text-body"><small>Cengkareng, <?= date('d M Y', strtotime($u['created_at'])) ?></small></span>
                                     </div>
-                                    <a class="h6 m-0 text-secondary text-uppercase font-weight-bold news-truncate" href="<?= base_url('users') ?>"><?= $u['title_berita'] ?></a>
+                                    <a class="h6 m-0 text-secondary text-uppercase font-weight-bold news-truncate" href="<?= base_url('news/' . $u['slug']) ?>"><?= $u['title_berita'] ?></a>
                                     <span class="text-body news-truncate"><small><?= $result ?></small></span>
                                 </div>
                             </div>

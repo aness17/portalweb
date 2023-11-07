@@ -16,9 +16,10 @@
             <thead>
               <tr style="text-align: center;">
                 <th scope="col">No</th>
-                <th scope="col">Nama Pegawai</th>
-                <th scope="col">Divisi</th>
-                <th scope="col">Email</th>
+                <th scope="col">Profile</th>
+                <th scope="col">Name Employee</th>
+                <th scope="col">Division</th>
+                <th scope="col">E-mail</th>
                 <th scope="col">Role</th>
                 <th scope="col">Aksi</th>
               </tr>
@@ -29,6 +30,7 @@
               foreach ($user as $u) : ?>
                 <tr style="text-align: center;">
                   <td><?= $no; ?></td>
+                  <td><img class="img-fluid" src="<?= base_url('foto/') . $u['fotouser'] ?>" alt="" style="width:75px ;"></td>
                   <td><?= $u['name_user'] ?></td>
                   <td><?= $u['divisi_user'] ?></td>
                   <td><?= $u['email_user'] ?></td>

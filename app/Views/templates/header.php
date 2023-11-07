@@ -35,7 +35,7 @@
                 <nav class="navbar navbar-expand-sm bg-white p-0">
                     <ul class="navbar-nav ml-n2">
                         <li class="nav-item border-right border-secondary">
-                            <a class="nav-link text-body small" href="#">Monday, 25 September 2023</a>
+                            <a class="nav-link text-body small" href="#"><?= date('l, d F Y') ?></a>
                         </li>
                         <!-- <li class="nav-item border-right border-secondary">
 								<a class="nav-link text-body small" href="#">Advertise</a>

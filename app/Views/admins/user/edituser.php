@@ -22,10 +22,28 @@
                     <label for="password" class="form-label">Password Employee</label>
                     <input type="password" name="password" class="form-control" id="password">
                 </div>
-                <!-- <div class="col-12">
-                    <label for="inputPassword4" class="form-label">Foto Karyawan</label>
-                    <input type="file" name="fotouser" class="form-control" id="fotouser" required>
-                </div> -->
+                <div class="col-12">
+                    <div class="col-md-2 mb-8pt mb-md-0">
+                        <div class="media align-items-left">
+                            <div class="d-flex flex-column media-body media-middle">
+                                <label for="foto" class="form-label"><span class="card-title">Picture</span></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col mb-8pt mb-md-0">
+                        <div class="row">
+                            <div class="col-6">
+                                <br>
+                                <input type="file" multiple="true" name="foto" class="form-control" id="foto" accept=".png, .jpg, .jpeg" onchange="readURL(this);">
+                                <input type="hidden" name="oldFile" value="<?= $user->fotouser ?>" />
+                            </div>
+                            <div class="col-6">
+                                <br>
+                                <img class="img-responsive img-portfolio img-hover" id="blah" src="<?= base_url() ?>foto/<?= $user->fotouser ?>" alt="your image" width="150px" height="auto" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="col-12">
                     <label for="role" class="form-label">Role</label>
                     <select name="role" class="form-control" id="exampleFormControlSelect1" name="role" value="<?= $user->role_user ?>">
@@ -37,6 +55,8 @@
                 <div class="text-center">
                     <button type="submit" class="btn btn-primary">Submit</button>
                     <button type="reset" class="btn btn-secondary">Reset</button>
+                    <button type="button" onclick="history.go(-1);" class="btn btn-success">Kembali</button>
+
                 </div>
             </form><!-- Vertical Form -->
 

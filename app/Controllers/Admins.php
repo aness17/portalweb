@@ -72,7 +72,7 @@ class Admins extends BaseController
                     . view('templates/admins/footer_adm');
             }
         } else {
-            echo "<script>location.href='" . base_url('auth') . "';alert('Your not authorized.');</script>";
+            echo "<script>location.href='" . base_url('/') . "';alert('Your not authorized.');</script>";
         }
     }
 
@@ -101,15 +101,20 @@ class Admins extends BaseController
 
     public function adduser()
     {
+        $dataBerkas = $this->request->getFile('foto');
+        $fileName = $dataBerkas->getRandomName();
         $data = [
             'name_user' => $this->request->getVar('nama'),
             'email_user' => $this->request->getVar('email'),
             'divisi_user' => $this->request->getVar('divisi'),
             'password_user' => password_hash($this->request->getVar('password'), PASSWORD_DEFAULT),
-            'role_user' => $this->request->getVar('role')
+            'role_user' => $this->request->getVar('role'),
+            'fotouser' => $fileName
         ];
 
         $result = $this->user->create($data);
+        $dataBerkas->move('foto/', $fileName);
+
         if ($result > 0) {
             echo "<script>location.href='" . base_url('datauser') . "';alert('Success to add data');</script>";
         } else {
@@ -135,11 +140,18 @@ class Admins extends BaseController
 
     public function edituser($id)
     {
+        $fileName = $this->request->getVar('oldFile');
+        if ($this->request->getFile('foto') != "") {
+            $dataBerkas = $this->request->getFile('foto');
+            $fileName = $dataBerkas->getRandomName();
+            $dataBerkas->move('foto/', $fileName);
+        }
         $data = [
             'id_user' => $id,
             'name_user' => $this->request->getVar('nama'),
             'email_user' => $this->request->getVar('email'),
             'divisi_user' => $this->request->getVar('divisi'),
+            'fotouser' => $fileName,
             'password_user' => password_hash($this->request->getVar('password'), PASSWORD_DEFAULT),
             'role_user' => $this->request->getVar('role')
         ];
@@ -274,7 +286,7 @@ class Admins extends BaseController
                     . view('templates/admins/footer_adm');
             }
         } else {
-            echo "<script>location.href='" . base_url('auth') . "';alert('Your not authorized.');</script>";
+            echo "<script>location.href='" . base_url('/') . "';alert('Your not authorized.');</script>";
         }
     }
 
@@ -294,13 +306,12 @@ class Admins extends BaseController
             $isi = json_encode($isi);
             echo $isi;
         } else {
-            echo "<script>location.href='" . base_url('auth') . "';alert('Your not authorized.');</script>";
+            echo "<script>location.href='" . base_url('/') . "';alert('Your not authorized.');</script>";
         }
     }
     public function addnews()
     {
         if (session('role') == '1' || session('role') == '2') {
-
             $news = $this->news->findAll();
             $kategoris = $this->kategori->findAll();
 
@@ -354,7 +365,7 @@ class Admins extends BaseController
                     . view('templates/admins/footer_adm');
             }
         } else {
-            echo "<script>location.href='" . base_url('auth') . "';alert('Your not authorized.');</script>";
+            echo "<script>location.href='" . base_url('/') . "';alert('Your not authorized.');</script>";
         }
     }
     public function editnews($id)
@@ -415,7 +426,7 @@ class Admins extends BaseController
                     . view('templates/admins/footer_adm');
             }
         } else {
-            echo "<script>location.href='" . base_url('auth') . "';alert('Your not authorized.');</script>";
+            echo "<script>location.href='" . base_url('/') . "';alert('Your not authorized.');</script>";
         }
     }
     public function deletenews($id)
@@ -432,7 +443,7 @@ class Admins extends BaseController
                 echo "<script>location.href='" . base_url('datanews') . "';alert('Failed to Unpublished data');</script>";
             }
         } else {
-            echo "<script>location.href='" . base_url('auth') . "';alert('Your not authorized.');</script>";
+            echo "<script>location.href='" . base_url('/') . "';alert('Your not authorized.');</script>";
         }
     }
 
@@ -450,125 +461,5 @@ class Admins extends BaseController
             . view('templates/admins/sidebar', $data)
             . view('admins/comment/datacomment', $data)
             . view('templates/admins/footer_adm');
-    }
-
-    public function addcomment()
-    {
-        $comment = $this->comment->findAll();
-        $kategoris = $this->kategori->findAll();
-
-        $data = [
-            'cmt' => $comment,
-            'cat' => $kategoris,
-            'header' => 'comment'
-        ];
-
-        $validation =  \Config\Services::validation();
-        $validation->setRules([
-            'title' => 'required',
-            'cat' => 'required',
-            'comment' => 'required',
-            'brosche' => 'required'
-        ]);
-        $isDataValid = $validation->withRequest($this->request)->run();
-
-        if ($isDataValid) {
-
-            $dataBerkas = $this->request->getFile('foto');
-            $fileName = $dataBerkas->getRandomName();
-            $db = [
-                'id_user' => session('id_user'),
-                'title_berita' => $this->request->getPost('title'),
-                'isi_berita' => $this->request->getPost('comment'),
-                'id_kategori' => $this->request->getVar('cat'),
-                'status' => 'Published',
-                'doc' => $fileName,
-                'jadwal_tayang' => $this->request->getVar('brosche'),
-                'slug' => url_title($this->request->getVar('title'), '-', TRUE)
-            ];
-
-            $result = $this->comment->insert($db);
-            $dataBerkas->move('foto/', $fileName);
-            if ($result > 0) {
-                echo "<script>location.href='" . base_url('datacomment') . "';alert('Success to add data');</script>";
-            } else {
-                return view('templates/admins/header_adm')
-                    . view('templates/admins/sidebar', $data)
-                    . view('admins/comment/addcomment', $data)
-                    . view('templates/admins/footer_adm');
-                echo "<script>alert('Failed to add data');</script>";
-            }
-        } else {
-            return view('templates/admins/header_adm')
-                . view('templates/admins/sidebar', $data)
-                . view('admins/comment/addcomment', $data)
-                . view('templates/admins/footer_adm');
-        }
-    }
-    public function editcomment($id)
-    {
-        $kategoris = $this->kategori->findAll();
-        $comment = $this->comment->find($id);
-
-        $data = [
-            'cat' => $kategoris,
-            'cmt' => $comment,
-            'header' => 'comment'
-        ];
-        $validation =  \Config\Services::validation();
-        $validation->setRules([
-            'title' => 'required',
-            'cat' => 'required',
-            'comment' => 'required',
-            'brosche' => 'required',
-        ]);
-        $isDataValid = $validation->withRequest($this->request)->run();
-
-        $fileName = $this->request->getVar('oldFile');
-
-        if ($isDataValid) {
-            if ($this->request->getFile('foto') != "") {
-                $dataBerkas = $this->request->getFile('foto');
-                $fileName = $dataBerkas->getRandomName();
-                $dataBerkas->move('foto/', $fileName);
-            }
-
-            $db = [
-                'id_user' => session('id_user'),
-                'title_berita' => $this->request->getPost('title'),
-                'isi_berita' => $this->request->getPost('comment'),
-                'id_kategori' => $this->request->getVar('cat'),
-                'status' => 'Published',
-                'doc' => $fileName,
-                'jadwal_tayang' => $this->request->getVar('brosche'),
-                'slug' => url_title($this->request->getVar('title'), '-', TRUE)
-            ];
-
-            $result = $this->comment->update($id, $db);
-
-            if ($result > 0) {
-                echo "<script>location.href='" . base_url('datacomment') . "';alert('Success to Edit data');</script>";
-            } else {
-                echo "<script>location.href='" . base_url('datacomment') . "';alert('Failed to Edit data');</script>";
-            }
-        } else {
-            return view('templates/admins/header_adm')
-                . view('templates/admins/sidebar', $data)
-                . view('admins/comment/editcomment', $data)
-                . view('templates/admins/footer_adm');
-        }
-    }
-    public function deletecomment($id)
-    {
-        $db = [
-            'status' => 'Unpublished'
-        ];
-
-        $result = $this->comment->update($id, $db);
-        if ($result > 0) {
-            echo "<script>location.href='" . base_url('datacomment') . "';alert('Success to delete data');</script>";
-        } else {
-            echo "<script>location.href='" . base_url('datacomment') . "';alert('Failed to delete data');</script>";
-        }
     }
 }

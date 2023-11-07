@@ -36,67 +36,26 @@
               </div>
             </div><!-- End Sales Card -->
             <!-- Sales Card -->
-            <div class="col-xxl-<?php if (session('role') == 1) {
-                                  echo "2";
-                                } else {
-                                  echo "3";
-                                } ?> col-md-4">
-              <div class="card info-card sales-card">
 
-                <div class="card-body">
-                  <h5 class="card-title">Published</h5>
-                  <div class="d-flex align-items-center">
-                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="bi bi-newspaper"></i>
-                    </div>
-                    <div class="ps-3">
-                      <h6><?= $publishnews ?></h6>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div><!-- End Sales Card -->
-            <div class="col-xxl-4 col-md-6">
+            <div class="col-xxl-3 col-md-4">
               <div class="card info-card sales-card">
                 <div class="card-body">
-                  <h5 class="card-title">Sales <span>| Today</span></h5>
-
+                  <h5 class="card-title">News <span>| Status</span></h5>
                   <div class="d-flex align-items-center">
-                    <!-- <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="bi bi-cart"></i>
-                    </div> -->
-                    <div class="ps-3">
-                      <h6><?= $publishnews ?></h6>
+                    <div class="ps-3 ">
+                      <h3 style="font-weight: bold;">&nbsp;&nbsp;&nbsp;<?= $publishnews ?></h3>
                       <span class="text-muted small pt-2 ps-1">Published</span>
                     </div>
                     <div class="ps-3">
-                      <h6><?= $unpublishnews ?></h6>
-                      <span class="text-muted small pt-2 ps-1">Unpublished</span>
+                      <h3 style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?= $unpublishnews ?></h3>
+                      <span class="text-muted small pt-2 ps-1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Unpublished</span>
                     </div>
                   </div>
                 </div>
 
               </div>
             </div>
-            <div class="col-xxl-<?php if (session('role') == 1) {
-                                  echo "2";
-                                } else {
-                                  echo "3";
-                                } ?> col-md-4">
-              <div class="card info-card sales-card">
-                <div class="card-body">
-                  <h5 class="card-title">Unpublished</h5>
-                  <div class="d-flex align-items-center">
-                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="bi bi-newspaper"></i>
-                    </div>
-                    <div class="ps-3">
-                      <h6><?= $unpublishnews ?></h6>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div><!-- End Sales Card -->
+
             <div class="col-xxl-<?php if (session('role') == 1) {
                                   echo "2";
                                 } else {

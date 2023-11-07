@@ -58,6 +58,16 @@
         }
         if (session('role') == '1' || session('role') == '2') {
         ?>
+            <li class="nav-item ">
+                <a class="nav-link collapsed" href="<?= base_url('/') ?>">
+                    <i class="bi bi-person"></i>
+                    <span>News Page</span>
+                </a>
+            </li><!-- End Profile Page Nav -->
+        <?php
+        }
+        if (session('role') == '1' || session('role') == '2') {
+        ?>
             <li class="nav-item">
                 <a class="nav-link collapsed" href="<?= base_url('logout') ?>">
                     <i class="bi bi-box-arrow-in-left"></i>

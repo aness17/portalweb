@@ -28,8 +28,27 @@ class Auths extends BaseController
         // var_dump($search);
         // die;
         // return view('welcome_message');
-        return view('templates/header', $data)
-            . view('users/index', $data)
+        if (session('role') > 0) {
+            return view('templates/header_usr', $data)
+                . view('users/index', $data)
+                . view('templates/footer');
+        } else {
+            return view('templates/header', $data)
+                . view('users/index', $data)
+                . view('templates/footer');
+        }
+    }
+    public function view($slug)
+    {
+        $news = $this->news->getPageSlug($slug);
+
+        $data = [
+            'news' => $news
+        ];
+        // var_dump($data);
+        // die;
+        return view('templates/header_usr', $data)
+            . view('view', $data)
             . view('templates/footer');
     }
     public function form_login()
@@ -71,7 +90,7 @@ class Auths extends BaseController
                     } elseif ($user['role_user'] == 2) {
                         echo "<script>location.href='" . base_url('admins') . "';alert('You are already logged in as an Admin');</script>";
                     } else {
-                        echo "<script>location.href='" . base_url('users') . "';alert('You are already logged in as an User');</script>";
+                        echo "<script>location.href='" . base_url('/') . "';alert('You are already logged in as an User');</script>";
                     }
                 } else {
                     return redirect()->route('loginform');
@@ -81,6 +100,39 @@ class Auths extends BaseController
             return redirect()->route('loginform');
         }
         // return view('welcome_message');
+    }
+    public function registration()
+    {
+        $validation =  \Config\Services::validation();
+        $validation->setRules([
+            'name' => 'trim|required|max_length[20]',
+            'email' => 'required|valid_email|is_unique[tuser.email_user]|min_length[6]',
+            'password' => 'required',
+            'confirmpassword' => 'required|matches[password]',
+            'divisi' => 'required'
+        ]);
+        $isDataValid = $validation->withRequest($this->request)->run();
+
+        if ($isDataValid) {
+            $session = session();
+
+            $data = [
+                'name_user' => $this->request->getVar('name'),
+                'email_user' => $this->request->getVar('email'),
+                'password_user' => password_hash($this->request->getVar('password'), PASSWORD_DEFAULT),
+                'divisi_user' => $this->request->getVar('divisi'),
+                'role_user' => 3,
+            ];
+
+            $result = $this->user->create($data);
+            if ($result > 0) {
+                echo "<script>location.href='" . base_url('loginform') . "';alert('Success to Registration');</script>";
+            } else {
+                return view('registration');
+            }
+        } else {
+            return view('registration');
+        }
     }
     public function logout()
     {

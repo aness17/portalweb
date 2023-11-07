@@ -9,7 +9,7 @@ class Users_model extends Model
     protected $table = 'tuser';
     protected $primary = 'id_user';
     protected $useAutoIncrement = true;
-    protected $allowedFields = ['id_user', 'name_user', 'email_user', 'password_user', 'divisi_user', 'role_user'];
+    protected $allowedFields = ['id_user', 'name_user', 'email_user', 'password_user', 'divisi_user', 'role_user', 'fotouser'];
 
     public function create($data)
     {

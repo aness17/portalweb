@@ -77,7 +77,7 @@
                       <button class="btn btn-primary w-100" type="submit">Login</button>
                     </div>
                     <div class="col-12">
-                      <p class="small mb-0">Don't have account? <a href="<?= base_url('auths/regist') ?>">Create an account</a></p>
+                      <p class="small mb-0">Don't have account? <a href="<?= base_url('regist') ?>">Create an account</a></p>
                     </div>
                   </form>
 

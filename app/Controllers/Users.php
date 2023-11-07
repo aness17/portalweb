@@ -13,29 +13,40 @@ class Users extends BaseController
         $this->users = new Users_Model();
         $this->news = new News_model();
     }
-    public function index(): string
-    {
-        $data = [
-            'header' => 'dasbooard',
-            'users' => $this->users->find(),
-            'new' => $this->news->select()
-        ];
-        return view('templates/header_usr')
-            . view('users/index', $data)
-            . view('templates/footer');
-    }
-    public function search()
-    {
-        $search = $this->request->getVar('nama');
+    // public function index()
+    // {
+    //     if (session('role') == '1' || session('role') == '2' || session('role') == '3') {
+    //         $search = $this->request->getVar('nama');
 
-        $data = [
-            'header' => 'dasbooard',
-            'new' => $this->news->selectnews($search)
-        ];
-        var_dump($data);
-        die;
-        return view('templates/header_usr')
-            . view('users/search', $data)
-            . view('templates/footer');
+    //         $data = [
+    //             'header' => 'dasbooard',
+    //             'users' => $this->users->find(),
+    //             'new' => $this->news->selectnews($search)
+    //         ];
+    //         return view('templates/header_usr')
+    //             . view('users/index', $data)
+    //             . view('templates/footer');
+    //     } else {
+    //         echo "<script>location.href='" . base_url('/') . "';alert('Your not authorized.');</script>";
+    //     }
+    // }
+
+    public function profile()
+    {
+        if (session('role') == '1' || session('role') == '2' || session('role') == '3') {
+            $search = $this->request->getVar('nama');
+            $data = [
+                'header' => 'dasbooard',
+                'new' => $this->news->selectnews($search),
+                'header' => 'profile'
+            ];
+            // var_dump($data);
+            // die;
+            return view('templates/header_usr', $data)
+                . view('users/profile', $data)
+                . view('templates/footer');
+        } else {
+            echo "<script>location.href='" . base_url('/') . "';alert('Your not authorized.');</script>";
+        }
     }
 }
