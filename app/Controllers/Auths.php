@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\Comments_model;
 use App\Models\News_model;
 use \App\Models\Users_model;
 
@@ -14,6 +15,7 @@ class Auths extends BaseController
     {
         $this->user = new Users_model();
         $this->news = new News_model();
+        $this->comment = new Comments_model();
     }
     public function index()
     {
@@ -41,15 +43,43 @@ class Auths extends BaseController
     public function view($slug)
     {
         $news = $this->news->getPageSlug($slug);
+        $comment = $this->comment->select($news[0]['berita']);
 
+        $balas = array();
+        foreach ($comment as $row) {
+            $balas = $this->comment->balas($row['id_berita']);
+        }
         $data = [
-            'news' => $news
+            'news' => $news,
+            'comment' => $comment,
+            'balas' => $balas
         ];
-        // var_dump($data);
+        // var_dump($balas);
         // die;
         return view('templates/header_usr', $data)
             . view('view', $data)
             . view('templates/footer');
+    }
+    public function addcomment()
+    {
+        $idberita = $this->request->getVar('idberita');
+        $berita = $this->news->find($idberita);
+        // var_dump($berita);
+        // die;
+        $data = [
+            'id_user' => session('id_user'),
+            'id_parent' => 0,
+            'id_berita' => $idberita,
+            'comment_content' => $this->request->getVar('comment'),
+            'status_content' => 1
+        ];
+
+        $result = $this->comment->insert($data);
+        if ($result > 0) {
+            echo "<script>location.href='" . base_url('news/' . $berita['slug']) . "';</script>";
+        } else {
+            echo "<script>location.href='" . base_url('news/' . $berita['slug']) . "';</script>";
+        }
     }
     public function form_login()
     {

@@ -10,23 +10,42 @@ class Comments_model extends Model
     protected $primary = 'id';
     protected $useAutoIncrement = true;
     protected $useTimestamps = true;
-    protected $allowedFields = ['id_berita', 'id_user', 'comment_content', 'status_content', 'created_at', 'updated_at', 'deleted_at'];
+    protected $allowedFields = ['id_berita', 'id_user', 'id_parent', 'comment_content', 'status_content', 'created_at', 'updated_at', 'deleted_at'];
 
     public function select($id = false)
     {
         if ($id === false) {
             $builder = $this->db->table($this->table . " as A");
-            // $builder->select('B.id as kategori, A.id as berita, A.*, B.*, A.*');
             $builder->join('tuser C', 'A.id_user = C.id_user');
             $builder->join('tberita B', 'A.id_berita = B.id');
+            $builder->where('A.id_parent', 0);
+            $builder->orderBy('A.created_at desc');
             return $builder->get()->getResultArray();
         } else {
-            $builder = $this->db->table($this->table);
-            $builder->select('B.id as kategori, tberita.id as berita, A.*, B.*, tberita.*');
-            $builder->join('tuser A', 'tberita.id_user = A.id_user');
-            $builder->join('tkategori B', 'tberita.id_kategori = B.id');
-            $builder->where('tberita.id', $id);
-            return $builder->get()->getRowArray();
+            $builder = $this->db->table($this->table . " as A");
+            $builder->join('tuser C', 'A.id_user = C.id_user');
+            $builder->where('A.id_berita', $id);
+            $builder->where('A.id_parent', 0);
+            $builder->orderBy('A.created_at desc');
+            return $builder->get()->getResultArray();
+        }
+    }
+    public function balas($id = false)
+    {
+        if ($id === false) {
+            $builder = $this->db->table($this->table . " as A");
+            $builder->join('tuser C', 'A.id_user = C.id_user');
+            $builder->join('tberita B', 'A.id_berita = B.id');
+            $builder->where('A.id_parent >', 0);
+            $builder->orderBy('A.created_at desc');
+            return $builder->get()->getResultArray();
+        } else {
+            $builder = $this->db->table($this->table . " as A");
+            $builder->join('tuser C', 'A.id_user = C.id_user');
+            $builder->where('A.id_parent >', 0);
+            $builder->where('A.id_berita', $id);
+            $builder->orderBy('A.created_at desc');
+            return $builder->get()->getResultArray();
         }
     }
     // public function sumUser()

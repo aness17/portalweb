@@ -3,13 +3,14 @@
 use CodeIgniter\Router\RouteCollection;
 use Config\App\Controllers\Users;
 
-/*** @var RouteCollection $routes*/
-
+/**
+ * @var RouteCollection $routes
+ */
 $routes->add('/', 'Auths::index');
 $routes->add('regist', 'Auths::registration');
 $routes->add('profile', 'Users::profile');
 $routes->get('news/(:segment)', 'Auths::view/$1');
-$routes->add('comment)', 'Auths::addcomment');
+$routes->add('comment', 'Auths::addcomment');
 
 $routes->get('users', 'Users::index');
 $routes->get('users/coba', 'Users::coba');

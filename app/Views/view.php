@@ -7,7 +7,6 @@
                 <!-- News Detail Start -->
                 <div class="position-relative mb-3">
                     <img class="img-fluid w-100" src="<?= base_url('foto/' . $news[0]['doc']) ?>" style="object-fit: cover;">
-                    <input type="hidden" name="idberita" value="<?= $news[0]['berita'] ?>" />
                     <div class="bg-white border border-top-0 p-4">
                         <div class="mb-3">
                             <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2" href=""><?= $news[0]['name_kategori'] ?></a>
@@ -35,31 +34,43 @@
                             <h4 class="m-0 text-uppercase font-weight-bold">3 Comments</h4>
                         </div>
                         <div class="bg-white border border-top-0 p-4">
-                            <div class="media mb-4">
-                                <img src="img/user.jpg" alt="Image" class="img-fluid mr-3 mt-1" style="width: 45px;">
-                                <div class="media-body">
-                                    <h6><a class="text-secondary font-weight-bold" href="">John Doe</a> <small><i>01 Jan 2045</i></small></h6>
-                                    <p>Diam amet duo labore stet elitr invidunt ea clita ipsum voluptua, tempor labore
-                                        accusam ipsum et no at. Kasd diam tempor rebum magna dolores sed sed eirmod ipsum.</p>
-                                    <button class="btn btn-sm btn-outline-secondary">Reply</button>
-                                    <div class="media mt-4">
-                                        <img src="img/user.jpg" alt="Image" class="img-fluid mr-3 mt-1" style="width: 45px;">
-                                        <div class="media-body">
-                                            <h6><a class="text-secondary font-weight-bold" href="">John Doe</a> <small><i>01 Jan 2045</i></small></h6>
-                                            <p>Diam amet duo labore stet elitr invidunt ea clita ipsum voluptua, tempor
-                                                labore accusam ipsum et no at. Kasd diam tempor rebum magna dolores sed sed
-                                                eirmod ipsum.</p>
-                                            <button class="btn btn-sm btn-outline-secondary">Reply</button>
-                                        </div>
+                            <?php
+
+                            use PhpParser\Node\Stmt\Echo_;
+
+                            $a = 0;
+                            foreach ($comment as $c) : ?>
+                                <div class="media mb-4">
+                                    <img src="<?= base_url('foto/' . $c['fotouser']) ?>" alt="Image" class="img-fluid mr-3 mt-1" style="width: 45px;">
+                                    <div class="media-body">
+                                        <h6><a class="text-secondary font-weight-bold" href=""><?= $c['name_user'] ?></a> <small><i><?= date('d M Y', strtotime($c['created_at'])) ?></i></small></h6>
+                                        <p><?= $c['comment_content'] ?></p>
+                                        <button class="btn btn-sm btn-outline-secondary">Reply</button>
+                                        <?php
+                                        foreach ($balas as $b) :
+                                        ?>
+                                            <div class="media mt-4">
+                                                <img src="<?= base_url('foto/' . $b['fotouser']) ?>" alt="Image" class="img-fluid mr-3 mt-1" style="width: 45px;">
+                                                <div class="media-body">
+                                                    <h6><a class="text-secondary font-weight-bold" href=""><?= $b['name_user'] ?></a> <small><i><?= date('d M Y', strtotime($b['created_at'])) ?></i></small></h6>
+                                                    <p><?= $b['comment_content'] ?></p>
+                                                    <button class="btn btn-sm btn-outline-secondary">Reply</button>
+                                                </div>
+                                            </div>
+                                        <?php $a++;
+                                        endforeach;
+                                        ?>
                                     </div>
                                 </div>
-                            </div>
+                            <?php $a++;
+                            endforeach; ?>
                             <div class="media">
-                                <img class="rounded-circle mr-2" src="<?= base_url('foto/' . $news[0]['fotouser']) ?>" width="45" height="45" alt="">
-                                <input type="text" name="nama" class="form-control" id="nama" placeholder="Add Comment ...">
-                                <a href="<?= base_url('comment') ?>" style="font-size: 20pt;"><i class="fa fa-paper-plane" aria-hidden="true"></i>
-                                </a>
-
+                                <form method="post" action="<?= base_url('comment') ?>">
+                                    <img class="rounded-circle mr-2" src="<?= base_url('foto/' . $news[0]['fotouser']) ?>" width="45" height="45" alt="">
+                                    <input type="text" name="comment" class="form-control" id="comment" placeholder="Add Comment ...">
+                                    <input type="hidden" name="idberita" value="<?= $news[0]['berita'] ?>" />
+                                    <button type="submit" class="btn btn-primary" style="font-size: 12pt;"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -172,46 +183,6 @@
                     </div>
                 </div>
                 <!-- Popular News End -->
-
-                <!-- Newsletter Start -->
-                <div class="mb-3">
-                    <div class="section-title mb-0">
-                        <h4 class="m-0 text-uppercase font-weight-bold">Newsletter</h4>
-                    </div>
-                    <div class="bg-white text-center border border-top-0 p-3">
-                        <p>Aliqu justo et labore at eirmod justo sea erat diam dolor diam vero kasd</p>
-                        <div class="input-group mb-2" style="width: 100%;">
-                            <input type="text" class="form-control form-control-lg" placeholder="Your Email">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary font-weight-bold px-3">Sign Up</button>
-                            </div>
-                        </div>
-                        <small>Lorem ipsum dolor sit amet elit</small>
-                    </div>
-                </div>
-                <!-- Newsletter End -->
-
-                <!-- Tags Start -->
-                <div class="mb-3">
-                    <div class="section-title mb-0">
-                        <h4 class="m-0 text-uppercase font-weight-bold">Tags</h4>
-                    </div>
-                    <div class="bg-white border border-top-0 p-3">
-                        <div class="d-flex flex-wrap m-n1">
-                            <a href="" class="btn btn-sm btn-outline-secondary m-1">Politics</a>
-                            <a href="" class="btn btn-sm btn-outline-secondary m-1">Business</a>
-                            <a href="" class="btn btn-sm btn-outline-secondary m-1">Corporate</a>
-                            <a href="" class="btn btn-sm btn-outline-secondary m-1">Business</a>
-                            <a href="" class="btn btn-sm btn-outline-secondary m-1">Health</a>
-                            <a href="" class="btn btn-sm btn-outline-secondary m-1">Education</a>
-                            <a href="" class="btn btn-sm btn-outline-secondary m-1">Science</a>
-                            <a href="" class="btn btn-sm btn-outline-secondary m-1">Business</a>
-                            <a href="" class="btn btn-sm btn-outline-secondary m-1">Foods</a>
-                            <a href="" class="btn btn-sm btn-outline-secondary m-1">Travel</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Tags End -->
             </div>
         </div>
     </div>
