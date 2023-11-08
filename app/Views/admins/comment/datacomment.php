@@ -19,6 +19,7 @@
                 <th scope="col">News Title</th>
                 <th scope="col">Authors</th>
                 <th scope="col">Comment</th>
+                <th scope="col">Date</th>
                 <th scope="col">Action</th>
               </tr>
             </thead>
@@ -31,6 +32,7 @@
                   <td><?= $u['title_berita'] ?></td>
                   <td><?= $u['name_user'] ?></td>
                   <td><?= $u['comment_content'] ?></td>
+                  <td><?= $u['created_at'] ?></td>
                   <td class="text-center">
                     <a href="<?= base_url('deletecomment/' . $u['id']) ?>" type="button" class="bi bi-trash-fill" style="color:red" onclick="return confirm('Are you sure to delete this row ?')">
                     </a>

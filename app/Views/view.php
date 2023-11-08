@@ -22,7 +22,7 @@
                             </div>
                             <div class="d-flex align-items-center">
                                 <span class="ml-3"><i class="far fa-eye mr-2"></i>12345</span>
-                                <span class="ml-3"><i class="far fa-comment mr-2"></i>123</span>
+                                <span class="ml-3"><i class="far fa-comment mr-2"></i><?= $countcomment ?></span>
                             </div>
                         </div>
                     </div>
@@ -31,7 +31,7 @@
                     <!-- Comment List Start -->
                     <div class="mb-3">
                         <div class="section-title mb-0">
-                            <h4 class="m-0 text-uppercase font-weight-bold">3 Comments</h4>
+                            <h4 class="m-0 text-uppercase font-weight-bold"><?= $countcomment ?> Comments</h4>
                         </div>
                         <div class="bg-white border border-top-0 p-4">
                             <?php
@@ -41,37 +41,45 @@
                             $a = 0;
                             foreach ($comment as $c) : ?>
                                 <div class="media mb-4">
-                                    <img src="<?= base_url('foto/' . $c['fotouser']) ?>" alt="Image" class="img-fluid mr-3 mt-1" style="width: 45px;">
+                                    <img class="rounded-circle mr-2" src="<?= base_url('foto/' . $c['fotouser']) ?>" width="45" height="45" alt="">
                                     <div class="media-body">
                                         <h6><a class="text-secondary font-weight-bold" href=""><?= $c['name_user'] ?></a> <small><i><?= date('d M Y', strtotime($c['created_at'])) ?></i></small></h6>
                                         <p><?= $c['comment_content'] ?></p>
-                                        <button class="btn btn-sm btn-outline-secondary">Reply</button>
+                                        <a <?php if (session('id_user') == null) {
+                                                echo 'href="' . base_url('login') . '"';
+                                            } else {
+                                                echo 'onclick="balas(' + $c['id'] + ')"';
+                                            } ?>>Reply</a>
                                         <?php
                                         foreach ($balas as $b) :
+                                            if ($c['id'] == $b['id_parent']) {
                                         ?>
-                                            <div class="media mt-4">
-                                                <img src="<?= base_url('foto/' . $b['fotouser']) ?>" alt="Image" class="img-fluid mr-3 mt-1" style="width: 45px;">
-                                                <div class="media-body">
-                                                    <h6><a class="text-secondary font-weight-bold" href=""><?= $b['name_user'] ?></a> <small><i><?= date('d M Y', strtotime($b['created_at'])) ?></i></small></h6>
-                                                    <p><?= $b['comment_content'] ?></p>
-                                                    <button class="btn btn-sm btn-outline-secondary">Reply</button>
+                                                <div class="media mt-4">
+                                                    <img class="rounded-circle mr-2" src="<?= base_url('foto/' . $b['fotouser']) ?>" width="45" height="45" alt="">
+                                                    <div class="media-body">
+                                                        <h6><a class="text-secondary font-weight-bold" href=""><?= $b['name_user'] ?></a> <small><i><?= date('d M Y', strtotime($b['created_at'])) ?></i></small></h6>
+                                                        <p><?= $b['comment_content'] ?></p>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        <?php $a++;
+                                        <?php }
+                                            $a++;
                                         endforeach;
                                         ?>
                                     </div>
                                 </div>
                             <?php $a++;
-                            endforeach; ?>
-                            <div class="media">
-                                <form method="post" action="<?= base_url('comment') ?>">
-                                    <img class="rounded-circle mr-2" src="<?= base_url('foto/' . $news[0]['fotouser']) ?>" width="45" height="45" alt="">
-                                    <input type="text" name="comment" class="form-control" id="comment" placeholder="Add Comment ...">
-                                    <input type="hidden" name="idberita" value="<?= $news[0]['berita'] ?>" />
-                                    <button type="submit" class="btn btn-primary" style="font-size: 12pt;"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
-                                </form>
-                            </div>
+                            endforeach;
+
+                            if (session('id_user') > 0) { ?>
+                                <div class="media">
+                                    <form method="post" action="<?= base_url('comment') ?>">
+                                        <img class="rounded-circle mr-2" src="<?= base_url('foto/' . $user[0]['fotouser']) ?>" width="45" height="45" alt="">
+                                        <input type="text" name="comment" class="form-control" id="comment" placeholder="Add Comment ...">
+                                        <input type="hidden" name="idberita" value="<?= $news[0]['berita'] ?>" />
+                                        <button type="submit" class="btn btn-primary" style="font-size: 12pt;"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+                                    </form>
+                                </div>
+                            <?php } ?>
                         </div>
                     </div>
                     <!-- Comment List End -->
@@ -188,3 +196,10 @@
     </div>
 </div>
 <!-- News With Sidebar End -->
+<script>
+    document.getElementById("nodeGoto").addEventListener("click", function() {
+        gotoNode(result.name);
+    }, false);
+
+    ​
+</script>

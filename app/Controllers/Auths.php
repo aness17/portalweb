@@ -43,16 +43,19 @@ class Auths extends BaseController
     public function view($slug)
     {
         $news = $this->news->getPageSlug($slug);
+        $countcomment = $this->comment->getCountComment($news[0]['berita'])[0]->id;
         $comment = $this->comment->select($news[0]['berita']);
+        $users = $this->user->getUsers();
 
         $balas = array();
-        foreach ($comment as $row) {
-            $balas = $this->comment->balas($row['id_berita']);
-        }
+        $balas = $this->comment->balas($news[0]['berita']);
+
         $data = [
             'news' => $news,
             'comment' => $comment,
-            'balas' => $balas
+            'balas' => $balas,
+            'countcomment' => $countcomment,
+            'user' => $users
         ];
         // var_dump($balas);
         // die;

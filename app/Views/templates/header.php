@@ -81,7 +81,6 @@
                     <a class="nav-link collapsed" href="<?= base_url('login') ?>">
                         <i class="fa fa-sign-in" aria-hidden="true"></i> <span>Sign In</span>
                     </a>
-
                 </div>
             </div>
         </nav>

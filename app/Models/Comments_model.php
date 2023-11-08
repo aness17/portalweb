@@ -16,6 +16,7 @@ class Comments_model extends Model
     {
         if ($id === false) {
             $builder = $this->db->table($this->table . " as A");
+            $builder->select('B.title_berita,C.name_user, A.*');
             $builder->join('tuser C', 'A.id_user = C.id_user');
             $builder->join('tberita B', 'A.id_berita = B.id');
             $builder->where('A.id_parent', 0);
@@ -48,11 +49,12 @@ class Comments_model extends Model
             return $builder->get()->getResultArray();
         }
     }
-    // public function sumUser()
-    // {
-    //     $builder = $this->db->table($this->table);
-    //     $builder->selectSum('id_user');
-    //     $builder->where('id_role', 2);
-    //     return $builder->get();
-    // }
+    public function getCountComment($id)
+    {
+
+        $builder = $this->db->table($this->table);
+        $builder->selectCount('id');
+        $builder->where('id_berita', $id);
+        return $builder->get()->getResult();
+    }
 }

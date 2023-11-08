@@ -53,28 +53,34 @@ use CodeIgniter\I18n\Time;
         <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-2 py-lg-0 px-lg-5">
             <div class="collapse navbar-collapse justify-content-between px-0 px-lg-3" id="navbarCollapse">
                 <div class="navbar-nav mr-auto mt-10 py-0 d-none d-lg-flex">
-                    <a href="index.php" class="navbar-brand p-0 d-none d-lg-block">
+                    <a href="<?= base_url('/') ?>" class="navbar-brand p-0 d-none d-lg-block">
                         <h1 class="m-0 display-4 text-uppercase text-primary">
                             <img src="<?= base_url('user/') ?>img/logo.png" style="width: 100px;" />
                         </h1>
                     </a>
                 </div>
-                <div class="d-flex align-items-center">
-                    <a class="nav-link collapsed" href="<?= base_url('auths/login') ?>">
-
-                    </a>
-                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user" aria-hidden="true"></i> <span>Profile</span></a>
-                    <div class="dropdown-menu ml-5">
-                        <?php
-                        if (session('role') == '1' || session('role') == '2') {
-                        ?>
-                            <a href="<?= base_url('setting') ?>" class="dropdown-item">Setting</a>
-                        <?php } else { ?>
-                            <a href="<?= base_url('profile') ?>" class="dropdown-item">Setting Profile</a>
-                        <?php } ?>
-                        <a href="<?= base_url('logout') ?>" class="dropdown-item">Logout</a>
+                <?php if (session('role') == null) { ?>
+                    <div class="d-flex align-items-center">
+                        <a class="nav-link collapsed" href="<?= base_url('login') ?>">
+                            <i class="fa fa-sign-in" aria-hidden="true"></i> <span>Sign In</span>
+                        </a>
                     </div>
-                </div>
+                <?php } else { ?>
+                    <div class="d-flex align-items-center">
+                        <a class="nav-link collapsed" href="<?= base_url('auths/login') ?>"></a>
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user" aria-hidden="true"></i> <span>Profile</span></a>
+                        <div class="dropdown-menu ml-5">
+                            <?php
+                            if (session('role') == '1' || session('role') == '2') {
+                            ?>
+                                <a href="<?= base_url('setting') ?>" class="dropdown-item">Setting</a>
+                            <?php } else { ?>
+                                <a href="<?= base_url('profile') ?>" class="dropdown-item">Setting Profile</a>
+                            <?php } ?>
+                            <a href="<?= base_url('logout') ?>" class="dropdown-item">Logout</a>
+                        </div>
+                    </div>
+                <?php } ?>
             </div>
         </nav>
     </div>
