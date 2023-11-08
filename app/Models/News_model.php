@@ -126,4 +126,17 @@ class News_model extends Model
             return $builder->get()->getResult();
         }
     }
+    function update_counter($slug)
+    {
+        $builder = $this->db->table($this->table);
+        // return current article views 
+        $builder->where('slug', urldecode($slug));
+        $builder->select('news_views');
+
+        $count = $this->db->table('tberita');
+        // then increase by one 
+        $builder->where('slug', urldecode($slug));
+        $builder->set('news_views', ($count->article_views + 1));
+        $builder->update('tberita');
+    }
 }

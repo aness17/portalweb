@@ -43,12 +43,12 @@
                                 <div class="media mb-4">
                                     <img class="rounded-circle mr-2" src="<?= base_url('foto/' . $c['fotouser']) ?>" width="45" height="45" alt="">
                                     <div class="media-body">
-                                        <h6><a class="text-secondary font-weight-bold" href=""><?= $c['name_user'] ?></a> <small><i><?= date('d M Y', strtotime($c['created_at'])) ?></i></small></h6>
+                                        <h6><span style="font-weight: bold;"><?= $c['name_user'] ?> </span><small><i><?= date('d M Y', strtotime($c['created_at'])) ?></i></small></h6>
                                         <p><?= $c['comment_content'] ?></p>
                                         <a <?php if (session('id_user') == null) {
                                                 echo 'href="' . base_url('login') . '"';
                                             } else {
-                                                echo 'onclick="balas(' + $c['id'] + ')"';
+                                                echo 'onclick="balas(' . $c['id'] . ')"';
                                             } ?>>Reply</a>
                                         <?php
                                         foreach ($balas as $b) :
@@ -57,7 +57,7 @@
                                                 <div class="media mt-4">
                                                     <img class="rounded-circle mr-2" src="<?= base_url('foto/' . $b['fotouser']) ?>" width="45" height="45" alt="">
                                                     <div class="media-body">
-                                                        <h6><a class="text-secondary font-weight-bold" href=""><?= $b['name_user'] ?></a> <small><i><?= date('d M Y', strtotime($b['created_at'])) ?></i></small></h6>
+                                                        <h6><span style="font-weight: bold;"><?= $b['name_user'] ?></span> <small><i><?= date('d M Y', strtotime($b['created_at'])) ?></i></small></h6>
                                                         <p><?= $b['comment_content'] ?></p>
                                                     </div>
                                                 </div>

@@ -40,12 +40,14 @@ class Auths extends BaseController
                 . view('templates/footer');
         }
     }
+
     public function view($slug)
     {
         $news = $this->news->getPageSlug($slug);
         $countcomment = $this->comment->getCountComment($news[0]['berita'])[0]->id;
         $comment = $this->comment->select($news[0]['berita']);
         $users = $this->user->getUsers();
+        $this->add_count($slug);
 
         $balas = array();
         $balas = $this->comment->balas($news[0]['berita']);
@@ -57,12 +59,39 @@ class Auths extends BaseController
             'countcomment' => $countcomment,
             'user' => $users
         ];
-        // var_dump($balas);
-        // die;
+        var_dump($news[0]['slug']);
+        die;
         return view('templates/header_usr', $data)
             . view('view', $data)
             . view('templates/footer');
     }
+
+    // This is the counter function.. 
+    function add_count($slug)
+    {
+        // load cookie helper
+        helper('cookie');
+        // this line will return the cookie which has slug name
+
+        $check_visitor = set_cookie(urldecode($slug), FALSE);
+        // this line will return the visitor ip address
+        $ip = $this->request->getIPAddress();
+        // if the visitor visit this article for first time then //
+        //set new cookie and update article_views column  ..
+        //you might be notice we used slug for cookie name and ip 
+        //address for value to distinguish between articles  views
+        if ($check_visitor == false) {
+            $cookie = array(
+                "slug"   => urldecode($slug),
+                "value"  => "$ip",
+                "expire" =>  time() + 7200,
+                "secure" => false
+            );
+            set_cookie($cookie);
+            $this->news->update_counter(urldecode($slug));
+        }
+    }
+
     public function addcomment()
     {
         $idberita = $this->request->getVar('idberita');
