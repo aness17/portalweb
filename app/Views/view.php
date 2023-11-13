@@ -6,7 +6,7 @@
             <div class="col-lg-8">
                 <!-- News Detail Start -->
                 <div class="position-relative mb-3">
-                    <img class="img-fluid w-100" src="<?= base_url('foto/' . $news[0]['doc']) ?>" style="object-fit: cover;">
+                    <img class="img-fluid w-100" src="<?= base_url('foto/' . $news[0]['doc']) ?>" style="width: auto;height: auto;">
                     <div class="bg-white border border-top-0 p-4">
                         <div class="mb-3">
                             <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2" href=""><?= $news[0]['name_kategori'] ?></a>
@@ -36,9 +36,6 @@
                         <div class="bg-white border border-top-0 p-4">
                             <?php
                             $a = 0;
-                            // var_dump($comment);
-                            // var_dump($balas);
-                            // die;
                             foreach ($comment as $c) : ?>
                                 <div class="media mb-4">
                                     <img class="rounded-circle mr-2" src="<?= base_url('foto/' . $c['fotouser']) ?>" width="45" height="45" alt="">
@@ -51,11 +48,9 @@
                                                 echo 'href="#modalreply" onclick="comment_reply(' . $c['id_comment'] . ')" data-toggle="modal"';
                                             } ?>>Reply</a>
                                         <?php
-
                                         foreach ($balas as $b) :
                                             if ($c['id_comment'] == $b['id_parent']) {
-                                        ?>
-                                                <div class="media mt-4">
+                                        ?> <div class="media mt-4">
                                                     <img class="rounded-circle mr-2" src="<?= base_url('foto/' . $b['fotouser']) ?>" width="45" height="45" alt="">
                                                     <div class="media-body">
                                                         <h6><span style="font-weight: bold;"><?= $b['name_user'] ?></span> <small><i><?= date('d M Y', strtotime($b['created_at'])) ?></i></small></h6>
@@ -66,6 +61,12 @@
                                             $a++;
                                         endforeach;
                                         ?>
+                                    </div>
+                                    <div class="dropdown-menu ml-5">
+                                        <a><i class="bi bi-three-dots"></i></a>
+                                        <ul>
+                                            <li><a class="dropdown-item" href="#">Today</a></li>
+                                        </ul>
                                     </div>
                                 </div>
                             <?php $a++;

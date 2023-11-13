@@ -276,7 +276,16 @@ class Admins extends BaseController
     // News 
     public function datanews()
     {
-        if (session('role') == '1' || session('role') == '2') {
+        // $dt   = new DateTime('now');
+
+        $begin = new DateTime($periode['start_date']);
+
+        $begin->setTime(0, 0);
+        $end->setTime(12, 0);
+        $interval = DateInterval::createFromDateString('1 day');
+        $period = new DatePeriod($begin, $interval, $end);
+
+        if (session('role') == '1' || session('role') == '2' && date('Y-m-d') <= $periode['end_date']) {
             if (session('role') == '1') {
                 $news = $this->news->select();
 
