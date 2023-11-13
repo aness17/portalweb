@@ -11,6 +11,7 @@ $routes->add('regist', 'Auths::registration');
 $routes->add('profile', 'Users::profile');
 $routes->get('news/(:segment)', 'Auths::view/$1');
 $routes->add('comment', 'Auths::addcomment');
+$routes->add('reply_comment', 'Auths::comment_reply');
 
 $routes->get('users', 'Users::index');
 $routes->get('users/coba', 'Users::coba');

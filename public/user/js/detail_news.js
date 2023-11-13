@@ -37,3 +37,61 @@ function detailnews(id) {
     },
   });
 }
+function comment_reply(id) {
+  let id_parent = id;
+  let tbl = "";
+  $.ajax({
+    url: base_url + "reply_comment",
+    type: "POST",
+    data: {
+      id_parent: id_parent,
+    },
+    headers: { "X-Requested-With": "XMLHttpRequest" },
+    success: function (r) {
+      let obj = JSON.parse(r);
+      tbl =
+        '<div class="col-lg-12">' +
+        '<div class="card">' +
+        '<div class="card-body">' +
+        '<h5 class="card-title">Reply Comment</h5>' +
+        '<div class="d-flex justify-between-content">' +
+        '<img class="rounded-circle mr-2" src="' +
+        base_url +
+        "foto/" +
+        obj[0]["fotouser"] +
+        '" width="45" height="45" alt="">' +
+        "<h5>" +
+        obj[0]["comment_content"] +
+        "</h5>" +
+        "</div>" +
+        "<br />" +
+        '<form method="post" action="' +
+        base_url +
+        'comment">' +
+        '<div class="media ml-4">' +
+        '<img class="rounded-circle mr-2" src="' +
+        base_url +
+        "foto/" +
+        obj[0]["fotouser"] +
+        '" width="45" height="45" alt="">' +
+        '<input type="text" name="comment" class="form-control" id="comment" placeholder="Add Comment ...">' +
+        '<input type="hidden" name="idberita" value="' +
+        obj[0]["id_berita"] +
+        '" />' +
+        '<input type="hidden" name="idparent" value="' +
+        obj[0]["id_comment"] +
+        '" />' +
+        '<button type="submit" class="btn btn-primary" style="font-size: 12pt;"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>' +
+        "</div>" +
+        "</form>" +
+        "</div>" +
+        "</div>" +
+        "</div>";
+
+      // $("#detailnews").html("");
+      // console.log(tbl);
+      $("#reply_comment").html("");
+      $("#reply_comment").append(tbl);
+    },
+  });
+}

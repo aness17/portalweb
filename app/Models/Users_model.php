@@ -21,7 +21,7 @@ class Users_model extends Model
         if ($id === false) {
             return $this->findAll();
         } else {
-            return $this->getWhere(['id_user' => $id]);
+            return $this->getWhere(['id' => $id]);
         }
     }
 
@@ -41,14 +41,14 @@ class Users_model extends Model
     public function usercount()
     {
         $builder = $this->db->table($this->table);
-        $builder->selectCount('id_user');
+        $builder->selectCount('id');
         $builder->where('role_user', 3);
         return $builder->get()->getResult();
     }
     public function authorsrcount()
     {
         $builder = $this->db->table($this->table);
-        $builder->selectCount('id_user');
+        $builder->selectCount('id');
         $builder->where('role_user', 2);
         return $builder->get()->getResult();
     }

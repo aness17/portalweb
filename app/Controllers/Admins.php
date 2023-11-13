@@ -21,6 +21,23 @@ class Admins extends BaseController
         $this->kategori = new Categorys_model();
         $this->news = new News_model();
         $this->comment = new Comments_model();
+        $this->cekauth();
+    }
+    public function cekauth()
+    {
+        $session = session();
+        // var_dump(time());
+        // var_dump(session('login_time'));
+        // die;
+        if (time() - session('login_time') >= 7200) {
+            session_destroy();
+            echo "<script>location.href='" . base_url('') . "';alert('Session Timeout.');</script>";
+        }
+
+        if (session('role') > '2') {
+            session_destroy();
+            echo "<script>location.href='" . base_url('') . "';alert('Your not authorized.');</script>";
+        }
     }
     public function index()
     {
@@ -32,8 +49,8 @@ class Admins extends BaseController
                 $countnews = $this->news->selectcountnews()[0]->id;
                 $publishnews = $this->news->publishcountnews()[0]->id;
                 $unpublishnews = $this->news->unpublishcountnews()[0]->id;
-                $usercount = $this->user->usercount()[0]->id_user;
-                $authorsrcount = $this->user->authorsrcount()[0]->id_user;
+                $usercount = $this->user->usercount()[0]->id;
+                $authorsrcount = $this->user->authorsrcount()[0]->id;
 
                 $data = [
                     'news' => $new,
@@ -51,7 +68,7 @@ class Admins extends BaseController
                     . view('admins/dashboard', $data)
                     . view('templates/admins/footer_adm');
             } else {
-                $id = session('id_user');
+                $id = session('id');
                 $new = $this->news->selectbyUser($id);
                 $countnews = $this->news->selectcountnews($id)[0]->id;
                 $publishnews = $this->news->publishcountnews($id)[0]->id;
@@ -147,7 +164,7 @@ class Admins extends BaseController
             $dataBerkas->move('foto/', $fileName);
         }
         $data = [
-            'id_user' => $id,
+            'id' => $id,
             'name_user' => $this->request->getVar('nama'),
             'email_user' => $this->request->getVar('email'),
             'divisi_user' => $this->request->getVar('divisi'),
@@ -273,7 +290,7 @@ class Admins extends BaseController
                     . view('admins/news/datanews', $data)
                     . view('templates/admins/footer_adm');
             } else {
-                $id = session('id_user');
+                $id = session('id');
                 $news = $this->news->selectbyUser($id);
                 $data = [
                     'new' => $news,
@@ -336,7 +353,7 @@ class Admins extends BaseController
                 $dataBerkas = $this->request->getFile('foto');
                 $fileName = $dataBerkas->getRandomName();
                 $db = [
-                    'id_user' => session('id_user'),
+                    'id' => session('id'),
                     'title_berita' => $this->request->getPost('title'),
                     'isi_berita' => $this->request->getPost('news'),
                     'id_kategori' => $this->request->getVar('cat'),
@@ -401,7 +418,7 @@ class Admins extends BaseController
                 }
 
                 $db = [
-                    'id_user' => session('id_user'),
+                    'id' => session('id'),
                     'title_berita' => $this->request->getPost('title'),
                     'isi_berita' => $this->request->getPost('news'),
                     'id_kategori' => $this->request->getVar('cat'),

@@ -12,6 +12,21 @@ class Users extends BaseController
     {
         $this->users = new Users_Model();
         $this->news = new News_model();
+        $this->cekauth();
+    }
+    public function cekauth()
+    {
+
+        if (session('role') == '1' || session('role') == '2' || session('role') == '3') {
+            if (time() - session('login_time') >= 7200) {
+                session_destroy();
+                echo "<script>location.href='" . base_url('') . "';alert('Session Timeout.');</script>";
+            }
+        }
+        if (session('role') == '1' || session('role') == '2' || session('role') == '3') {
+            session_destroy();
+            echo "<script>location.href='" . base_url('') . "';alert('Your not authorized.');</script>";
+        }
     }
     // public function index()
     // {

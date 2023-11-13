@@ -35,24 +35,25 @@
                         </div>
                         <div class="bg-white border border-top-0 p-4">
                             <?php
-
-                            use PhpParser\Node\Stmt\Echo_;
-
                             $a = 0;
+                            // var_dump($comment);
+                            // var_dump($balas);
+                            // die;
                             foreach ($comment as $c) : ?>
                                 <div class="media mb-4">
                                     <img class="rounded-circle mr-2" src="<?= base_url('foto/' . $c['fotouser']) ?>" width="45" height="45" alt="">
                                     <div class="media-body">
                                         <h6><span style="font-weight: bold;"><?= $c['name_user'] ?> </span><small><i><?= date('d M Y', strtotime($c['created_at'])) ?></i></small></h6>
                                         <p><?= $c['comment_content'] ?></p>
-                                        <a <?php if (session('id_user') == null) {
+                                        <a <?php if (session('id') == null) {
                                                 echo 'href="' . base_url('login') . '"';
                                             } else {
-                                                echo 'onclick="balas(' . $c['id'] . ')"';
+                                                echo 'href="#modalreply" onclick="comment_reply(' . $c['id_comment'] . ')" data-toggle="modal"';
                                             } ?>>Reply</a>
                                         <?php
+
                                         foreach ($balas as $b) :
-                                            if ($c['id'] == $b['id_parent']) {
+                                            if ($c['id_comment'] == $b['id_parent']) {
                                         ?>
                                                 <div class="media mt-4">
                                                     <img class="rounded-circle mr-2" src="<?= base_url('foto/' . $b['fotouser']) ?>" width="45" height="45" alt="">
@@ -70,22 +71,42 @@
                             <?php $a++;
                             endforeach;
 
-                            if (session('id_user') > 0) { ?>
-                                <div class="media">
-                                    <form method="post" action="<?= base_url('comment') ?>">
-                                        <img class="rounded-circle mr-2" src="<?= base_url('foto/' . $user[0]['fotouser']) ?>" width="45" height="45" alt="">
+                            if (session('id') > 0) { ?>
+                                <form method="post" action="<?= base_url('comment') ?>">
+                                    <div class="media">
+                                        <img class="rounded-circle mr-2" src="<?= base_url('foto/' . $user['fotouser']) ?>" width="45" height="45" alt="">
                                         <input type="text" name="comment" class="form-control" id="comment" placeholder="Add Comment ...">
                                         <input type="hidden" name="idberita" value="<?= $news[0]['berita'] ?>" />
                                         <button type="submit" class="btn btn-primary" style="font-size: 12pt;"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
-                                    </form>
-                                </div>
+                                    </div>
+                                </form>
+
                             <?php } ?>
+
                         </div>
                     </div>
                     <!-- Comment List End -->
+                </div>
+                <div class="modal fade" id="modalreply" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" data-dismiss="modal" data-toggle="modal">
+                    <div class="modal-dialog ">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <!-- <h5 class="modal-title" id="exampleModalLabel">Transaction List</h5> -->
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body" id="reply_comment">
 
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+
             <div class="col-lg-4">
                 <!-- Social Follow Start -->
                 <div class="mb-3">
@@ -196,10 +217,3 @@
     </div>
 </div>
 <!-- News With Sidebar End -->
-<script>
-    document.getElementById("nodeGoto").addEventListener("click", function() {
-        gotoNode(result.name);
-    }, false);
-
-    ​
-</script>

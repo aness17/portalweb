@@ -16,6 +16,40 @@ class Auths extends BaseController
         $this->user = new Users_model();
         $this->news = new News_model();
         $this->comment = new Comments_model();
+        $this->cekauth();
+        $session = session();
+    }
+    public function cekauth()
+    {
+
+        // var_dump(time());
+        // var_dump(session('role'));
+        // die;
+        if (session('role') == '1' || session('role') == '2' || session('role') == '3') {
+            if (time() - session('login_time') >= 7200) {
+                session_destroy();
+                echo "<script>location.href='" . base_url('') . "';alert('Session Timeout.');</script>";
+            }
+        }
+        // if (session('role') == '1' || session('role') == '2' || session('role') == '3') {
+        //     session_destroy();
+        //     echo "<script>location.href='" . base_url('') . "';alert('Your not authorized.');</script>";
+        // }
+    }
+    public function comment_reply()
+    {
+        $id_parent = (int)$_POST['id_parent'];
+        $news = $this->comment->getCommentbyParent($id_parent);
+
+        $isi[] = '';
+
+        if (empty($news)) {
+            $isi .= 'No Record';
+        } else {
+            $isi = $news;
+        }
+        $isi = json_encode($isi);
+        echo $isi;
     }
     public function index()
     {
@@ -43,11 +77,12 @@ class Auths extends BaseController
 
     public function view($slug)
     {
+        $id = session('id');
         $news = $this->news->getPageSlug($slug);
         $countcomment = $this->comment->getCountComment($news[0]['berita'])[0]->id;
         $comment = $this->comment->select($news[0]['berita']);
-        $users = $this->user->getUsers();
-        $this->add_count($slug);
+        $users = $this->user->find($id);
+        // $this->add_count($slug);
 
         $balas = array();
         $balas = $this->comment->balas($news[0]['berita']);
@@ -59,8 +94,8 @@ class Auths extends BaseController
             'countcomment' => $countcomment,
             'user' => $users
         ];
-        var_dump($news[0]['slug']);
-        die;
+        // var_dump($balas);
+        // die;
         return view('templates/header_usr', $data)
             . view('view', $data)
             . view('templates/footer');
@@ -92,20 +127,32 @@ class Auths extends BaseController
         }
     }
 
-    public function addcomment()
+    public function addcomment($id = null)
     {
         $idberita = $this->request->getVar('idberita');
+        $idparent = $this->request->getVar('idparent');
         $berita = $this->news->find($idberita);
         // var_dump($berita);
         // die;
-        $data = [
-            'id_user' => session('id_user'),
-            'id_parent' => 0,
-            'id_berita' => $idberita,
-            'comment_content' => $this->request->getVar('comment'),
-            'status_content' => 1
-        ];
-
+        if ($idparent > 0) { //jika id parent ada
+            $data = [
+                'id_user' => session('id'),
+                'id_parent' => $idparent,
+                'id_berita' => $idberita,
+                'comment_content' => $this->request->getVar('comment'),
+                'status_content' => 1
+            ];
+            // var_dump($idparent);
+            // die;
+        } else { //jika id parent tidak ada
+            $data = [
+                'id_user' => session('id'),
+                'id_parent' => 0,
+                'id_berita' => $idberita,
+                'comment_content' => $this->request->getVar('comment'),
+                'status_content' => 1
+            ];
+        }
         $result = $this->comment->insert($data);
         if ($result > 0) {
             echo "<script>location.href='" . base_url('news/' . $berita['slug']) . "';</script>";
@@ -138,12 +185,13 @@ class Auths extends BaseController
 
                     $data = [
                         'islogin' => true,
-                        'id_user' => $user['id_user'],
+                        'id' => $user['id'],
                         'nama' => $user['name_user'],
                         'email' => $user['email_user'],
                         'password' => $user['password_user'],
                         'divisi' => $user['divisi_user'],
                         'role' => $user['role_user'],
+                        'login_time' => strtotime('now')
                     ];
 
                     $session->set($data);

@@ -17,14 +17,14 @@ class News_model extends Model
         if ($id === false) {
             $builder = $this->db->table($this->table);
             $builder->select('B.id as kategori, tberita.id as berita, A.*, B.*, tberita.*');
-            $builder->join('tuser A', 'tberita.id_user = A.id_user');
+            $builder->join('tuser A', 'tberita.id_user = A.id');
             $builder->join('tkategori B', 'tberita.id_kategori = B.id');
             $builder->orderBy('tberita.jadwal_tayang desc');
             return $builder->get()->getResultArray();
         } else {
             $builder = $this->db->table($this->table);
             $builder->select('B.id as kategori, tberita.id as berita, A.*, B.*, tberita.*');
-            $builder->join('tuser A', 'tberita.id_user = A.id_user');
+            $builder->join('tuser A', 'tberita.id_user = A.id');
             $builder->join('tkategori B', 'tberita.id_kategori = B.id');
             $builder->where('tberita.id', $id);
             return $builder->get()->getResultArray();
@@ -35,13 +35,13 @@ class News_model extends Model
         if ($id === false) {
             $builder = $this->db->table($this->table);
             $builder->select('B.id as kategori, tberita.id as berita, A.*, B.*, tberita.*');
-            $builder->join('tuser A', 'tberita.id_user = A.id_user');
+            $builder->join('tuser A', 'tberita.id_user = A.id');
             $builder->join('tkategori B', 'tberita.id_kategori = B.id');
             return $builder->get()->getResultArray();
         } else {
             $builder = $this->db->table($this->table);
             $builder->select('B.id as kategori, tberita.id as berita, A.*, B.*, tberita.*');
-            $builder->join('tuser A', 'tberita.id_user = A.id_user');
+            $builder->join('tuser A', 'tberita.id_user = A.id');
             $builder->join('tkategori B', 'tberita.id_kategori = B.id');
             $builder->where('tberita.id_user', $id);
             return $builder->get()->getResultArray();
@@ -52,14 +52,14 @@ class News_model extends Model
         if ($sc === null) {
             $builder = $this->db->table($this->table);
             $builder->select('B.id as kategori, tberita.id as berita, A.*, B.*, tberita.*');
-            $builder->join('tuser A', 'tberita.id_user = A.id_user');
+            $builder->join('tuser A', 'tberita.id_user = A.id');
             $builder->join('tkategori B', 'tberita.id_kategori = B.id');
             $builder->orderBy('tberita.jadwal_tayang desc');
             return $builder->get()->getResultArray();
         } else {
             $builder = $this->db->table($this->table);
             $builder->select('B.id as kategori, tberita.id as berita, A.*, B.*, tberita.*');
-            $builder->join('tuser A', 'tberita.id_user = A.id_user');
+            $builder->join('tuser A', 'tberita.id_user = A.id');
             $builder->join('tkategori B', 'tberita.id_kategori = B.id');
             $builder->where('tberita.title_berita like', '%' . $sc . '%');
             $builder->orderBy('tberita.jadwal_tayang desc');
@@ -70,7 +70,7 @@ class News_model extends Model
     {
         $builder = $this->db->table($this->table);
         $builder->select('B.id as kategori, tberita.id as berita, A.*, B.*, tberita.*');
-        $builder->join('tuser A', 'tberita.id_user = A.id_user');
+        $builder->join('tuser A', 'tberita.id_user = A.id');
         $builder->join('tkategori B', 'tberita.id_kategori = B.id');
         $builder->where('tberita.slug like', '%' . $slug . '%');
         return $builder->get()->getResultArray();

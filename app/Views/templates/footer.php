@@ -48,6 +48,8 @@
 <a href="#" class="btn btn-primary btn-square back-to-top"><i class="fa fa-arrow-up"></i></a>
 
 <!-- JavaScript Libraries -->
+<script src="<?= base_url('user/') ?>js/detail_news.js"></script>
+
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
 <script src="<?= base_url('user/') ?>lib/easing/easing.min.js"></script>
