@@ -31,8 +31,8 @@
                 Follow Us
             </h5>
             <div class="d-flex justify-content-start">
-                <a class="btn btn-lg btn-secondary btn-lg-square mr-2" href="#"><i class="fab fa-linkedin-in"></i></a>
-                <a class="btn btn-lg btn-secondary btn-lg-square mr-2" href="#"><i class="fab fa-instagram"></i></a>
+                <a class="btn btn-lg btn-secondary btn-lg-square mr-2" href="https://id.linkedin.com/company/pt-jasa-angkasa-semesta-tbk"><i class="fab fa-linkedin-in"></i></a>
+                <a class="btn btn-lg btn-secondary btn-lg-square mr-2" href="https://www.instagram.com/jasairportservices/"><i class="fab fa-instagram"></i></a>
             </div>
         </div>
     </div>

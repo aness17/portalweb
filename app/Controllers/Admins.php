@@ -276,16 +276,7 @@ class Admins extends BaseController
     // News 
     public function datanews()
     {
-        // $dt   = new DateTime('now');
-
-        $begin = new DateTime($periode['start_date']);
-
-        $begin->setTime(0, 0);
-        $end->setTime(12, 0);
-        $interval = DateInterval::createFromDateString('1 day');
-        $period = new DatePeriod($begin, $interval, $end);
-
-        if (session('role') == '1' || session('role') == '2' && date('Y-m-d') <= $periode['end_date']) {
+        if (session('role') == '1' || session('role') == '2') {
             if (session('role') == '1') {
                 $news = $this->news->select();
 
@@ -375,6 +366,25 @@ class Admins extends BaseController
 
                 $result = $this->news->insert($db);
                 $dataBerkas->move('foto/', $fileName);
+
+                $agent = $this->request->getUserAgent();
+                if ($agent->isBrowser()) {
+                    $currentAgent = $agent->getBrowser() . ' ' . $agent->getVersion();
+                } elseif ($agent->isRobot()) {
+                    $currentAgent = $agent->getRobot();
+                } elseif ($agent->isMobile()) {
+                    $currentAgent = $agent->getMobile();
+                } else {
+                    $currentAgent = 'Unidentified User Agent';
+                }
+                $ip = file_get_contents('https://api.ipify.org');
+                $db = [
+                    'id_user' => session('id'),
+                    'remarks' => 'Create News',
+                    'ip_add' => $ip,
+                    'browser' => $currentAgent . ' (' . $agent->getPlatform() . ')'
+                ];
+                $this->log->insert($db);
                 if ($result > 0) {
                     echo "<script>location.href='" . base_url('datanews') . "';alert('Success to add data');</script>";
                 } else {
@@ -437,6 +447,25 @@ class Admins extends BaseController
                     'slug' => url_title($this->request->getVar('title'), '-', TRUE),
                     'breaking_news' => $this->request->getVar('brenews')
                 ];
+
+                $agent = $this->request->getUserAgent();
+                if ($agent->isBrowser()) {
+                    $currentAgent = $agent->getBrowser() . ' ' . $agent->getVersion();
+                } elseif ($agent->isRobot()) {
+                    $currentAgent = $agent->getRobot();
+                } elseif ($agent->isMobile()) {
+                    $currentAgent = $agent->getMobile();
+                } else {
+                    $currentAgent = 'Unidentified User Agent';
+                }
+                $ip = file_get_contents('https://api.ipify.org');
+                $db = [
+                    'id_user' => session('id'),
+                    'remarks' => 'Edit News',
+                    'ip_add' => $ip,
+                    'browser' => $currentAgent . ' (' . $agent->getPlatform() . ')'
+                ];
+                $this->log->insert($db);
 
                 $result = $this->news->update($id, $db);
 

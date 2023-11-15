@@ -7,9 +7,9 @@ use CodeIgniter\Model;
 class Users_model extends Model
 {
     protected $table = 'tuser';
-    protected $primary = 'id_user';
+    protected $primary = 'id';
     protected $useAutoIncrement = true;
-    protected $allowedFields = ['id_user', 'name_user', 'email_user', 'password_user', 'divisi_user', 'role_user', 'fotouser'];
+    protected $allowedFields = ['id', 'name_user', 'email_user', 'password_user', 'divisi_user', 'role_user', 'fotouser'];
 
     public function create($data)
     {
@@ -24,7 +24,6 @@ class Users_model extends Model
             return $this->getWhere(['id' => $id]);
         }
     }
-
     public function edit($data)
     {
         $builder = $this->db->table($this->table);

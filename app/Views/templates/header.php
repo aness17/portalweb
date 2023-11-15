@@ -84,35 +84,11 @@
                 </div>
             </div>
         </nav>
-
-        <!-- <div class="container-fluid bg-secondary py-3 mb-3 ">
-            <div class="container">
-                <div class="row align-items-center bg-secondary">
-                    <div class="col-12">
-                        <div class="d-flex justify-content-between">
-                            <div class="bg-primary text-dark text-center font-weight-medium py-2" style="width: 170px">
-                                Breaking News
-                            </div>
-                            <div class="owl-carousel tranding-carousel position-relative d-inline-flex align-items-center ml-3" style="width: calc(100% - 170px); padding-right: 90px">
-                                <div class="text-truncate">
-                                    <a class="text-white text-uppercase font-weight-semi-bold" href="">DUKUNG KTT KE-43 ASEAN, JAS TANGANI 20 PENERBANGAN VVIP DELEGASI ENAM NEGARA PESERTA
-                                    </a>
-                                </div>
-                                <div class="text-truncate">
-                                    <a class="text-white text-uppercase font-weight-semi-bold" href="">LATIHAN MILITER GABUNGAN ‘SUPER GARUDA SHIELD 2023’ PERCAYAKAN JAS TANGANI KONTINGEN AMERIKA
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
     </div>
     <!-- Navbar End -->
     <br />
     <!-- Breaking News Start -->
-    <div class="container py-3 mb-1 ">
+    <!-- <div class="container py-3 mb-1 ">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-12">
@@ -134,5 +110,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- Navbar End -->

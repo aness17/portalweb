@@ -9,6 +9,7 @@ use Config\App\Controllers\Users;
 $routes->add('/', 'Auths::index');
 $routes->add('regist', 'Auths::registration');
 $routes->add('profile', 'Users::profile');
+$routes->add('edit_profile', 'Users::edit_profile');
 $routes->get('news/(:segment)', 'Auths::view/$1');
 $routes->add('comment', 'Auths::addcomment');
 $routes->add('reply_comment', 'Auths::comment_reply');

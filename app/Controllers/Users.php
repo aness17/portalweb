@@ -10,56 +10,126 @@ class Users extends BaseController
 {
     public function __construct()
     {
-        $this->users = new Users_Model();
+        $this->user = new Users_Model();
         $this->news = new News_model();
         $this->cekauth();
     }
     public function cekauth()
     {
-
         if (session('role') == '1' || session('role') == '2' || session('role') == '3') {
             if (time() - session('login_time') >= 7200) {
                 session_destroy();
                 echo "<script>location.href='" . base_url('') . "';alert('Session Timeout.');</script>";
             }
         }
-        if (session('role') == '1' || session('role') == '2' || session('role') == '3') {
-            session_destroy();
-            echo "<script>location.href='" . base_url('') . "';alert('Your not authorized.');</script>";
-        }
     }
-    // public function index()
-    // {
-    //     if (session('role') == '1' || session('role') == '2' || session('role') == '3') {
-    //         $search = $this->request->getVar('nama');
-
-    //         $data = [
-    //             'header' => 'dasbooard',
-    //             'users' => $this->users->find(),
-    //             'new' => $this->news->selectnews($search)
-    //         ];
-    //         return view('templates/header_usr')
-    //             . view('users/index', $data)
-    //             . view('templates/footer');
-    //     } else {
-    //         echo "<script>location.href='" . base_url('/') . "';alert('Your not authorized.');</script>";
-    //     }
-    // }
-
     public function profile()
     {
-        if (session('role') == '1' || session('role') == '2' || session('role') == '3') {
+        if (session('role') == '2' || session('role') == '3') {
+            $id_user = session('id');
+            $user = $this->user->find($id_user);
             $search = $this->request->getVar('nama');
             $data = [
                 'header' => 'dasbooard',
                 'new' => $this->news->selectnews($search),
-                'header' => 'profile'
+                'user' => $user
             ];
-            // var_dump($data);
-            // die;
+
+            $agent = $this->request->getUserAgent();
+            if ($agent->isBrowser()) {
+                $currentAgent = $agent->getBrowser() . ' ' . $agent->getVersion();
+            } elseif ($agent->isRobot()) {
+                $currentAgent = $agent->getRobot();
+            } elseif ($agent->isMobile()) {
+                $currentAgent = $agent->getMobile();
+            } else {
+                $currentAgent = 'Unidentified User Agent';
+            }
+            $ip = file_get_contents('https://api.ipify.org');
+            $db = [
+                'id_user' => session('id'),
+                'remarks' => 'Access Menu Profile',
+                'ip_add' => $ip,
+                'browser' => $currentAgent . ' (' . $agent->getPlatform() . ')'
+            ];
+            $this->log->insert($db);
+
             return view('templates/header_usr', $data)
                 . view('users/profile', $data)
                 . view('templates/footer');
+        } else {
+            echo "<script>location.href='" . base_url('/') . "';alert('Your not authorized.');</script>";
+        }
+    }
+    public function edit_profile()
+    {
+        if (session('role') == '2' || session('role') == '3') {
+            $id_user = session('id');
+            $user = $this->user->find($id_user);
+
+            $data = [
+                'user' => $user
+            ];
+            $validation =  \Config\Services::validation();
+            $validation->setRules([
+                'nama' => 'required',
+                'email' => 'required',
+                'divisi' => 'required'
+            ]);
+            $isDataValid = $validation->withRequest($this->request)->run();
+
+            $fileName = $this->request->getVar('oldFile');
+
+            if ($isDataValid) {
+                if ($this->request->getFile('foto') != "") {
+                    $dataBerkas = $this->request->getFile('foto');
+                    $fileName = $dataBerkas->getRandomName();
+                    $dataBerkas->move('foto/', $fileName);
+                }
+
+                $db = [
+                    'id' => $id_user,
+                    'name_user' => $this->request->getVar('nama'),
+                    'email_user' => $this->request->getVar('email'),
+                    'divisi_user' => $this->request->getVar('divisi'),
+                    'fotouser' => $fileName,
+                    'password_user' => password_hash($this->request->getVar('password'), PASSWORD_DEFAULT),
+                    'role_user' => 3
+
+                ];
+
+                //get agent browser user
+                $agent = $this->request->getUserAgent();
+                if ($agent->isBrowser()) {
+                    $currentAgent = $agent->getBrowser() . ' ' . $agent->getVersion();
+                } elseif ($agent->isRobot()) {
+                    $currentAgent = $agent->getRobot();
+                } elseif ($agent->isMobile()) {
+                    $currentAgent = $agent->getMobile();
+                } else {
+                    $currentAgent = 'Unidentified User Agent';
+                }
+                $ip = file_get_contents('https://api.ipify.org');
+                $db = [
+                    'id_user' => session('id'),
+                    'remarks' => 'Edit Profile',
+                    'ip_add' => $ip,
+                    'browser' => $currentAgent . ' (' . $agent->getPlatform() . ')'
+                ];
+                $this->log->insert($db);
+                $result = $this->user->edit($db);
+                if ($result > 0) {
+                    echo "<script>location.href='" . base_url('profile') . "';alert('Success to edit data');</script>";
+                } else {
+                    echo "<script>location.href='" . base_url('profile') . "';alert('Success to edit data');</script>";
+                }
+            } else {
+                // var_dump($user);
+                // die;
+                return view('templates/header_usr', $data)
+                    . view('users/edit_profile', $data)
+                    . view('templates/footer');
+            }
         } else {
             echo "<script>location.href='" . base_url('/') . "';alert('Your not authorized.');</script>";
         }

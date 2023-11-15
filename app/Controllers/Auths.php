@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\Comments_model;
+use App\Models\Log_model;
 use App\Models\News_model;
 use \App\Models\Users_model;
 
@@ -16,25 +17,18 @@ class Auths extends BaseController
         $this->user = new Users_model();
         $this->news = new News_model();
         $this->comment = new Comments_model();
+        $this->log = new Log_model();
         $this->cekauth();
         $session = session();
     }
     public function cekauth()
     {
-
-        // var_dump(time());
-        // var_dump(session('role'));
-        // die;
         if (session('role') == '1' || session('role') == '2' || session('role') == '3') {
             if (time() - session('login_time') >= 7200) {
                 session_destroy();
                 echo "<script>location.href='" . base_url('') . "';alert('Session Timeout.');</script>";
             }
         }
-        // if (session('role') == '1' || session('role') == '2' || session('role') == '3') {
-        //     session_destroy();
-        //     echo "<script>location.href='" . base_url('') . "';alert('Your not authorized.');</script>";
-        // }
     }
     public function comment_reply()
     {
@@ -80,9 +74,10 @@ class Auths extends BaseController
         $id = session('id');
         $news = $this->news->getPageSlug($slug);
         $countcomment = $this->comment->getCountComment($news[0]['berita'])[0]->id;
+        $countview = $this->log->CountViewsNews($slug)[0]->id_log;
         $comment = $this->comment->select($news[0]['berita']);
         $users = $this->user->find($id);
-        // $this->add_count($slug);
+        $breknew = $this->news->breaking_news();
 
         $balas = array();
         $balas = $this->comment->balas($news[0]['berita']);
@@ -92,48 +87,76 @@ class Auths extends BaseController
             'comment' => $comment,
             'balas' => $balas,
             'countcomment' => $countcomment,
-            'user' => $users
+            'countview' => $countview,
+            'user' => $users,
+            'breknew' => $breknew
         ];
-        // var_dump($balas);
-        // die;
+
+        $agent = $this->request->getUserAgent();
+        if ($agent->isBrowser()) {
+            $currentAgent = $agent->getBrowser() . ' ' . $agent->getVersion();
+        } elseif ($agent->isRobot()) {
+            $currentAgent = $agent->getRobot();
+        } elseif ($agent->isMobile()) {
+            $currentAgent = $agent->getMobile();
+        } else {
+            $currentAgent = 'Unidentified User Agent';
+        }
+        $ip = file_get_contents('https://api.ipify.org');
+        if (session('id') != null) {
+            $db = [
+                'id_user' => session('id'),
+                'id_berita' => $news[0]['berita'],
+                'remarks' => 'Read News',
+                'slug' => $slug,
+                'ip_add' => $ip,
+                'browser' => $currentAgent . ' (' . $agent->getPlatform() . ')'
+            ];
+        } else {
+            $db = [
+                'id_user' => 0,
+                'id_berita' => $news[0]['berita'],
+                'remarks' => 'Read News',
+                'slug' => $slug,
+                'ip_add' => $ip,
+                'browser' => $currentAgent . ' (' . $agent->getPlatform() . ')'
+            ];
+        }
+
+        $this->log->insert($db);
         return view('templates/header_usr', $data)
             . view('view', $data)
             . view('templates/footer');
     }
 
     // This is the counter function.. 
-    function add_count($slug)
-    {
-        // load cookie helper
-        helper('cookie');
-        // this line will return the cookie which has slug name
-
-        $check_visitor = set_cookie(urldecode($slug), FALSE);
-        // this line will return the visitor ip address
-        $ip = $this->request->getIPAddress();
-        // if the visitor visit this article for first time then //
-        //set new cookie and update article_views column  ..
-        //you might be notice we used slug for cookie name and ip 
-        //address for value to distinguish between articles  views
-        if ($check_visitor == false) {
-            $cookie = array(
-                "slug"   => urldecode($slug),
-                "value"  => "$ip",
-                "expire" =>  time() + 7200,
-                "secure" => false
-            );
-            set_cookie($cookie);
-            $this->news->update_counter(urldecode($slug));
-        }
-    }
-
     public function addcomment($id = null)
     {
         $idberita = $this->request->getVar('idberita');
         $idparent = $this->request->getVar('idparent');
         $berita = $this->news->find($idberita);
-        // var_dump($berita);
-        // die;
+
+        $agent = $this->request->getUserAgent();
+        if ($agent->isBrowser()) {
+            $currentAgent = $agent->getBrowser() . ' ' . $agent->getVersion();
+        } elseif ($agent->isRobot()) {
+            $currentAgent = $agent->getRobot();
+        } elseif ($agent->isMobile()) {
+            $currentAgent = $agent->getMobile();
+        } else {
+            $currentAgent = 'Unidentified User Agent';
+        }
+        $ip = file_get_contents('https://api.ipify.org');
+        $db = [
+            'id_user' => session('id'),
+            'id_berita' => $idberita,
+            'remarks' => 'Add Comment',
+            'ip_add' => $ip,
+            'slug' => $berita['slug'],
+            'browser' => $currentAgent . ' (' . $agent->getPlatform() . ')'
+        ];
+
+        $this->log->insert($db);
         if ($idparent > 0) { //jika id parent ada
             $data = [
                 'id_user' => session('id'),
@@ -193,8 +216,30 @@ class Auths extends BaseController
                         'role' => $user['role_user'],
                         'login_time' => strtotime('now')
                     ];
-
                     $session->set($data);
+
+                    //get agent browser user
+                    $agent = $this->request->getUserAgent();
+                    if ($agent->isBrowser()) {
+                        $currentAgent = $agent->getBrowser() . ' ' . $agent->getVersion();
+                    } elseif ($agent->isRobot()) {
+                        $currentAgent = $agent->getRobot();
+                    } elseif ($agent->isMobile()) {
+                        $currentAgent = $agent->getMobile();
+                    } else {
+                        $currentAgent = 'Unidentified User Agent';
+                    }
+
+                    $ip = file_get_contents('https://api.ipify.org');
+                    $db = [
+                        'id_user' => session('id'),
+                        'remarks' => 'Login System',
+                        'ip_add' => $ip,
+                        'browser' => $currentAgent . ' (' . $agent->getPlatform() . ')'
+                    ];
+                    // var_dump($db);
+                    // die;
+                    $this->log->insert($db);
                     if ($user['role_user'] == 1) {
                         echo "<script>location.href='" . base_url('admins') . "';alert('You are already logged in as an Superadmin');</script>";
                     } elseif ($user['role_user'] == 2) {
@@ -235,6 +280,15 @@ class Auths extends BaseController
             ];
 
             $result = $this->user->create($data);
+
+            $ip = file_get_contents('https://api.ipify.org');
+            $db = [
+                'id_user' => session('id'),
+                'remarks' => 'Register Account',
+                'ip_add' => $ip
+            ];
+            $this->log->insert($db);
+
             if ($result > 0) {
                 echo "<script>location.href='" . base_url('loginform') . "';alert('Success to Registration');</script>";
             } else {
@@ -246,6 +300,27 @@ class Auths extends BaseController
     }
     public function logout()
     {
+        //get agent browser user
+        $agent = $this->request->getUserAgent();
+        if ($agent->isBrowser()) {
+            $currentAgent = $agent->getBrowser() . ' ' . $agent->getVersion();
+        } elseif ($agent->isRobot()) {
+            $currentAgent = $agent->getRobot();
+        } elseif ($agent->isMobile()) {
+            $currentAgent = $agent->getMobile();
+        } else {
+            $currentAgent = 'Unidentified User Agent';
+        }
+        $ip = file_get_contents('https://api.ipify.org');
+
+        $db = [
+            'id_user' => session('id'),
+            'remarks' => 'Logout System',
+            'ip_add' => $ip,
+            'browser' => $currentAgent . ' (' . $agent->getPlatform() . ')'
+        ];
+
+        $this->log->insert($db);
         $session = session();
         $session->destroy();
         // var_dump('hello');

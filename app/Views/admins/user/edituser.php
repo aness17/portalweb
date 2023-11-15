@@ -5,7 +5,7 @@
             <!-- Vertical Form -->
             <?php $validation = \Config\Services::validation(); ?>
 
-            <form method="POST" action="<?= base_url('edituser/' . $user->id_user) ?>" class="row g-3" enctype="multipart/form-data">
+            <form method="POST" action="<?= base_url('edituser/' . $user->id) ?>" class="row g-3" enctype="multipart/form-data">
                 <div class="col-12">
                     <label for="nama" class="form-label">Name Employee</label>
                     <input type="text" name="nama" class="form-control" id="nama" value="<?= $user->name_user ?>">

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use CodeIgniter\Model;
+use DateTime;
 
 class News_model extends Model
 {
@@ -19,6 +20,7 @@ class News_model extends Model
             $builder->select('B.id as kategori, tberita.id as berita, A.*, B.*, tberita.*');
             $builder->join('tuser A', 'tberita.id_user = A.id');
             $builder->join('tkategori B', 'tberita.id_kategori = B.id');
+            // $builder->where('tberita.jadwal_tayang <', date('Y-m-d'));
             $builder->orderBy('tberita.jadwal_tayang desc');
             return $builder->get()->getResultArray();
         } else {
@@ -27,6 +29,7 @@ class News_model extends Model
             $builder->join('tuser A', 'tberita.id_user = A.id');
             $builder->join('tkategori B', 'tberita.id_kategori = B.id');
             $builder->where('tberita.id', $id);
+            // $builder->where('tberita.jadwal_tayang <', date('Y-m-d'));
             return $builder->get()->getResultArray();
         }
     }
@@ -54,6 +57,7 @@ class News_model extends Model
             $builder->select('B.id as kategori, tberita.id as berita, A.*, B.*, tberita.*');
             $builder->join('tuser A', 'tberita.id_user = A.id');
             $builder->join('tkategori B', 'tberita.id_kategori = B.id');
+            $builder->where('tberita.jadwal_tayang <=', date('Y-m-d'));
             $builder->orderBy('tberita.jadwal_tayang desc');
             return $builder->get()->getResultArray();
         } else {
@@ -62,6 +66,7 @@ class News_model extends Model
             $builder->join('tuser A', 'tberita.id_user = A.id');
             $builder->join('tkategori B', 'tberita.id_kategori = B.id');
             $builder->where('tberita.title_berita like', '%' . $sc . '%');
+            $builder->where('tberita.jadwal_tayang <=', date('Y-m-d'));
             $builder->orderBy('tberita.jadwal_tayang desc');
             return $builder->get()->getResultArray();
         }
@@ -78,7 +83,7 @@ class News_model extends Model
     public function breaking_news()
     {
         $builder = $this->db->table($this->table);
-        $builder->select('title_berita');
+        $builder->join('tkategori B', 'tberita.id_kategori = B.id');
         $builder->where('breaking_news ', 1);
         $builder->where('status ', 'Published');
         return $builder->get()->getResultArray();

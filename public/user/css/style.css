@@ -9569,6 +9569,12 @@ button.bg-dark:focus {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+.breaknews-truncate {
+  width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 
 .text-left {
   text-align: left !important;
