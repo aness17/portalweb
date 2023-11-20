@@ -16,17 +16,18 @@ class Comments_model extends Model
     {
         if ($id === false) {
             $builder = $this->db->table($this->table . " as A");
-            $builder->select('B.title_berita,C.name_user,A.id as id_comment ,A.*,C.*');
+            $builder->select('B.title_berita,C.name_user,A.id as id_comment ,A.*,C.*,B.id_user as id_creator');
             $builder->join('tuser C', 'A.id_user = C.id');
             $builder->join('tberita B', 'A.id_berita = B.id');
-            $builder->where('A.id_parent', 0);
-            $builder->where('A.status_content', 1);
+            // $builder->where('A.id_parent', 0);
+            // $builder->where('A.status_content', 1);
             $builder->orderBy('A.created_at desc');
             return $builder->get()->getResultArray();
         } else {
             $builder = $this->db->table($this->table . " as A");
-            $builder->select('A.id as id_comment ,A.*,C.*');
+            $builder->select('A.id as id_comment ,A.*,C.*, B.id_user as id_creator');
             $builder->join('tuser C', 'A.id_user = C.id');
+            $builder->join('tberita B', 'A.id_berita = B.id');
             $builder->where('A.id_berita', $id);
             $builder->where('A.id_parent', 0);
             $builder->where('A.status_content', 1);
@@ -38,6 +39,7 @@ class Comments_model extends Model
     {
         if ($id === false) {
             $builder = $this->db->table($this->table . " as A");
+            $builder->select('A.id as id_comment ,A.*,C.*, B.id_user as id_creator');
             $builder->join('tuser C', 'A.id_user = C.id');
             $builder->join('tberita B', 'A.id_berita = B.id');
             $builder->where('A.id_parent >', 0);
@@ -46,7 +48,9 @@ class Comments_model extends Model
             return $builder->get()->getResultArray();
         } else {
             $builder = $this->db->table($this->table . " as A");
+            $builder->select('A.id as id_comment ,A.*,C.*, B.id_user as id_creator');
             $builder->join('tuser C', 'A.id_user = C.id');
+            $builder->join('tberita B', 'A.id_berita = B.id');
             $builder->where('A.id_parent >', 0);
             $builder->where('A.id_berita', $id);
             $builder->where('A.status_content', 1);
@@ -71,5 +75,12 @@ class Comments_model extends Model
         $builder->where('A.status_content', 1);
         $builder->orderBy('A.created_at desc');
         return $builder->get()->getResultArray();
+    }
+    public function selectnews($id)
+    {
+        $builder = $this->db->table($this->table . " as A");
+        $builder->join('tberita B', 'A.id_berita = B.id');
+        $builder->where('A.id ', $id);
+        return $builder->get()->getRowArray();
     }
 }

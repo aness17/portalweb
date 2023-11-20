@@ -16,7 +16,7 @@ class App extends BaseConfig
      *
      *    http://example.com/
      */
-    public string $baseURL = '';
+    public string $baseURL = 'http://192.168.111.183/portalweb/';
 
     /**
      * Allowed Hostnames in the Site URL other than the hostname in the baseURL.

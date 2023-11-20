@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\Log_model;
 use App\Models\News_model;
 use App\Models\Users_Model;
 
@@ -12,6 +13,7 @@ class Users extends BaseController
     {
         $this->user = new Users_Model();
         $this->news = new News_model();
+        $this->log = new Log_model();
         $this->cekauth();
     }
     public function cekauth()
@@ -45,7 +47,7 @@ class Users extends BaseController
             } else {
                 $currentAgent = 'Unidentified User Agent';
             }
-            $ip = file_get_contents('https://api.ipify.org');
+            $ip = $this->request->getIPAddress();
             $db = [
                 'id_user' => session('id'),
                 'remarks' => 'Access Menu Profile',
@@ -109,7 +111,7 @@ class Users extends BaseController
                 } else {
                     $currentAgent = 'Unidentified User Agent';
                 }
-                $ip = file_get_contents('https://api.ipify.org');
+                $ip = $this->request->getIPAddress();
                 $db = [
                     'id_user' => session('id'),
                     'remarks' => 'Edit Profile',

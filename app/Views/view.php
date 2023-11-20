@@ -39,6 +39,7 @@
                             $a = 0;
                             foreach ($comment as $c) : ?>
                                 <div class="media mb-4">
+
                                     <img class="rounded-circle mr-2" src="<?= base_url('foto/' . $c['fotouser']) ?>" width="45" height="45" alt="">
                                     <div class="media-body">
                                         <h6><span style="font-weight: bold;"><?= $c['name_user'] ?> </span><small><i><?= date('d M Y', strtotime($c['created_at'])) ?></i></small></h6>
@@ -47,22 +48,39 @@
                                                 echo 'href="' . base_url('login') . '"';
                                             } else {
                                                 echo 'href="#modalreply" onclick="comment_reply(' . $c['id_comment'] . ')" data-toggle="modal"';
-                                            } ?>>Reply</a>
+                                            } ?>>Reply
+                                        </a>
                                         <?php
                                         foreach ($balas as $b) :
                                             if ($c['id_comment'] == $b['id_parent']) {
-                                        ?> <div class="media mt-4">
+                                        ?>
+                                                <div class="media mt-4">
                                                     <img class="rounded-circle mr-2" src="<?= base_url('foto/' . $b['fotouser']) ?>" width="45" height="45" alt="">
                                                     <div class="media-body">
                                                         <h6><span style="font-weight: bold;"><?= $b['name_user'] ?></span> <small><i><?= date('d M Y', strtotime($b['created_at'])) ?></i></small></h6>
                                                         <p><?= $b['comment_content'] ?></p>
                                                     </div>
+
+                                                    <?php if (session('id') == null) {
+                                                        echo '';
+                                                    } else if (session('id') == $b['id_user'] || session('id') == $b['id_creator']) { ?>
+                                                        <a href="<?= base_url('delete_comment/' . $b['id']) ?>" style="font-size:15px;">
+                                                            <i class="fa fa-trash text-primary mr-2"></i>
+                                                        </a> <?php } ?>
                                                 </div>
                                         <?php }
                                             $a++;
                                         endforeach;
                                         ?>
                                     </div>
+                                    <?php if (session('id') == null) {
+                                        echo '';
+                                    } else if (session('id') == $c['id_user'] || session('id') == $c['id_creator']) { ?>
+                                        <a href="<?= base_url('delete_comment/' . $c['id_comment']) ?>" style="font-size:15px;">
+                                            <i class="fa fa-trash text-primary mr-2"></i>
+                                        </a>
+                                    <?php } ?>
+
                                     <div class="dropdown-menu ml-5">
                                         <a><i class="bi bi-three-dots"></i></a>
                                         <ul>
@@ -113,7 +131,7 @@
                 <!-- Popular News Start -->
                 <div class="mb-3">
                     <div class="section-title mb-0">
-                        <h4 class="m-0 text-uppercase font-weight-bold">Tranding News</h4>
+                        <h4 class="m-0 text-uppercase font-weight-bold">Trending News</h4>
                     </div>
                     <div class="bg-white border border-top-0 p-3">
                         <?php $i = 1;

@@ -16,11 +16,11 @@
         <!-- Left side columns -->
         <div class="col-lg-12">
           <div class="row">
-            <div class="col-xxl-<?php if (session('role') == 1) {
-                                  echo "2";
-                                } else {
-                                  echo "3";
-                                } ?> col-md-4">
+            <!-- <div class="col-xxl-<?php if (session('role') == 1) {
+                                        echo "2";
+                                      } else {
+                                        echo "3";
+                                      } ?> col-md-4">
               <div class="card info-card sales-card">
                 <div class="card-body">
                   <h5 class="card-title">News</h5>
@@ -34,21 +34,25 @@
                   </div>
                 </div>
               </div>
-            </div><!-- End Sales Card -->
+            </div>End Sales Card -->
             <!-- Sales Card -->
 
-            <div class="col-xxl-3 col-md-4">
+            <div class="col-xxl-4 col-md-4">
               <div class="card info-card sales-card">
                 <div class="card-body">
                   <h5 class="card-title">News <span>| Status</span></h5>
                   <div class="d-flex align-items-center">
                     <div class="ps-3 ">
-                      <h3 style="font-weight: bold;">&nbsp;&nbsp;&nbsp;<?= $publishnews ?></h3>
-                      <span class="text-muted small pt-2 ps-1">Published</span>
+                      <h3 style="font-weight: bold;">&nbsp;&nbsp;&nbsp;<?= $countnews ?></h3>
+                      <span class="text-muted small pt-2 ps-1">&nbsp;&nbsp;&nbsp;Total</span>
+                    </div>
+                    <div class="ps-3 ">
+                      <h3 style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?= $publishnews ?></h3>
+                      <span class="text-muted small pt-2 ps-1">&nbsp;&nbsp;&nbsp;&nbsp;Published</span>
                     </div>
                     <div class="ps-3">
-                      <h3 style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?= $unpublishnews ?></h3>
-                      <span class="text-muted small pt-2 ps-1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Unpublished</span>
+                      <h3 style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?= $unpublishnews ?></h3>
+                      <span class="text-muted small pt-2 ps-1">&nbsp;&nbsp;&nbsp;&nbsp;Unpublished</span>
                     </div>
                   </div>
                 </div>
@@ -69,7 +73,26 @@
                       <i class="bi bi-newspaper"></i>
                     </div>
                     <div class="ps-3">
-                      <h6><?= $unpublishnews ?></h6>
+                      <h6><?= $CountViewsTotal ?></h6>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div><!-- End Sales Card -->
+            <div class="col-xxl-<?php if (session('role') == 1) {
+                                  echo "2";
+                                } else {
+                                  echo "3";
+                                } ?> col-md-4">
+              <div class="card info-card sales-card">
+                <div class="card-body">
+                  <h5 class="card-title"> Visitors</h5>
+                  <div class="d-flex align-items-center">
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                      <i class="bi bi-newspaper"></i>
+                    </div>
+                    <div class="ps-3">
+                      <h6><?= $CountViewsTotalVisitors ?></h6>
                     </div>
                   </div>
                 </div>
@@ -110,35 +133,72 @@
             </div><!-- End Sales Card -->
           <?php } ?>
 
-          <!-- Top Selling -->
-          <div class="col-12">
-            <div class="card top-selling overflow-auto">
+          <!-- Reports -->
+          <div class="col-8">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Reports <span>/Weekly</span></h5>
+                <!-- Line Chart -->
+                <div id="lineChart" style="min-height: 400px;" class="echart"></div>
 
-              <div class="card-body pb-0">
-                <h5 class="card-title">Riwayat Absensi <span>| Hari Ini</span></h5>
-
-                <table class="table table-borderless">
-                  <thead>
-                    <tr style="text-align: center;">
-                      <th scope="col">Preview</th>
-                      <th scope="col">NIP</th>
-                      <th scope="col">Nama Karyawan</th>
-                      <th scope="col">Tanggal Absen</th>
-                      <th scope="col">Status Bekerja</th>
-                      <th scope="col">Status Absen</th>
-                      <th scope="col">Location</th>
-                    </tr>
-                  </thead>
-
-                </table>
-
+                <script>
+                  document.addEventListener("DOMContentLoaded", () => {
+                    echarts.init(document.querySelector("#lineChart")).setOption({
+                      xAxis: {
+                        type: 'category',
+                        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+                      },
+                      yAxis: {
+                        type: 'value'
+                      },
+                      series: [{
+                        data: [150, 230, 224, 218, 135, 147, 260],
+                        type: 'line',
+                        smooth: true
+                      }]
+                    });
+                  });
+                </script>
+                <!-- End Line Chart -->
+              </div>
+            </div>
+          </div><!-- End Reports -->
+          <div class="col-4">
+            <div class="card ">
+              <div class="card-body">
+                <h5 class="card-title">Recent Activity <span>| Today</span></h5>
+                <div class="activity" style=" overflow-y:auto;height:400px"">
+                  <?php $a = 0;
+                  foreach ($log as $l) :
+                  ?>
+                    <div class=" activity-item d-flex">
+                  <div class="activite-label"><?= date('H:i', strtotime($l['time_access'])) ?></div>
+                  <i class='bi bi-circle-fill activity-badge <?php if ($l['remarks'] == 'Read News') {
+                                                                echo 'text-primary';
+                                                              } elseif ($l['remarks'] == 'Add Comment') {
+                                                                echo 'text-danger';
+                                                              } elseif ($l['remarks'] == 'Login System') {
+                                                                echo 'text-success';
+                                                              } else {
+                                                                echo 'text-info';
+                                                              } ?> align-self-start'></i>
+                  <div class="activity-content">
+                    <?= $l['name_user'] ?> <a href="#" class="fw-bold text-dark"><?= $l['remarks'] ?></a> <?= $l['title_berita'] ?>
+                  </div>
+                </div><!-- End activity item-->
+              <?php $a++;
+                  endforeach; ?>
               </div>
 
             </div>
-          </div><!-- End Top Selling -->
-
+          </div><!-- End Recent Activity -->
           </div>
-        </div><!-- End Left side columns -->
+
+        </div>
+    </div><!-- End Top Selling -->
+
+    </div>
+    </div><!-- End Left side columns -->
 
     </div>
   </section>

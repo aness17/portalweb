@@ -6,8 +6,7 @@ use App\Models\Categorys_model;
 use \App\Models\Users_model;
 use \App\Models\News_model;
 use \App\Models\Comments_model;
-
-
+use App\Models\Log_model;
 use CodeIgniter\Exceptions\PageNotFoundException; // Add this line
 
 class Admins extends BaseController
@@ -21,6 +20,7 @@ class Admins extends BaseController
         $this->kategori = new Categorys_model();
         $this->news = new News_model();
         $this->comment = new Comments_model();
+        $this->log = new Log_model();
         $this->cekauth();
     }
     public function cekauth()
@@ -46,22 +46,35 @@ class Admins extends BaseController
         if (session('role') == '1' || session('role') == '2') {
             if (session('role') == 1) {
                 $new = $this->news->select();
+                $log = $this->log->select();
                 $countnews = $this->news->selectcountnews()[0]->id;
                 $publishnews = $this->news->publishcountnews()[0]->id;
                 $unpublishnews = $this->news->unpublishcountnews()[0]->id;
                 $usercount = $this->user->usercount()[0]->id;
                 $authorsrcount = $this->user->authorsrcount()[0]->id;
+                $CountViewsTotal = $this->log->CountViewsTotal();
+                $CountViewsTotalVisitors = $this->log->CountViewsTotalVisitors();
+
+                // $berita = array();
+                // $berita = $this->news->select($log[0]['id_berita']);
+                // $user = array();
+                // $user = $this->user->select($log[0]['id_user']);
 
                 $data = [
                     'news' => $new,
+                    'log' => $log,
+                    // 'berita' => $berita,
+                    // 'user' => $user,
                     'header' => 'dashboard',
                     'countnews' => $countnews,
                     'publishnews' => $publishnews,
                     'unpublishnews' => $unpublishnews,
                     'usercount' => $usercount,
-                    'authorsrcount' => $authorsrcount
+                    'authorsrcount' => $authorsrcount,
+                    'CountViewsTotal' => $CountViewsTotal,
+                    'CountViewsTotalVisitors' => $CountViewsTotalVisitors
                 ];
-                // var_dump($usercount);
+                // var_dump($log);
                 // die;
                 return view('templates/admins/header_adm')
                     . view('templates/admins/sidebar', $data)
@@ -377,7 +390,7 @@ class Admins extends BaseController
                 } else {
                     $currentAgent = 'Unidentified User Agent';
                 }
-                $ip = file_get_contents('https://api.ipify.org');
+                $ip = $this->request->getIPAddress();
                 $db = [
                     'id_user' => session('id'),
                     'remarks' => 'Create News',
@@ -458,7 +471,7 @@ class Admins extends BaseController
                 } else {
                     $currentAgent = 'Unidentified User Agent';
                 }
-                $ip = file_get_contents('https://api.ipify.org');
+                $ip = $this->request->getIPAddress();
                 $db = [
                     'id_user' => session('id'),
                     'remarks' => 'Edit News',

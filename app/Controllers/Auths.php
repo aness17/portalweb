@@ -45,6 +45,27 @@ class Auths extends BaseController
         $isi = json_encode($isi);
         echo $isi;
     }
+    public function delete_comment($id)
+    {
+        if (session('role') == '1' || session('role') == '2' || session('role') == '3') {
+            $comment = $this->comment->selectnews($id);
+
+            $db = [
+                'status_content' => 0
+            ];
+
+            // var_dump($comment);
+            // die;
+            $result = $this->comment->update($id, $db);
+            if ($result > 0) {
+                echo "<script>location.href='" . base_url('news/' . $comment['slug']) . "';alert('Success to delete comment');</script>";
+            } else {
+                echo "<script>location.href='" . base_url('news/' . $comment['slug']) . "';alert('Failed to delete comment');</script>";
+            }
+        } else {
+            echo "<script>location.href='" . base_url('/') . "';alert('Your not authorized.');</script>";
+        }
+    }
     public function index()
     {
         $search = $this->request->getVar('search');
@@ -74,7 +95,7 @@ class Auths extends BaseController
         $id = session('id');
         $news = $this->news->getPageSlug($slug);
         $countcomment = $this->comment->getCountComment($news[0]['berita'])[0]->id;
-        $countview = $this->log->CountViewsNews($slug)[0]->id_log;
+        $countview = $this->log->CountViewsNews($slug);
         $comment = $this->comment->select($news[0]['berita']);
         $users = $this->user->find($id);
         $breknew = $this->news->breaking_news();
@@ -92,6 +113,8 @@ class Auths extends BaseController
             'breknew' => $breknew
         ];
 
+        // var_dump($comment);
+        // die;
         $agent = $this->request->getUserAgent();
         if ($agent->isBrowser()) {
             $currentAgent = $agent->getBrowser() . ' ' . $agent->getVersion();
@@ -102,7 +125,8 @@ class Auths extends BaseController
         } else {
             $currentAgent = 'Unidentified User Agent';
         }
-        $ip = file_get_contents('https://api.ipify.org');
+        // $ip = $this->request->getIPAddress();
+        $ip = $this->request->getIPAddress();
         if (session('id') != null) {
             $db = [
                 'id_user' => session('id'),
@@ -146,7 +170,7 @@ class Auths extends BaseController
         } else {
             $currentAgent = 'Unidentified User Agent';
         }
-        $ip = file_get_contents('https://api.ipify.org');
+        $ip = $this->request->getIPAddress();
         $db = [
             'id_user' => session('id'),
             'id_berita' => $idberita,
@@ -230,7 +254,7 @@ class Auths extends BaseController
                         $currentAgent = 'Unidentified User Agent';
                     }
 
-                    $ip = file_get_contents('https://api.ipify.org');
+                    $ip = $this->request->getIPAddress();
                     $db = [
                         'id_user' => session('id'),
                         'remarks' => 'Login System',
@@ -281,7 +305,7 @@ class Auths extends BaseController
 
             $result = $this->user->create($data);
 
-            $ip = file_get_contents('https://api.ipify.org');
+            $ip = $this->request->getIPAddress();
             $db = [
                 'id_user' => session('id'),
                 'remarks' => 'Register Account',
@@ -311,7 +335,7 @@ class Auths extends BaseController
         } else {
             $currentAgent = 'Unidentified User Agent';
         }
-        $ip = file_get_contents('https://api.ipify.org');
+        $ip = $this->request->getIPAddress();
 
         $db = [
             'id_user' => session('id'),

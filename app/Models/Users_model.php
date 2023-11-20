@@ -16,6 +16,12 @@ class Users_model extends Model
         $builder = $this->db->table($this->table);
         return $builder->insert($data);
     }
+    public function select($id)
+    {
+        $builder = $this->db->table($this->table);
+        $builder->where($this->primary, $id);
+        return $builder->get()->getResultArray();
+    }
     public function getUsers($id = false)
     {
         if ($id === false) {

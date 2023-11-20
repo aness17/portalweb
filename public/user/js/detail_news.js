@@ -1,4 +1,4 @@
-let base_url = "http://localhost:8080/";
+let base_url = "http://192.168.111.183/portalweb/public/";
 
 function detailnews(id) {
   let id_berita = id;
