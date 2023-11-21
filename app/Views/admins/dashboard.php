@@ -12,7 +12,11 @@
 
   <section class="section dashboard">
     <div class="row">
-      <?php if (session('role') == '1' || session('role') == '2') { ?>
+      <?php
+
+      use PhpParser\Node\Stmt\Echo_;
+
+      if (session('role') == '1' || session('role') == '2') { ?>
         <!-- Left side columns -->
         <div class="col-lg-12">
           <div class="row">
@@ -86,7 +90,7 @@
                                 } ?> col-md-4">
               <div class="card info-card sales-card">
                 <div class="card-body">
-                  <h5 class="card-title"> Visitors</h5>
+                  <h5 class="card-title"> Visitors<span>|Monthly</span></h5>
                   <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                       <i class="bi bi-newspaper"></i>
@@ -137,7 +141,7 @@
           <div class="col-8">
             <div class="card">
               <div class="card-body">
-                <h5 class="card-title">Reports <span>/Weekly</span></h5>
+                <h5 class="card-title">Reports Views <span>/Monthly</span></h5>
                 <!-- Line Chart -->
                 <div id="lineChart" style="min-height: 400px;" class="echart"></div>
 
@@ -146,13 +150,19 @@
                     echarts.init(document.querySelector("#lineChart")).setOption({
                       xAxis: {
                         type: 'category',
-                        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+                        data: [<?php foreach ($DataMonthly as $dm) {
+                                  echo "'" . date("M", mktime(0, 0, 0, $dm['bln'], 10)) . "',";
+                                }
+                                ?>]
                       },
                       yAxis: {
                         type: 'value'
                       },
                       series: [{
-                        data: [150, 230, 224, 218, 135, 147, 260],
+                        data: [<?php foreach ($DataMonthly as $dm) {
+                                  echo $dm['views'] . ",";
+                                } ?>],
+
                         type: 'line',
                         smooth: true
                       }]

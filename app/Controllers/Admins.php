@@ -41,11 +41,10 @@ class Admins extends BaseController
     }
     public function index()
     {
-        // var_dump(session('role'));
-        // die;
+        $year = date('Y');
+
         if (session('role') == '1' || session('role') == '2') {
             if (session('role') == 1) {
-                $new = $this->news->select();
                 $log = $this->log->select();
                 $countnews = $this->news->selectcountnews()[0]->id;
                 $publishnews = $this->news->publishcountnews()[0]->id;
@@ -54,16 +53,11 @@ class Admins extends BaseController
                 $authorsrcount = $this->user->authorsrcount()[0]->id;
                 $CountViewsTotal = $this->log->CountViewsTotal();
                 $CountViewsTotalVisitors = $this->log->CountViewsTotalVisitors();
-
-                // $berita = array();
-                // $berita = $this->news->select($log[0]['id_berita']);
-                // $user = array();
-                // $user = $this->user->select($log[0]['id_user']);
+                $DataMonthly = $this->log->DataMonthly($year);
 
                 $data = [
-                    'news' => $new,
                     'log' => $log,
-                    // 'berita' => $berita,
+                    'DataMonthly' => $DataMonthly,
                     // 'user' => $user,
                     'header' => 'dashboard',
                     'countnews' => $countnews,
@@ -74,7 +68,7 @@ class Admins extends BaseController
                     'CountViewsTotal' => $CountViewsTotal,
                     'CountViewsTotalVisitors' => $CountViewsTotalVisitors
                 ];
-                // var_dump($log);
+                // var_dump($DataMonthly);
                 // die;
                 return view('templates/admins/header_adm')
                     . view('templates/admins/sidebar', $data)
@@ -82,19 +76,27 @@ class Admins extends BaseController
                     . view('templates/admins/footer_adm');
             } else {
                 $id = session('id');
+                $log = $this->log->select($id);
                 $new = $this->news->selectbyUser($id);
                 $countnews = $this->news->selectcountnews($id)[0]->id;
                 $publishnews = $this->news->publishcountnews($id)[0]->id;
                 $unpublishnews = $this->news->unpublishcountnews($id)[0]->id;
+                $CountViewsTotal = $this->log->CountViewsTotal($id);
+                $CountViewsTotalVisitors = $this->log->CountViewsTotalVisitors($id);
+                $DataMonthly = $this->log->DataMonthly($year, $id);
 
                 $data = [
                     'news' => $new,
+                    'log' => $log,
                     'header' => 'dashboard',
                     'countnews' => $countnews,
                     'publishnews' => $publishnews,
-                    'unpublishnews' => $unpublishnews
+                    'unpublishnews' => $unpublishnews,
+                    'CountViewsTotal' => $CountViewsTotal,
+                    'CountViewsTotalVisitors' => $CountViewsTotalVisitors,
+                    'DataMonthly' => $DataMonthly
                 ];
-                // var_dump($countnews);
+                // var_dump($log);
                 // die;
                 return view('templates/admins/header_adm')
                     . view('templates/admins/sidebar', $data)
@@ -366,7 +368,8 @@ class Admins extends BaseController
                 $dataBerkas = $this->request->getFile('foto');
                 $fileName = $dataBerkas->getRandomName();
                 $db = [
-                    'id' => session('id'),
+                    // 'id' => session('id'),
+                    'id_user' => session('id'),
                     'title_berita' => $this->request->getPost('title'),
                     'isi_berita' => $this->request->getPost('news'),
                     'id_kategori' => $this->request->getVar('cat'),
