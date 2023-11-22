@@ -216,7 +216,7 @@ class Auths extends BaseController
     {
         $validation =  \Config\Services::validation();
         $validation->setRules([
-            'email' => 'required',
+            'email' => 'required|is_unique[tuser.email_user]|valid_email|min_length[6]',
             'password' => 'required'
         ]);
         $isDataValid = $validation->withRequest($this->request)->run();
@@ -272,11 +272,17 @@ class Auths extends BaseController
                         echo "<script>location.href='" . base_url('/') . "';alert('You are already logged in as an User');</script>";
                     }
                 } else {
-                    return redirect()->route('loginform');
+                    echo "<script>location.href='" . base_url('loginform') . "';alert('Incorect Username or Password');</script>";
+
+                    // return view('login');
+                    // echo "<script>alert('Incorect Username or Password ');</script>";
                 }
             }
         } else {
-            return redirect()->route('loginform');
+            echo "<script>location.href='" . base_url('loginform') . "';alert('Username/Password not valid');</script>";
+
+            // return view('login');
+            // echo "<script>alert('Username/Password not valid');</script>";
         }
         // return view('welcome_message');
     }
@@ -307,7 +313,7 @@ class Auths extends BaseController
 
             $ip = $this->request->getIPAddress();
             $db = [
-                'id_user' => session('id'),
+                'id_user' => 0,
                 'remarks' => 'Register Account',
                 'ip_add' => $ip
             ];

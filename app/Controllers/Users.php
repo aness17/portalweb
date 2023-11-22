@@ -80,15 +80,16 @@ class Users extends BaseController
             ]);
             $isDataValid = $validation->withRequest($this->request)->run();
 
-            $fileName = $this->request->getVar('oldFile');
-
             if ($isDataValid) {
                 if ($this->request->getFile('foto') != "") {
                     $dataBerkas = $this->request->getFile('foto');
                     $fileName = $dataBerkas->getRandomName();
                     $dataBerkas->move('foto/', $fileName);
+                } else {
+                    $fileName = $this->request->getVar('oldFile');
                 }
-
+                // var_dump($fileName);
+                // die;
                 $db = [
                     'id' => $id_user,
                     'name_user' => $this->request->getVar('nama'),
@@ -99,6 +100,8 @@ class Users extends BaseController
                     'role_user' => 3
 
                 ];
+
+                $result = $this->user->edit($db);
 
                 //get agent browser user
                 $agent = $this->request->getUserAgent();
@@ -119,7 +122,6 @@ class Users extends BaseController
                     'browser' => $currentAgent . ' (' . $agent->getPlatform() . ')'
                 ];
                 $this->log->insert($db);
-                $result = $this->user->edit($db);
                 if ($result > 0) {
                     echo "<script>location.href='" . base_url('profile') . "';alert('Success to edit data');</script>";
                 } else {

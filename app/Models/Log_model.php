@@ -25,8 +25,9 @@ class Log_model extends Model
             $builder->join('tuser C', 'A.id_user = C.id', 'LEFT');
             $builder->join('tberita B', 'A.id_berita = B.id', 'LEFT');
             $builder->where('A.time_access like ', '%' . date('Y-m-d') . '%');
-            $builder->where('B.id_user', $id);
             $builder->like('A.remarks', 'Read%');
+            $builder->orlike('A.remarks', '%Comment%');
+            $builder->where('B.id_user', $id);
             $builder->orderBy('A.time_access desc');
             $builder->limit(10);
             return $builder->get()->getResultArray();

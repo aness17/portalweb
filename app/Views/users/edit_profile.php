@@ -22,7 +22,7 @@
                         <h4 class="m-0 text-uppercase font-weight-bold">Edit Information</h4>
                     </div>
                     <div class="bg-white border border-top-0 p-4 mb-3">
-                        <form method="post" action="<?= base_url('edit_profile') ?>">
+                        <form method="post" action="<?= base_url('edit_profile') ?>" enctype="multipart/form-data">
                             <div class="form-row">
                                 <div class="col-md-6">
                                     <div class="form-group">
@@ -42,7 +42,7 @@
                                 <input type="text" class="form-control p-3" placeholder="Your Division" name="divisi" value="<?= $user['divisi_user'] ?>" />
                             </div>
                             <div class="form-group">
-                                <input type="file" multiple="true" name="foto" class="form-control" id="foto" accept=".png, .jpg, .jpeg" onchange="readURL(this);">
+                                <input type="file" multiple="true" name="foto" class="form-control" id="foto" accept=".png, .jpg, .jpeg">
                                 <input type="hidden" name="oldFile" value="<?= $user['fotouser'] ?>" />
                             </div>
                             <div class="text-center">

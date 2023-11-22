@@ -58,6 +58,7 @@ class News_model extends Model
             $builder->join('tuser A', 'tberita.id_user = A.id');
             $builder->join('tkategori B', 'tberita.id_kategori = B.id');
             $builder->where('tberita.jadwal_tayang <=', date('Y-m-d'));
+            $builder->where('tberita.status like', 'Published%');
             $builder->orderBy('tberita.jadwal_tayang desc');
             return $builder->get()->getResultArray();
         } else {
@@ -67,6 +68,7 @@ class News_model extends Model
             $builder->join('tkategori B', 'tberita.id_kategori = B.id');
             $builder->where('tberita.title_berita like', '%' . $sc . '%');
             $builder->where('tberita.jadwal_tayang <=', date('Y-m-d'));
+            $builder->where('tberita.status like', 'Published%');
             $builder->orderBy('tberita.jadwal_tayang desc');
             return $builder->get()->getResultArray();
         }

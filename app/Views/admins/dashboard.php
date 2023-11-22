@@ -41,7 +41,11 @@
             </div>End Sales Card -->
             <!-- Sales Card -->
 
-            <div class="col-xxl-4 col-md-4">
+            <div class="col-xxl-<?php if (session('role') == 1) {
+                                  echo "4";
+                                } else {
+                                  echo "5";
+                                } ?>  col-md-4">
               <div class="card info-card sales-card">
                 <div class="card-body">
                   <h5 class="card-title">News <span>| Status</span></h5>
@@ -86,7 +90,7 @@
             <div class="col-xxl-<?php if (session('role') == 1) {
                                   echo "2";
                                 } else {
-                                  echo "3";
+                                  echo "4";
                                 } ?> col-md-4">
               <div class="card info-card sales-card">
                 <div class="card-body">

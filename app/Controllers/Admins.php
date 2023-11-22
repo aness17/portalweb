@@ -355,7 +355,7 @@ class Admins extends BaseController
 
             $validation =  \Config\Services::validation();
             $validation->setRules([
-                'title' => 'required',
+                'title' => 'required|is_unique[tberita.title_berita]',
                 'cat' => 'required',
                 'news' => 'required',
                 'brosche' => 'required',
@@ -463,6 +463,7 @@ class Admins extends BaseController
                     'slug' => url_title($this->request->getVar('title'), '-', TRUE),
                     'breaking_news' => $this->request->getVar('brenews')
                 ];
+                $result = $this->news->update($id, $db);
 
                 $agent = $this->request->getUserAgent();
                 if ($agent->isBrowser()) {
@@ -482,8 +483,6 @@ class Admins extends BaseController
                     'browser' => $currentAgent . ' (' . $agent->getPlatform() . ')'
                 ];
                 $this->log->insert($db);
-
-                $result = $this->news->update($id, $db);
 
                 if ($result > 0) {
                     echo "<script>location.href='" . base_url('datanews') . "';alert('Success to Edit data');</script>";
