@@ -24,7 +24,7 @@ class Log_model extends Model
             $builder = $this->db->table($this->table . " as A");
             $builder->join('tuser C', 'A.id_user = C.id', 'LEFT');
             $builder->join('tberita B', 'A.id_berita = B.id', 'LEFT');
-            $builder->where('A.time_access like ', '%' . date('Y-m-d') . '%');
+            $builder->where('A.time_access like ', date('Y-m-d'));
             $builder->like('A.remarks', 'Read%');
             $builder->orlike('A.remarks', '%Comment%');
             $builder->where('B.id_user', $id);

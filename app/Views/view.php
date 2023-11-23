@@ -95,7 +95,7 @@
                                 <form method="post" action="<?= base_url('comment') ?>">
                                     <div class="media">
                                         <img class="rounded-circle mr-2" src="<?= base_url('foto/' . $user['fotouser']) ?>" width="45" height="45" alt="">
-                                        <input type="text" name="comment" class="form-control" id="comment" placeholder="Add Comment ...">
+                                        <input type="text" name="comment" class="form-control" id="comment" placeholder="Add Comment ..." required>
                                         <input type="hidden" name="idberita" value="<?= $news[0]['berita'] ?>" />
                                         <button type="submit" class="btn btn-primary" style="font-size: 12pt;"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
                                     </div>

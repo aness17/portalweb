@@ -20,6 +20,7 @@ class Users_model extends Model
     {
         $builder = $this->db->table($this->table);
         $builder->where($this->primary, $id);
+        $builder->where($this->primary, 1);
         return $builder->get()->getResultArray();
     }
     public function getUsers($id = false)

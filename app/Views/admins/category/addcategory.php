@@ -8,11 +8,12 @@
             <form method="POST" action="<?= base_url('addkategori') ?>" class="row g-3" enctype="multipart/form-data">
                 <div class="col-12">
                     <label for="nama" class="form-label">Name Category</label>
-                    <input type="text" name="nama" class="form-control" id="nama">
+                    <input type="text" name="nama" class="form-control" id="nama" required>
                 </div>
                 <div class="text-center">
                     <button type="submit" class="btn btn-primary">Submit</button>
                     <button type="reset" class="btn btn-secondary">Reset</button>
+                    <button type="button" onclick="history.go(-1);" class="btn btn-success">Kembali</button>
                 </div>
             </form><!-- Vertical Form -->
 

@@ -13,6 +13,7 @@
                 <div class="text-center">
                     <button type="submit" class="btn btn-primary">Submit</button>
                     <button type="reset" class="btn btn-secondary">Reset</button>
+                    <button type="button" onclick="history.go(-1);" class="btn btn-success">Kembali</button>
                 </div>
             </form><!-- Vertical Form -->
 

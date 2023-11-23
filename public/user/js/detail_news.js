@@ -74,7 +74,7 @@ function comment_reply(id) {
         "foto/" +
         obj[0]["fotouser"] +
         '" width="45" height="45" alt="">' +
-        '<input type="text" name="comment" class="form-control" id="comment" placeholder="Add Comment ...">' +
+        '<input type="text" name="comment" class="form-control" id="comment" placeholder="Add Comment ..." required>' +
         '<input type="hidden" name="idberita" value="' +
         obj[0]["id_berita"] +
         '" />' +
