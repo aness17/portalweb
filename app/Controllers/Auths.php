@@ -216,7 +216,7 @@ class Auths extends BaseController
     {
         $validation =  \Config\Services::validation();
         $validation->setRules([
-            'email' => 'required|is_unique[tuser.email_user]|valid_email|min_length[6]',
+            'email' => 'required|valid_email|min_length[6]',
             'password' => 'required'
         ]);
         $isDataValid = $validation->withRequest($this->request)->run();
@@ -273,18 +273,13 @@ class Auths extends BaseController
                     }
                 } else {
                     echo "<script>location.href='" . base_url('loginform') . "';alert('Incorect Username or Password');</script>";
-
-                    // return view('login');
-                    // echo "<script>alert('Incorect Username or Password ');</script>";
                 }
+            } else {
+                echo "<script>location.href='" . base_url('loginform') . "';alert('Incorect Username or Password');</script>";
             }
         } else {
             echo "<script>location.href='" . base_url('loginform') . "';alert('Username/Password not valid');</script>";
-
-            // return view('login');
-            // echo "<script>alert('Username/Password not valid');</script>";
         }
-        // return view('welcome_message');
     }
     public function registration()
     {

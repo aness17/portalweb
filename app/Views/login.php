@@ -70,7 +70,7 @@
 
                     <div class="col-12">
                       <label for="yourPassword" class="form-label">Password</label>
-                      <input type="password" name="password" class="form-control" id="yourPassword" placeholder="abcdefg123" required>
+                      <input type="password" name="password" class="form-control" id="password" placeholder="abcdefg123" required>
                       <div class="invalid-feedback">Please enter your password!</div>
                     </div>
                     <div class="col-12">

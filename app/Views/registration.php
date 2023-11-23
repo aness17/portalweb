@@ -73,6 +73,12 @@
                                             </div>
                                         </div>
                                         <div class="col-12">
+                                            <label for="divisi" class="form-label">Divisi</label>
+                                            <div class="input-group has-validation">
+                                                <input type="text" name="divisi" class="form-control" id="divisi" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
                                             <label for="password" class="form-label">Password</label>
                                             <input type="password" name="password" class="form-control" id="password" required>
                                             <div class="invalid-feedback">Please enter your password!</div>
@@ -83,13 +89,6 @@
                                             <input type="password" name="confirmpassword" class="form-control" id="confirmpassword" required>
                                             <div class="invalid-feedback">Please enter your password!</div>
                                         </div>
-                                        <div class="col-12">
-                                            <label for="divisi" class="form-label">Divisi</label>
-                                            <div class="input-group has-validation">
-                                                <input type="text" name="divisi" class="form-control" id="divisi" required>
-                                            </div>
-                                        </div>
-
                                         <div class="col-12">
                                             <button class="btn btn-primary w-100" type="submit">Create Account</button>
                                         </div>
