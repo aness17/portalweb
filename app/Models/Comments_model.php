@@ -35,6 +35,17 @@ class Comments_model extends Model
             return $builder->get()->getResultArray();
         }
     }
+    public function selectbyUser($id)
+    {
+        $builder = $this->db->table($this->table . " as A");
+        $builder->select('B.title_berita,C.name_user,A.id as id_comment ,A.*,C.*,B.id_user as id_creator');
+        $builder->join('tuser C', 'A.id_user = C.id');
+        $builder->join('tberita B', 'A.id_berita = B.id');
+        $builder->where('B.id_user', $id);
+        // $builder->where('A.status_content', 1);
+        $builder->orderBy('A.created_at desc');
+        return $builder->get()->getResultArray();
+    }
     public function balas($id = false)
     {
         if ($id === false) {

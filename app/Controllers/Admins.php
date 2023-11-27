@@ -520,16 +520,23 @@ class Admins extends BaseController
     // Comments 
     public function datacomment()
     {
-        $comment = $this->comment->select();
+        if (session('role') == '1' || session('role') == '2') {
+            if (session('role') == '1') {
+                $comment = $this->comment->select();
+            } else {
+                $id = session('id');
+                $comment = $this->comment->selectbyUser($id);
+            }
 
-        $data = [
-            'cmt' => $comment,
-            'header' => 'comment'
-        ];
+            $data = [
+                'cmt' => $comment,
+                'header' => 'comment'
+            ];
 
-        return view('templates/admins/header_adm')
-            . view('templates/admins/sidebar', $data)
-            . view('admins/comment/datacomment', $data)
-            . view('templates/admins/footer_adm');
+            return view('templates/admins/header_adm')
+                . view('templates/admins/sidebar', $data)
+                . view('admins/comment/datacomment', $data)
+                . view('templates/admins/footer_adm');
+        }
     }
 }
