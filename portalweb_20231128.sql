@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 28, 2023 at 04:01 AM
+-- Generation Time: Nov 22, 2023 at 09:32 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -71,10 +71,10 @@ CREATE TABLE `tkategori` (
 --
 
 INSERT INTO `tkategori` (`id`, `name_kategori`) VALUES
-(1, 'BUSINESS'),
-(2, 'CARGO'),
-(4, 'AIRLINES'),
-(5, 'INTERNAL');
+(1, 'Business'),
+(2, 'asaaa'),
+(4, 'Cargo'),
+(5, 'Internal');
 
 -- --------------------------------------------------------
 
@@ -99,7 +99,7 @@ CREATE TABLE `tkomentar` (
 --
 
 INSERT INTO `tkomentar` (`id`, `id_berita`, `id_user`, `id_parent`, `comment_content`, `created_at`, `updated_at`, `deleted_date`, `status_content`) VALUES
-(1, 5, 2, 0, 'satu', '2023-11-13 03:00:58', '2023-11-28 01:53:26', '0000-00-00 00:00:00', 0),
+(1, 5, 2, 0, 'satu', '2023-11-13 03:00:58', '2023-11-13 03:00:58', '0000-00-00 00:00:00', 1),
 (2, 5, 2, 1, 'dua', '2023-11-13 03:01:10', '2023-11-13 03:01:10', '0000-00-00 00:00:00', 1),
 (3, 5, 2, 1, 'tiga', '2023-11-13 03:06:40', '2023-11-13 03:06:40', '0000-00-00 00:00:00', 1),
 (4, 5, 2, 1, 'empat', '2023-11-13 03:14:51', '2023-11-13 03:14:51', '0000-00-00 00:00:00', 1),
@@ -117,8 +117,7 @@ INSERT INTO `tkomentar` (`id`, `id_berita`, `id_user`, `id_parent`, `comment_con
 (16, 17, 17, 0, 'cumi', '2023-11-21 08:23:00', '2023-11-21 08:23:00', '0000-00-00 00:00:00', 1),
 (17, 17, 17, 16, 'lagi', '2023-11-21 08:23:16', '2023-11-21 08:23:32', '0000-00-00 00:00:00', 0),
 (18, 17, 17, 16, 'au amat', '2023-11-21 08:23:26', '2023-11-21 08:23:26', '0000-00-00 00:00:00', 1),
-(19, 11, 1, 0, 'coba komen', '2023-11-22 01:08:15', '2023-11-22 01:08:15', '0000-00-00 00:00:00', 1),
-(20, 16, 1, 0, 'Berita ini jelek', '2023-11-28 01:52:34', '2023-11-28 01:52:51', '0000-00-00 00:00:00', 0);
+(19, 11, 1, 0, 'coba komen', '2023-11-22 01:08:15', '2023-11-22 01:08:15', '0000-00-00 00:00:00', 1);
 
 -- --------------------------------------------------------
 
@@ -361,7 +360,7 @@ INSERT INTO `tlog` (`id_log`, `id_user`, `id_berita`, `ip_add`, `browser`, `rema
 (217, 0, 0, '192.168.111.205', '', 'Register Account', '2023-11-21 08:22:06', ''),
 (218, 17, 0, '192.168.111.205', 'Firefox 115.0 (Windows 7)', 'Login System', '2023-11-21 08:22:45', ''),
 (219, 17, 17, '192.168.111.205', 'Firefox 115.0 (Windows 7)', 'Read News', '2023-11-21 08:22:54', 'jas-successfully-handled-the-arrival-of-covid-19-vaccine-in-indonesia'),
-(220, 17, 17, '192.168.111.205', 'Firefox 115.0 (Windows 7)', 'Add Comment', '2023-11-21 08:24:00', 'jas-successfully-handled-the-arrival-of-covid-19-vaccine-in-indonesia'),
+(220, 17, 17, '192.168.111.205', 'Firefox 115.0 (Windows 7)', 'Add Comment', '2023-11-21 08:23:00', 'jas-successfully-handled-the-arrival-of-covid-19-vaccine-in-indonesia'),
 (221, 17, 17, '192.168.111.205', 'Firefox 115.0 (Windows 7)', 'Read News', '2023-11-21 08:23:01', 'jas-successfully-handled-the-arrival-of-covid-19-vaccine-in-indonesia'),
 (222, 17, 17, '192.168.111.205', 'Firefox 115.0 (Windows 7)', 'Add Comment', '2023-11-21 08:23:16', 'jas-successfully-handled-the-arrival-of-covid-19-vaccine-in-indonesia'),
 (223, 17, 17, '192.168.111.205', 'Firefox 115.0 (Windows 7)', 'Read News', '2023-11-21 08:23:16', 'jas-successfully-handled-the-arrival-of-covid-19-vaccine-in-indonesia'),
@@ -432,79 +431,7 @@ INSERT INTO `tlog` (`id_log`, `id_user`, `id_berita`, `ip_add`, `browser`, `rema
 (288, 13, 0, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Access Menu Profile', '2023-11-22 04:24:41', ''),
 (289, 13, 0, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Logout System', '2023-11-22 04:24:45', ''),
 (290, 1, 0, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Login System', '2023-11-22 07:30:33', ''),
-(291, 1, 0, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Logout System', '2023-11-22 07:30:36', ''),
-(292, 1, 0, '192.168.111.183', 'Edge 119.0.0.0 (Windows 10)', 'Login System', '2023-11-23 01:30:01', ''),
-(293, 1, 0, '192.168.111.183', 'Edge 119.0.0.0 (Windows 10)', 'Logout System', '2023-11-23 01:30:39', ''),
-(294, 1, 0, '192.168.111.183', 'Edge 119.0.0.0 (Windows 10)', 'Login System', '2023-11-23 01:30:45', ''),
-(295, 1, 0, '192.168.111.183', 'Edge 119.0.0.0 (Windows 10)', 'Logout System', '2023-11-23 01:31:06', ''),
-(296, 2, 0, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Login System', '2023-11-23 02:09:42', ''),
-(297, 1, 0, '192.168.111.183', 'Edge 119.0.0.0 (Windows 10)', 'Login System', '2023-11-23 02:15:24', ''),
-(298, 1, 0, '192.168.111.183', 'Edge 119.0.0.0 (Windows 10)', 'Logout System', '2023-11-23 02:28:47', ''),
-(299, 2, 0, '192.168.111.183', 'Edge 119.0.0.0 (Windows 10)', 'Login System', '2023-11-23 02:28:58', ''),
-(300, 2, 0, '192.168.111.183', 'Edge 119.0.0.0 (Windows 10)', 'Logout System', '2023-11-23 03:58:53', ''),
-(301, 1, 0, '192.168.111.183', 'Edge 119.0.0.0 (Windows 10)', 'Login System', '2023-11-23 03:59:00', ''),
-(302, 1, 0, '192.168.111.183', 'Edge 119.0.0.0 (Windows 10)', 'Login System', '2023-11-23 07:37:09', ''),
-(303, 1, 0, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Login System', '2023-11-24 06:14:57', ''),
-(304, 1, 0, '192.168.111.183', 'Edge 119.0.0.0 (Windows 10)', 'Login System', '2023-11-27 02:17:02', ''),
-(305, 0, 16, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Read News', '2023-11-27 02:49:07', 'jas-tangani-keberangkatan-jemaah-haji-jawa-barat-dari-bandara-kertajati'),
-(306, 0, 11, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Read News', '2023-11-27 02:49:12', 'jas-airport-services-sukses-menyelesaikan-penanganan-249-penerbangan-haji-2023'),
-(307, 0, 11, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Read News', '2023-11-27 02:49:16', 'jas-airport-services-sukses-menyelesaikan-penanganan-249-penerbangan-haji-2023'),
-(308, 1, 11, '192.168.111.183', 'Edge 119.0.0.0 (Windows 10)', 'Read News', '2023-11-27 02:49:26', 'jas-airport-services-sukses-menyelesaikan-penanganan-249-penerbangan-haji-2023'),
-(309, 1, 0, '192.168.111.183', 'Edge 119.0.0.0 (Windows 10)', 'Logout System', '2023-11-27 03:41:48', ''),
-(310, 1, 0, '192.168.111.183', 'Edge 119.0.0.0 (Windows 10)', 'Login System', '2023-11-27 03:41:56', ''),
-(311, 1, 0, '192.168.111.183', 'Edge 119.0.0.0 (Windows 10)', 'Login System', '2023-11-27 06:26:57', ''),
-(312, 1, 0, '192.168.111.183', 'Edge 119.0.0.0 (Windows 10)', 'Logout System', '2023-11-27 06:26:58', ''),
-(313, 2, 0, '192.168.111.183', 'Edge 119.0.0.0 (Windows 10)', 'Login System', '2023-11-27 06:27:07', ''),
-(314, 0, 16, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Read News', '2023-11-27 08:05:28', 'jas-tangani-keberangkatan-jemaah-haji-jawa-barat-dari-bandara-kertajati'),
-(315, 2, 0, '192.168.111.183', 'Edge 119.0.0.0 (Windows 10)', 'Login System', '2023-11-27 08:34:48', ''),
-(316, 2, 0, '192.168.111.183', 'Edge 119.0.0.0 (Windows 10)', 'Login System', '2023-11-28 01:02:40', ''),
-(317, 0, 13, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Read News', '2023-11-28 01:03:38', 'jas-siap-tangani-operasional-pesawat-penumpang-terbesar-di-dunia-airbus-a380'),
-(318, 2, 11, '192.168.111.183', 'Edge 119.0.0.0 (Windows 10)', 'Read News', '2023-11-28 01:03:45', 'jas-airport-services-sukses-menyelesaikan-penanganan-249-penerbangan-haji-2023'),
-(319, 0, 13, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Read News', '2023-11-28 01:05:32', 'jas-siap-tangani-operasional-pesawat-penumpang-terbesar-di-dunia-airbus-a380'),
-(320, 0, 16, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Read News', '2023-11-28 01:24:03', 'jas-tangani-keberangkatan-jemaah-haji-jawa-barat-dari-bandara-kertajati'),
-(321, 0, 16, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Read News', '2023-11-28 01:24:17', 'jas-tangani-keberangkatan-jemaah-haji-jawa-barat-dari-bandara-kertajati'),
-(322, 0, 16, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Read News', '2023-11-28 01:35:00', 'jas-tangani-keberangkatan-jemaah-haji-jawa-barat-dari-bandara-kertajati'),
-(323, 0, 16, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Read News', '2023-11-28 01:49:33', 'jas-tangani-keberangkatan-jemaah-haji-jawa-barat-dari-bandara-kertajati'),
-(324, 0, 16, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Read News', '2023-11-28 01:49:41', 'jas-tangani-keberangkatan-jemaah-haji-jawa-barat-dari-bandara-kertajati'),
-(325, 0, 16, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Read News', '2023-11-28 01:50:12', 'jas-tangani-keberangkatan-jemaah-haji-jawa-barat-dari-bandara-kertajati'),
-(326, 0, 16, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Read News', '2023-11-28 01:50:43', 'jas-tangani-keberangkatan-jemaah-haji-jawa-barat-dari-bandara-kertajati'),
-(327, 0, 16, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Read News', '2023-11-28 01:50:47', 'jas-tangani-keberangkatan-jemaah-haji-jawa-barat-dari-bandara-kertajati'),
-(328, 0, 16, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Read News', '2023-11-28 01:51:00', 'jas-tangani-keberangkatan-jemaah-haji-jawa-barat-dari-bandara-kertajati'),
-(329, 0, 16, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Read News', '2023-11-28 01:52:00', 'jas-tangani-keberangkatan-jemaah-haji-jawa-barat-dari-bandara-kertajati'),
-(330, 1, 0, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Login System', '2023-11-28 01:52:15', ''),
-(331, 1, 16, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Read News', '2023-11-28 01:52:19', 'jas-tangani-keberangkatan-jemaah-haji-jawa-barat-dari-bandara-kertajati'),
-(332, 1, 13, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Read News', '2023-11-28 01:52:22', 'jas-siap-tangani-operasional-pesawat-penumpang-terbesar-di-dunia-airbus-a380'),
-(333, 1, 16, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Read News', '2023-11-28 01:52:28', 'jas-tangani-keberangkatan-jemaah-haji-jawa-barat-dari-bandara-kertajati');
-INSERT INTO `tlog` (`id_log`, `id_user`, `id_berita`, `ip_add`, `browser`, `remarks`, `time_access`, `slug`) VALUES
-(334, 1, 16, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Add Comment', '2023-11-28 01:52:34', 'jas-tangani-keberangkatan-jemaah-haji-jawa-barat-dari-bandara-kertajati'),
-(335, 1, 16, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Read News', '2023-11-28 01:52:34', 'jas-tangani-keberangkatan-jemaah-haji-jawa-barat-dari-bandara-kertajati'),
-(336, 1, 16, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Read News', '2023-11-28 01:52:51', 'jas-tangani-keberangkatan-jemaah-haji-jawa-barat-dari-bandara-kertajati'),
-(337, 2, 5, '192.168.111.183', 'Edge 119.0.0.0 (Windows 10)', 'Read News', '2023-11-28 01:53:27', 'dukung-ktt-ke-43-asean-jas-tangani-20-penerbangan-vvip-delegasi-enam-negara-peserta'),
-(338, 1, 16, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Read News', '2023-11-28 01:54:08', 'jas-tangani-keberangkatan-jemaah-haji-jawa-barat-dari-bandara-kertajati'),
-(339, 1, 16, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Read News', '2023-11-28 01:54:13', 'jas-tangani-keberangkatan-jemaah-haji-jawa-barat-dari-bandara-kertajati'),
-(340, 1, 16, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Read News', '2023-11-28 01:54:48', 'jas-tangani-keberangkatan-jemaah-haji-jawa-barat-dari-bandara-kertajati'),
-(341, 1, 16, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Read News', '2023-11-28 01:56:34', 'jas-tangani-keberangkatan-jemaah-haji-jawa-barat-dari-bandara-kertajati'),
-(342, 1, 16, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Read News', '2023-11-28 01:57:42', 'jas-tangani-keberangkatan-jemaah-haji-jawa-barat-dari-bandara-kertajati'),
-(343, 1, 16, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Read News', '2023-11-28 01:58:41', 'jas-tangani-keberangkatan-jemaah-haji-jawa-barat-dari-bandara-kertajati'),
-(344, 1, 16, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Read News', '2023-11-28 01:58:44', 'jas-tangani-keberangkatan-jemaah-haji-jawa-barat-dari-bandara-kertajati'),
-(345, 1, 16, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Read News', '2023-11-28 01:58:48', 'jas-tangani-keberangkatan-jemaah-haji-jawa-barat-dari-bandara-kertajati'),
-(346, 1, 16, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Read News', '2023-11-28 01:59:00', 'jas-tangani-keberangkatan-jemaah-haji-jawa-barat-dari-bandara-kertajati'),
-(347, 1, 16, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Read News', '2023-11-28 01:59:06', 'jas-tangani-keberangkatan-jemaah-haji-jawa-barat-dari-bandara-kertajati'),
-(348, 1, 16, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Read News', '2023-11-28 01:59:26', 'jas-tangani-keberangkatan-jemaah-haji-jawa-barat-dari-bandara-kertajati'),
-(349, 1, 16, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Read News', '2023-11-28 01:59:33', 'jas-tangani-keberangkatan-jemaah-haji-jawa-barat-dari-bandara-kertajati'),
-(350, 2, 0, '192.168.111.183', 'Edge 119.0.0.0 (Windows 10)', 'Logout System', '2023-11-28 01:59:49', ''),
-(351, 1, 0, '192.168.111.183', 'Edge 119.0.0.0 (Windows 10)', 'Login System', '2023-11-28 01:59:58', ''),
-(352, 1, 0, '192.168.111.183', 'Edge 119.0.0.0 (Windows 10)', 'Logout System', '2023-11-28 02:03:58', ''),
-(353, 1, 0, '192.168.111.183', 'Edge 119.0.0.0 (Windows 10)', 'Login System', '2023-11-28 02:15:32', ''),
-(354, 1, 0, '192.168.111.183', 'Edge 119.0.0.0 (Windows 10)', 'Logout System', '2023-11-28 02:15:52', ''),
-(355, 3, 0, '192.168.111.183', 'Edge 119.0.0.0 (Windows 10)', 'Login System', '2023-11-28 02:15:59', ''),
-(356, 1, 16, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Read News', '2023-11-28 02:17:15', 'jas-tangani-keberangkatan-jemaah-haji-jawa-barat-dari-bandara-kertajati'),
-(357, 1, 16, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Read News', '2023-11-28 02:17:23', 'jas-tangani-keberangkatan-jemaah-haji-jawa-barat-dari-bandara-kertajati'),
-(358, 1, 16, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Read News', '2023-11-28 02:17:32', 'jas-tangani-keberangkatan-jemaah-haji-jawa-barat-dari-bandara-kertajati'),
-(359, 1, 16, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Read News', '2023-11-28 02:17:54', 'jas-tangani-keberangkatan-jemaah-haji-jawa-barat-dari-bandara-kertajati'),
-(360, 1, 16, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Read News', '2023-11-28 02:18:02', 'jas-tangani-keberangkatan-jemaah-haji-jawa-barat-dari-bandara-kertajati'),
-(361, 1, 16, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Read News', '2023-11-28 02:18:08', 'jas-tangani-keberangkatan-jemaah-haji-jawa-barat-dari-bandara-kertajati'),
-(362, 3, 0, '192.168.111.183', 'Edge 119.0.0.0 (Windows 10)', 'Access Menu Profile', '2023-11-28 02:32:34', '');
+(291, 1, 0, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Logout System', '2023-11-22 07:30:36', '');
 
 -- --------------------------------------------------------
 
@@ -528,11 +455,11 @@ CREATE TABLE `tuser` (
 --
 
 INSERT INTO `tuser` (`id`, `name_user`, `email_user`, `password_user`, `divisi_user`, `fotouser`, `role_user`, `create_date`) VALUES
-(0, 'Visitors', 'null', '$2y$10$FSWoVLbg1PJoLd4MBhDl.eTh1shdjohcjGBYouaXKS.dnuYdN9oXy', 'null', '1700714032_28775d618aae71502e0a.png', 1, '2023-11-23 04:33:52'),
-(1, 'Dadang Indra', 'dadang@ptjas.co.id', '$2y$10$G9QMMLjVojr0kXWs6LvVkOHzPhAlYlO9oeH/Kz0zBx6euuz3WCvE.', 'HC Information System', '1699252386_d5ec06d4f638c8217a40.jpg', 1, '2023-11-23 01:08:16'),
+(0, 'Visitors', 'null', 'null', 'null', 'null', 0, '2023-11-20 02:59:00'),
+(1, 'Dadang Indra', 'dadang@ptjas.co.id', '$2y$10$iPOtDe13moohl5KvYFh9N.73aXv0bwUrnW/0MBi4G8J1KMbxyVzvC', 'HC Information System', '1699252386_d5ec06d4f638c8217a40.jpg', 1, '2023-11-07 01:27:11'),
 (2, 'Admin', 'admin@gmail.com', '$2y$10$gXPWb31xRg58MsPusZi/vO3P1VizvzILiMp1d4AKV7dpAInLdbJLu', 'HCIS', '1699320452_e2d21afe4804414a19cf.jpg', 2, '2023-11-09 01:14:24'),
-(3, 'anes', 'anes@gmail.com', '$2y$10$T1cW1iDSPmke5CP4tJYq/uuSfWeB7YRduM7dLKtqA0.L0LG/xyvGC', 'HCIS', '1700115173_416a25418cb32724bcf3.jpg', 3, '2023-11-28 02:15:43'),
-(13, 'Tri Agnesti', 'triagnesti@gmail.com', '$2y$10$EddM3m.D235ISIxsKUVqK.En2Q7e0CmAiSThhpl9Rxw3gEfuTYli.', 'HCIS', '1700620003_bc075d9acdfa956d572e.jpg', 3, '2023-11-28 02:15:50'),
+(3, 'anes', 'anes@gmail.com', '$2y$10$zzKyOhDPdZPP.2OG8y3u8etGUPbHF3l.pSu8ROVHyW18LaOaDNL1G', 'HCIS', '1700115173_416a25418cb32724bcf3.jpg', 3, '2023-11-16 06:12:53'),
+(13, 'Tri Agnesti', 'triagnesti@gmail.com', '$2y$10$YWCIaVRn2.Vj88Lb8Ebgqu2X3gNOsJr9ZP9iuIjitx/0djFx3Cvk.', 'HCIS', '1700620003_bc075d9acdfa956d572e.jpg', 3, '2023-11-22 02:26:44'),
 (14, 'tes', 'tesfoto@gmail.com', '$2y$10$Hs0b85n2/xnGK5Csdy3WveaoMz13m9Gk/FKsjjSpbvhzxrc6vJLO2', 'hciss', '1699251843_b5154669f7979f1b3929.jpg', 2, '2023-11-06 06:24:03'),
 (17, 'i can', 'ican@mail.com', '$2y$10$PqJ9gE9RBTPRVo8UFQynme8MOqL4i1ooc4FOKEIeWoq9y7a3cptiC', 'hc', '', 3, '2023-11-21 08:19:57'),
 (18, 'asdf', 'sdf@gmail.com', '$2y$10$/s.V4dp3lfy/y2IrKVHOcO4GxOGBCkKJ8RyXquOx/m.aGy1FlX1tm', 'asdf', '', 3, '2023-11-21 08:22:06');
@@ -585,19 +512,19 @@ ALTER TABLE `tberita`
 -- AUTO_INCREMENT for table `tkategori`
 --
 ALTER TABLE `tkategori`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tkomentar`
 --
 ALTER TABLE `tkomentar`
-  MODIFY `id` int(64) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(64) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `tlog`
 --
 ALTER TABLE `tlog`
-  MODIFY `id_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=363;
+  MODIFY `id_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=292;
 
 --
 -- AUTO_INCREMENT for table `tuser`
