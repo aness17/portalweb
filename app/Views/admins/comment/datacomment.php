@@ -20,6 +20,7 @@
                 <th scope="col">Authors</th>
                 <th scope="col">Comment</th>
                 <th scope="col">Date</th>
+                <th scope="col">Status</th>
                 <th scope="col">Action</th>
               </tr>
             </thead>
@@ -33,8 +34,14 @@
                   <td><?= $u['name_user'] ?></td>
                   <td><?= $u['comment_content'] ?></td>
                   <td><?= $u['created_at'] ?></td>
-                  <td class="text-center">
-                    <a href="<?= base_url('deletecomment/' . $u['id']) ?>" type="button" class="bi bi-trash-fill" style="color:red" onclick="return confirm('Are you sure to delete this row ?')">
+                  <td><?php if ($u['status_content'] == '1') { ?>
+                      <span class="badge bg-success">Publish</span>
+                    <?php } else { ?>
+                      <span class="badge bg-danger">Unpublish</span>
+                    <?php } ?>
+                  </td>
+                  <td>
+                    <a href="<?= base_url('delete_comment/' . $u['id']) ?>" type="button" class="bi bi-trash-fill" style="color:red" onclick="return confirm('Are you sure to delete this row ?')">
                     </a>
                   </td>
                 </tr>

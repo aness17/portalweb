@@ -67,9 +67,8 @@ use CodeIgniter\I18n\Time;
                     </div>
                 <?php } else { ?>
                     <div class="d-flex align-items-center">
-                        <a class="nav-link collapsed" href="<?= base_url('auths/login') ?>"></a>
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user" aria-hidden="true"></i> <span>Profile</span></a>
-                        <div class="dropdown-menu ml-5">
+                        <div class="dropdown-menu ml-2">
                             <?php
                             if (session('role') == '1' || session('role') == '2') {
                             ?>
