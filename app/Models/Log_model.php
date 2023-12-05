@@ -40,7 +40,7 @@ class Log_model extends Model
         $db = db_connect();
         if ($id == false) {
             $result = $db->query("
-        SELECT COUNT(DISTINCT(concat(ip_add,browser,slug))) as views , month(time_access) as bln
+        SELECT COUNT(DISTINCT(concat(ip_add,browser))) as views , month(time_access) as bln
         FROM `tlog`
         WHERE `remarks` like '%Read%' and time_access like '$year%'
         GROUP BY bln")->getResultArray();
