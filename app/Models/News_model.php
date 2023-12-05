@@ -8,7 +8,7 @@ use DateTime;
 class News_model extends Model
 {
     protected $table = 'tberita';
-    protected $primary = 'id';
+    protected $primaryKey = 'id';
     protected $useAutoIncrement = true;
     protected $useTimestamps = true;
     protected $allowedFields = ['id_user', 'title_berita', 'id_kategori', 'isi_berita', 'jadwal_tayang', 'create_date', 'update_date', 'deleted_date', 'slug', 'status', 'doc', 'breaking_news'];
@@ -50,27 +50,28 @@ class News_model extends Model
             return $builder->get()->getResultArray();
         }
     }
-    public function selectnews($sc = NULL)
+
+    public function selectnews($src = NULL)
     {
-        if ($sc === null) {
-            $builder = $this->db->table($this->table);
-            $builder->select('B.id as kategori, tberita.id as berita, A.*, B.*, tberita.*');
-            $builder->join('tuser A', 'tberita.id_user = A.id');
-            $builder->join('tkategori B', 'tberita.id_kategori = B.id');
-            $builder->where('tberita.jadwal_tayang <=', date('Y-m-d'));
-            $builder->where('tberita.status like', 'Published%');
-            $builder->orderBy('tberita.jadwal_tayang desc');
-            return $builder->get()->getResultArray();
+        if ($src === NULL) {
+            $this->builder()
+                ->select('B.id as kategori, tberita.id as berita, A.*, B.*, tberita.*')
+                ->join('tuser A', 'tberita.id_user = A.id')
+                ->join('tkategori B', 'tberita.id_kategori = B.id')
+                ->where('tberita.jadwal_tayang <=', date('Y-m-d'))
+                ->where('tberita.status like', 'Published%')
+                ->orderBy('tberita.jadwal_tayang desc');
+            return $this;
         } else {
-            $builder = $this->db->table($this->table);
-            $builder->select('B.id as kategori, tberita.id as berita, A.*, B.*, tberita.*');
-            $builder->join('tuser A', 'tberita.id_user = A.id');
-            $builder->join('tkategori B', 'tberita.id_kategori = B.id');
-            $builder->where('tberita.title_berita like', '%' . $sc . '%');
-            $builder->where('tberita.jadwal_tayang <=', date('Y-m-d'));
-            $builder->where('tberita.status like', 'Published%');
-            $builder->orderBy('tberita.jadwal_tayang desc');
-            return $builder->get()->getResultArray();
+            $this->builder()
+                ->select('B.id as kategori, tberita.id as berita, A.*, B.*, tberita.*')
+                ->join('tuser A', 'tberita.id_user = A.id')
+                ->join('tkategori B', 'tberita.id_kategori = B.id')
+                ->where('tberita.title_berita like', '%' . $src . '%')
+                ->where('tberita.jadwal_tayang <=', date('Y-m-d'))
+                ->where('tberita.status like', 'Published%')
+                ->orderBy('tberita.jadwal_tayang desc');
+            return $this;
         }
     }
     public function getPageSlug($slug)

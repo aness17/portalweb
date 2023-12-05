@@ -2,7 +2,10 @@
 
 namespace App\Controllers;
 
+$pager = \Config\Services::pager();
+
 use App\Models\Comments_model;
+use App\Models\Info_model;
 use App\Models\Log_model;
 use App\Models\News_model;
 use \App\Models\Users_model;
@@ -18,6 +21,7 @@ class Auths extends BaseController
         $this->news = new News_model();
         $this->comment = new Comments_model();
         $this->log = new Log_model();
+        $this->info = new Info_model();
         $this->cekauth();
         $session = session();
     }
@@ -58,7 +62,7 @@ class Auths extends BaseController
             // die;
             $result = $this->comment->update($id, $db);
             if ($result > 0) {
-                echo "<script>location.href='" . base_url('news/' . $comment['slug']) . "';alert('Success to delete comment');</script>";
+                echo "<script> window.location=history.go(-1);alert('Success to delete comment');</script>";
             } else {
                 echo "<script>location.href='" . base_url('news/' . $comment['slug']) . "';alert('Failed to delete comment');</script>";
             }
@@ -69,16 +73,25 @@ class Auths extends BaseController
     public function index()
     {
         $search = $this->request->getVar('search');
+        $per_page = 5;
+        if (isset($search)) {
+            session()->set('search', $search);
+            redirect()->to('/');
+        } else {
+            $search = session()->get('search');
+        }
         $news = $this->news->selectnews($search);
         $breknew = $this->news->breaking_news();
+        $info = $this->info->select();
 
         $data = [
-            'new' => $news,
-            'breknew' => $breknew
+            'new' => $news->paginate($per_page, 'news'),
+            'breknew' => $breknew,
+            'pager' => $news->pager,
+            'search' => $search,
+            'info' => $info,
+            'per_page' => $per_page,
         ];
-        // var_dump($search);
-        // die;
-        // return view('welcome_message');
         if (session('role') > 0) {
             return view('templates/header_usr', $data)
                 . view('users/index', $data)
@@ -93,6 +106,7 @@ class Auths extends BaseController
     public function view($slug)
     {
         $id = session('id');
+        $info = $this->info->select();
         $news = $this->news->getPageSlug($slug);
         $countcomment = $this->comment->getCountComment($news[0]['berita'])[0]->id;
         $countview = $this->log->CountViewsNews($slug);
@@ -105,6 +119,7 @@ class Auths extends BaseController
 
         $data = [
             'news' => $news,
+            'info' => $info,
             'comment' => $comment,
             'balas' => $balas,
             'countcomment' => $countcomment,

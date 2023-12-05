@@ -70,12 +70,20 @@
     <div class="container-fluid p-0 ">
         <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-2 py-lg-0 px-lg-5">
             <div class="collapse navbar-collapse justify-content-between px-0 px-lg-3" id="navbarCollapse">
-                <div class="navbar-nav mr-auto mt-10 py-0 d-none d-lg-flex">
+                <div>
                     <a href="index.php" class="navbar-brand p-0 d-none d-lg-block">
                         <h1 class="m-0 display-4 text-uppercase text-primary">
                             <img src="<?= base_url('user/') ?>img/logo.png" style="width: 100px;" />
                         </h1>
                     </a>
+                </div>
+                <div class="col-6">
+                    <marquee style="color:white"><?php
+                                                    $no = 1;
+                                                    foreach ($info as $i) :
+                                                        echo $i['content'] . " | ";
+                                                        $no++;
+                                                    endforeach; ?></marquee>
                 </div>
                 <div class="d-flex align-items-center">
                     <a class="nav-link collapsed" href="<?= base_url('login') ?>">

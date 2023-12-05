@@ -63,7 +63,7 @@
 
                                                     <?php if (session('id') == null) {
                                                         echo '';
-                                                    } else if (session('id') == $b['id_user'] || session('id') == $b['id_creator']) { ?>
+                                                    } else if (session('id') == $b['id_user'] || session('id') == $b['id_creator'] || session('role') == 1) { ?>
                                                         <a href="<?= base_url('delete_comment/' . $b['id']) ?>" style="font-size:15px;">
                                                             <i class="fa fa-trash text-primary mr-2"></i>
                                                         </a> <?php } ?>
@@ -75,7 +75,7 @@
                                     </div>
                                     <?php if (session('id') == null) {
                                         echo '';
-                                    } else if (session('id') == $c['id_user'] || session('id') == $c['id_creator']) { ?>
+                                    } else if (session('id') == $c['id_user'] || session('id') == $c['id_creator'] || session('role') == 1) { ?>
                                         <a href="<?= base_url('delete_comment/' . $c['id_comment']) ?>" style="font-size:15px;">
                                             <i class="fa fa-trash text-primary mr-2"></i>
                                         </a>

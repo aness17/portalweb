@@ -23,7 +23,16 @@
                 <!-- Follow Us -->&nbsp;
             </h5>
             <p class="font-weight-medium">
-                <i class="fa fa-envelope mr-2"></i>corporate.secretary@ptjas.co.id
+                <a href="https://jasacademy.ptjas.co.id/profile/"><i class="fa fa-tag mr-2"></i>JAS Academy</a>
+            </p>
+            <p class="font-weight-medium">
+                <a href="https://recruitment.ptjas.co.id/"><i class="fa fa-tag mr-2"></i>JAS Recruitment</a>
+            </p>
+            <p class="font-weight-medium">
+                <a href="https://www.ptjas.co.id/"><i class="fa fa-tag mr-2"></i>JAS Website</a>
+            </p>
+            <p class="font-weight-medium">
+                <a href="https://jes.ptjas.co.id/"><i class="fa fa-tag mr-2"></i>JAS HRIS</a>
             </p>
         </div>
         <div class="col-lg-3 col-md-6 mb-5">

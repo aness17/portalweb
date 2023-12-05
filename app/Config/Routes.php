@@ -7,6 +7,7 @@ use Config\App\Controllers\Users;
  * @var RouteCollection $routes
  */
 $routes->add('/', 'Auths::index');
+$routes->add('/src', 'Auths::index');
 $routes->add('regist', 'Auths::registration');
 $routes->add('profile', 'Users::profile');
 $routes->add('edit_profile', 'Users::edit_profile');
@@ -55,3 +56,8 @@ $routes->get('detailcomment/(:any)', 'Admins::detailcomment/$1'); // delete data
 
 //Setting
 $routes->add('setting', 'Admins::index');
+
+//information
+$routes->get('datainformasi', 'Admins::datainformasi'); //direct to data informasi
+$routes->add('addinformasi', 'Admins::addinformasi'); //add data informasi
+$routes->get('delete_info/(:any)', 'Admins::deleteinformasi/$1'); // delete data informasi

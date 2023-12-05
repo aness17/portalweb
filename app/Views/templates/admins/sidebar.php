@@ -66,6 +66,16 @@
             </li><!-- End Profile Page Nav -->
         <?php
         }
+        if (session('role') == 1) {
+        ?>
+            <li class="nav-item ">
+                <a class="nav-link <?= ($header != "info") ? 'collapsed' : ''; ?>" href="<?= base_url('datainformasi') ?>">
+                    <i class="bi bi-person"></i>
+                    <span>Information</span>
+                </a>
+            </li><!-- End Profile Page Nav -->
+        <?php
+        }
         if (session('role') == '1' || session('role') == '2') {
         ?>
             <li class="nav-item">

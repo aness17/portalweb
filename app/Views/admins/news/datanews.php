@@ -20,7 +20,7 @@
                 <th scope="col">Doc.</th>
                 <th scope="col">News Title</th>
                 <th scope="col">News</th>
-                <th scope="col">Broadcast Schedule</th>
+                <th scope="col">Publish Schedule</th>
                 <th scope="col">Category</th>
                 <th scope="col">Status</th>
                 <th scope="col">Aksi</th>
@@ -43,7 +43,7 @@
                   <td>
                     <span class="d-inline-block text-truncate" style="max-width: 250px;"><?= $result ?></span>
                   </td>
-                  <td><?= $u['jadwal_tayang'] ?></td>
+                  <td><?= date('d M Y', strtotime($u['jadwal_tayang'])) ?></td>
                   <td><?= $u['name_kategori'] ?></td>
                   <td><?php if ($u['status'] == 'Published') { ?>
                       <span class="badge bg-success"><?= $u['status'] ?></span>

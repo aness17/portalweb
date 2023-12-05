@@ -8,7 +8,7 @@
                         <div class="section-title">
                             <div class="input-group ml-auto d-none d-lg-flex" style="width: 100%; max-width: 800px">
                                 <form action="<?= base_url('/') ?>" method="post" class="input-group ml-auto d-none d-lg-flex">
-                                    <input type="text" class="form-control border-1" name="search" placeholder="Search..." />
+                                    <input type="text" class="form-control border-1" name="search" value="<?= $search ?>" />
                                     <button class="input-group-text bg-primary text-dark border-0 px-3"><i class="fa fa-search"></i></button>
                                 </form>
                             </div>
@@ -17,6 +17,8 @@
                     <div class="col-lg-12">
                         <?php $no = 1;
                         foreach ($new as $u) :
+                            // var_dump($u);
+                            // die;
                             $a = str_replace('<p>', '', $u['isi_berita']);
                             $b = str_replace('</p>', '', $a);
                             $c = str_replace('<blockquote>', '', $b);
@@ -24,7 +26,7 @@
                             $result = str_replace('</blockquote>', '', $d);
                         ?>
                             <div class="d-flex align-items-center bg-white mb-3" style="height: 110px">
-                                <img class="img-fluid" src="<?= base_url('foto/') ?><?= $u['doc'] ?>" width="110pt" height="110pt" alt="" />
+                                <img class="img-fluid" src="<?= base_url('foto/') ?><?= $u['doc'] ?>" width="110" height="110" alt="" />
                                 <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
                                     <div class="mb-2">
                                         <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href=""><?= $u['name_kategori'] ?></a>
@@ -37,6 +39,12 @@
                         <?php $no++;
                         endforeach; ?>
                     </div>
+                    <?php
+                    if (count($new) >= $per_page) {
+                        echo $pager->links('news', 'pagination');
+                    } else {
+                    }
+                    ?>
                 </div>
             </div>
 

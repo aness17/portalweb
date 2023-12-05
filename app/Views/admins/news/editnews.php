@@ -43,7 +43,7 @@
                         <div class="col-md-2 mb-8pt mb-md-0">
                             <div class="media align-items-left">
                                 <div class="d-flex flex-column media-body media-middle">
-                                    <label for="brenews" class="form-label"><span class="card-title">Breaking News</span></label>
+                                    <label for="brenews" class="form-label"><span class="card-title">Trending News</span></label>
                                 </div>
                             </div>
                         </div>

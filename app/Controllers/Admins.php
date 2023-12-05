@@ -6,6 +6,7 @@ use App\Models\Categorys_model;
 use \App\Models\Users_model;
 use \App\Models\News_model;
 use \App\Models\Comments_model;
+use App\Models\Info_model;
 use App\Models\Log_model;
 use CodeIgniter\Exceptions\PageNotFoundException; // Add this line
 
@@ -21,6 +22,7 @@ class Admins extends BaseController
         $this->news = new News_model();
         $this->comment = new Comments_model();
         $this->log = new Log_model();
+        $this->info = new Info_model();
         $this->cekauth();
     }
     public function cekauth()
@@ -44,6 +46,8 @@ class Admins extends BaseController
         $year = date('Y');
 
         if (session('role') == '1' || session('role') == '2') {
+            $info = $this->info->select();
+
             if (session('role') == 1) {
                 $log = $this->log->select();
                 $countnews = $this->news->selectcountnews()[0]->id;
@@ -58,7 +62,7 @@ class Admins extends BaseController
                 $data = [
                     'log' => $log,
                     'DataMonthly' => $DataMonthly,
-                    // 'user' => $user,
+                    'info' => $info,
                     'header' => 'dashboard',
                     'countnews' => $countnews,
                     'publishnews' => $publishnews,
@@ -88,6 +92,7 @@ class Admins extends BaseController
                 $data = [
                     'news' => $new,
                     'log' => $log,
+                    'info' => $info,
                     'header' => 'dashboard',
                     'countnews' => $countnews,
                     'publishnews' => $publishnews,
@@ -98,7 +103,7 @@ class Admins extends BaseController
                 ];
                 // var_dump($log);
                 // die;
-                return view('templates/admins/header_adm')
+                return view('templates/admins/header_adm', $data)
                     . view('templates/admins/sidebar', $data)
                     . view('admins/dashboard', $data)
                     . view('templates/admins/footer_adm');
@@ -537,6 +542,96 @@ class Admins extends BaseController
                 . view('templates/admins/sidebar', $data)
                 . view('admins/comment/datacomment', $data)
                 . view('templates/admins/footer_adm');
+        }
+    }
+    public function datainformasi()
+    {
+        if (session('role') == '1') {
+            $info = $this->info->findAll();
+
+            $data = [
+                'info' => $info,
+                'header' => 'info'
+            ];
+
+            return view('templates/admins/header_adm')
+                . view('templates/admins/sidebar', $data)
+                . view('admins/info/datainformasi', $data)
+                . view('templates/admins/footer_adm');
+        }
+    }
+    public function addinformasi()
+    {
+        if (session('role') == '1') {
+            $data = [
+                'header' => 'info'
+            ];
+
+            $validation =  \Config\Services::validation();
+            $validation->setRules([
+                'content' => 'required|is_unique[tinfo.content]'
+            ]);
+            $isDataValid = $validation->withRequest($this->request)->run();
+
+            if ($isDataValid) {
+                $db = [
+                    'content' => $this->request->getPost('content'),
+                    'status' => 1
+                ];
+
+                $result = $this->info->insert($db);
+
+                $agent = $this->request->getUserAgent();
+                if ($agent->isBrowser()) {
+                    $currentAgent = $agent->getBrowser() . ' ' . $agent->getVersion();
+                } elseif ($agent->isRobot()) {
+                    $currentAgent = $agent->getRobot();
+                } elseif ($agent->isMobile()) {
+                    $currentAgent = $agent->getMobile();
+                } else {
+                    $currentAgent = 'Unidentified User Agent';
+                }
+                $ip = $this->request->getIPAddress();
+                $db = [
+                    'id_user' => session('id'),
+                    'remarks' => 'Add Information',
+                    'ip_add' => $ip,
+                    'browser' => $currentAgent . ' (' . $agent->getPlatform() . ')'
+                ];
+                $this->log->insert($db);
+
+                if ($result > 0) {
+                    echo "<script>location.href='" . base_url('datainformasi') . "';alert('Success to add data');</script>";
+                } else {
+                    return view('templates/admins/header_adm')
+                        . view('templates/admins/sidebar', $data)
+                        . view('admins/info/addinformasi', $data)
+                        . view('templates/admins/footer_adm');
+                    echo "<script>alert('Failed to add data');</script>";
+                }
+            } else {
+                return view('templates/admins/header_adm')
+                    . view('templates/admins/sidebar', $data)
+                    . view('admins/info/addinformasi', $data)
+                    . view('templates/admins/footer_adm');
+            }
+        }
+    }
+    public function deleteinformasi($id)
+    {
+        if (session('role') == '1') {
+            $db = [
+                'status' => 0
+            ];
+
+            $result = $this->info->update($id, $db);
+            if ($result > 0) {
+                echo "<script>location.href='" . base_url('datainformasi') . "';alert('Success to Unpublished data');</script>";
+            } else {
+                echo "<script>location.href='" . base_url('datainformasi') . "';alert('Failed to Unpublished data');</script>";
+            }
+        } else {
+            echo "<script>location.href='" . base_url('/') . "';alert('Your not authorized.');</script>";
         }
     }
 }
