@@ -89,8 +89,7 @@ class Auths extends BaseController
             'breknew' => $breknew,
             'pager' => $news->pager,
             'search' => $search,
-            'info' => $info,
-            'per_page' => $per_page,
+            'info' => $info
         ];
         if (session('role') > 0) {
             return view('templates/header_usr', $data)
@@ -293,7 +292,7 @@ class Auths extends BaseController
                 echo "<script>location.href='" . base_url('loginform') . "';alert('Incorect Username or Password');</script>";
             }
         } else {
-            echo "<script>location.href='" . base_url('loginform') . "';alert('Username/Password not valid');</script>";
+            echo "<script>location.href='" . base_url('loginform') . "';</script>";
         }
     }
     public function registration()

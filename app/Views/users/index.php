@@ -40,10 +40,8 @@
                         endforeach; ?>
                     </div>
                     <?php
-                    if (count($new) >= $per_page) {
-                        echo $pager->links('news', 'pagination');
-                    } else {
-                    }
+                    echo $pager->links('news', 'pagination');
+
                     ?>
                 </div>
             </div>
