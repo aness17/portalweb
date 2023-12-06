@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\Info_model;
 use App\Models\Log_model;
 use App\Models\News_model;
 use App\Models\Users_Model;
@@ -14,6 +15,7 @@ class Users extends BaseController
         $this->user = new Users_Model();
         $this->news = new News_model();
         $this->log = new Log_model();
+        $this->info = new Info_model();
         $this->cekauth();
     }
     public function cekauth()
@@ -27,6 +29,8 @@ class Users extends BaseController
     }
     public function profile()
     {
+        $info = $this->info->select();
+
         if (session('role') == '2' || session('role') == '3') {
             $id_user = session('id');
             $user = $this->user->find($id_user);
@@ -34,7 +38,8 @@ class Users extends BaseController
             $data = [
                 'header' => 'dasbooard',
                 'new' => $this->news->selectnews($search),
-                'user' => $user
+                'user' => $user,
+                'info' => $info
             ];
 
             $agent = $this->request->getUserAgent();
@@ -65,12 +70,16 @@ class Users extends BaseController
     }
     public function edit_profile()
     {
+        $info = $this->info->select();
+
         if (session('role') == '2' || session('role') == '3') {
             $id_user = session('id');
             $user = $this->user->find($id_user);
 
             $data = [
-                'user' => $user
+                'user' => $user,
+                'info' => $info
+
             ];
             $validation =  \Config\Services::validation();
             $validation->setRules([
@@ -79,27 +88,36 @@ class Users extends BaseController
                 'divisi' => 'required'
             ]);
             $isDataValid = $validation->withRequest($this->request)->run();
+            $fileName = $this->request->getVar('oldFile');
 
             if ($isDataValid) {
                 if ($this->request->getFile('foto') != "") {
+                    unlink('foto/' . $fileName);
                     $dataBerkas = $this->request->getFile('foto');
                     $fileName = $dataBerkas->getRandomName();
                     $dataBerkas->move('foto/', $fileName);
-                } else {
-                    $fileName = $this->request->getVar('oldFile');
                 }
-                // var_dump($fileName);
-                // die;
-                $db = [
-                    'id' => $id_user,
-                    'name_user' => $this->request->getVar('nama'),
-                    'email_user' => $this->request->getVar('email'),
-                    'divisi_user' => $this->request->getVar('divisi'),
-                    'fotouser' => $fileName,
-                    'password_user' => password_hash($this->request->getVar('password'), PASSWORD_DEFAULT),
-                    'role_user' => 3
 
-                ];
+                if ($this->request->getVar('password') != "") {
+                    $db = [
+                        'id' => $id_user,
+                        'name_user' => $this->request->getVar('nama'),
+                        'email_user' => $this->request->getVar('email'),
+                        'divisi_user' => $this->request->getVar('divisi'),
+                        'fotouser' => $fileName,
+                        'password_user' => password_hash($this->request->getVar('password'), PASSWORD_DEFAULT),
+                        'role_user' => 3
+                    ];
+                } else {
+                    $db = [
+                        'id' => $id_user,
+                        'name_user' => $this->request->getVar('nama'),
+                        'email_user' => $this->request->getVar('email'),
+                        'divisi_user' => $this->request->getVar('divisi'),
+                        'fotouser' => $fileName,
+                        'role_user' => 3
+                    ];
+                }
 
                 $result = $this->user->edit($db);
 

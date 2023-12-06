@@ -14,7 +14,7 @@ class Admins extends BaseController
 {
     public function __construct()
     {
-        helper(['form', 'url']);
+        helper(['form', 'url', 'filesystem']);
 
         $session = session();
         $this->user = new Users_model();
@@ -179,19 +179,32 @@ class Admins extends BaseController
     {
         $fileName = $this->request->getVar('oldFile');
         if ($this->request->getFile('foto') != "") {
+            unlink('foto/' . $fileName);
             $dataBerkas = $this->request->getFile('foto');
             $fileName = $dataBerkas->getRandomName();
             $dataBerkas->move('foto/', $fileName);
         }
-        $data = [
-            'id' => $id,
-            'name_user' => $this->request->getVar('nama'),
-            'email_user' => $this->request->getVar('email'),
-            'divisi_user' => $this->request->getVar('divisi'),
-            'fotouser' => $fileName,
-            'password_user' => password_hash($this->request->getVar('password'), PASSWORD_DEFAULT),
-            'role_user' => $this->request->getVar('role')
-        ];
+        if ($this->request->getVar('password') != "") {
+            $data = [
+                'id' => $id,
+                'name_user' => $this->request->getVar('nama'),
+                'email_user' => $this->request->getVar('email'),
+                'divisi_user' => $this->request->getVar('divisi'),
+                'fotouser' => $fileName,
+                'password_user' => password_hash($this->request->getVar('password'), PASSWORD_DEFAULT),
+                'role_user' => $this->request->getVar('role')
+            ];
+        } else {
+            $data = [
+                'id' => $id,
+                'name_user' => $this->request->getVar('nama'),
+                'email_user' => $this->request->getVar('email'),
+                'divisi_user' => $this->request->getVar('divisi'),
+                'fotouser' => $fileName,
+                'role_user' => $this->request->getVar('role')
+            ];
+        }
+
 
         $result = $this->user->edit($data);
         if ($result > 0) {
@@ -452,6 +465,7 @@ class Admins extends BaseController
 
             if ($isDataValid) {
                 if ($this->request->getFile('foto') != "") {
+                    unlink('foto/' . $fileName);
                     $dataBerkas = $this->request->getFile('foto');
                     $fileName = $dataBerkas->getRandomName();
                     $dataBerkas->move('foto/', $fileName);
