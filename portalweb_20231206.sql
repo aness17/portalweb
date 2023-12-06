@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 06, 2023 at 09:24 AM
+-- Generation Time: Nov 28, 2023 at 04:01 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -49,35 +49,11 @@ CREATE TABLE `tberita` (
 --
 
 INSERT INTO `tberita` (`id`, `id_user`, `title_berita`, `id_kategori`, `isi_berita`, `doc`, `jadwal_tayang`, `created_at`, `updated_at`, `deleted_at`, `slug`, `status`, `breaking_news`, `news_views`) VALUES
-(5, '1', 'DUKUNG KTT KE-43 ASEAN, JAS TANGANI 20 PENERBANGAN VVIP DELEGASI ENAM NEGARA PESERTA', 4, '<p>Dalam rangka mendukung Konferensi Tingkat Tinggi (KTT) ke-43 ASEAN yang akan diselenggarakan di Jakarta 5-7 September 2023, PT Jasa Angkasa Semesta Tbk (JAS Airport Services) telah memastikan kesiapan dalam menangani lebih dari 20 penerbangan yang akan mengangkut para kepala negara beserta delegasi peserta dari enam negara yang berpartisipasi dalam acara pertemuan regional dwitahunan ini.</p><blockquote><p>\"Dengan komitmen yang kuat dan pengalaman yang mendalam, PT Jasa Angkasa Semesta Tbk (JAS) sebagai perusahaan ground handling anak bangsa siap untuk memberikan dukungan penuh dalam menyuksesan KTT ke-43 ASEAN dan memastikan bahwa para delegasi VVIP dapat menjalani kunjungan mereka dengan lancar dan nyaman”<br>Presiden Direktur dan CEO JAS Airport Services, Adji Gunawan di Cengkareng, Senin (4/9).</p></blockquote><p>JAS Airport Services tidak hanya fokus pada ground handling dan logistik semata, tetapi juga pada aspek-aspek penting lainnya, seperti pengurusan perizinan operasional pesawat VVIP di Indonesia untuk memastikan kesuksesan KTT ke-43 ASEAN di Indonesia dan menjadi bagian dari sejarah kerjasama ASEAN, tambah Adji.</p><p>Selain kedatangan para kepala negara dan delegasi dari enam negara peserta KTT ke-43 ASEAN, JAS Airport Services juga menangani logistik dari salah satu negara peserta.</p><p>Hal ini mencerminkan komitmen JAS Airport Services dalam memastikan semua aspek keamanan dan kenyamanan delegasi selama kunjungan mereka dalam masa keketuaan Indonesia di ASEAN tahun ini yang mengusung tema ‘ASEAN Matters Epicentrum of Growth’.</p><blockquote><p>Diharapkan dengan tema tersebut dapat menjadikan kawasan ASEAN relevan dan penting bagi masyarakat Indonesia, ASEAN dan kawasan sekitar, serta mewujudkan keinginan Indonesia untuk mengapitalisasi ASEAN sebagai pusat pertumbuhan ekonomi.</p></blockquote><p>Dengan pengalaman lebih dari 39 tahun melayani berbagai maskapai domestik maupun internasional di sembilan bandara internasional Indonesia, JAS Airport Services terus memberikan layanan terbaiknya dalam mempertahankan kepercayaan para pelanggannya termasuk penanganan berbagai penerbangan kenegaraan seperti Raja Salman pada tahun 2017 lalu, dan berlanjut pada penanganan 11 kepala negara anggota G20 pada tahun 2022.</p><p>Demi menjaga kualitas layanan prima kepada seluruh pelanggannya, JAS Airport Services juga telah memiliki sertifikasi internasional seperti Sertifikasi “CEIV for Lithium Battery” untuk penanganan logistik baterai Lithium yang aman.</p><p>Belum lama ini, JAS Airport Services juga telah bergabung dan mendapatkan sertifikasi dari TAPA (Transported Asset Protection Association) dalam pengelolaan keamanan penanganan logistik. JAS Airport Services juga telah diakui dan dipercaya oleh Direktorat Jenderal Bea dan Cukai sebagai Operator Ekonomi Bersertifikat (Authorized Economic Operator – AEO) dalam menjalankan layanan Cargo Handlingnya.</p>', '1701829265_b53d8311c5f8d95e4d93.jpg', '2023-10-24 00:00:00', '2023-10-25 10:06:42', '2023-12-06 02:21:05', '0000-00-00 00:00:00', 'dukung-ktt-ke-43-asean-jas-tangani-20-penerbangan-vvip-delegasi-enam-negara-peserta', 'Published', 1, 0),
-(11, '1', 'JAS AIRPORT SERVICES SUKSES MENYELESAIKAN PENANGANAN 249 PENERBANGAN HAJI 2023', 1, '<p>PT Jasa Angkasa Semesta (JAS Airport Services) perusahaan ground handling Indonesia, telah berhasil menyelesaikan penanganan 249 penerbangan haji menggunakan Saudi Airlines pada tahun keberangkatan 2023 secara sukses dan lancar yang berlangsung sejak tanggal 24 Mei 2023 hingga 3 Agustus 2023.</p><p>“Dengan kerjasama yang erat bersama semua pemangku kepentingan, kami bersyukur telah menyelesaikan penanganan 249 penerbangan haji 2023 di lima kota yang menjadi bukti nyata komitmen dan dedikasi tinggi tim PT JAS Airport Services dalam mendukung penyelenggaraan ibadah haji Indonesia yang aman dan nyaman. Terima kasih atas kerjasama yang baik dari semua pihak yang terlibat dalam kesuksesan musim haji tahun ini,” kata Direktur Utama PT Jasa Angkasa Semesta Adji Gunawan di Cengkareng, Senin (7/8).</p><p>JAS Airport Services melayani penerbangan haji tahun 2023 Saudia Airlines di lima bandara utama Indonesia, yaitu Bandara Internasional Soekarno Hatta Jakarta, Bandara Internasional Kertajati, Bandara Internasional Hang Nadim Batam, Bandara Internasional Kualanamu Medan, dan Bandara Internasional Juanda Surabaya.</p><p>Dengan komitmen dan dedikasi tinggi, penanganan jemaah haji dan bagasi ini berjalan dengan lancar tanpa hambatan berarti, menjadikan perjalanan ibadah para jemaah menjadi lebih aman dan nyaman.</p><p>“Keberhasilan ini menunjukkan komitmen JAS Airport Services dalam mengembangkan layanan di berbagai bandara di Indonesia dan memberikan akses yang lebih baik bagi untuk pelaksanaan haji nasional,” tambah Adji.</p><p>JAS Airport Services juga berterima kasih kepada semua pemangku kepentingan terkait atas suksesnya penanganan penerbangan haji tahun 2023, diantaranya Kementerian Perhubungan, Kementerian Agama, Angkasa Pura I, Angkasa Pura II, otoritas bandara, pihak kepolisian, dan seluruh pihak terkait lainnya yang telah bersinergi dan berkolaborasi untuk menjamin kelancaran dan keberhasilan musim haji tahun ini.</p><p>Dengan prestasi ini, JAS Airport Services semakin terdorong untuk terus meningkatkan kualitas layanan dan inovasi dalam mendukung perjalanan jemaah haji di masa mendatang. Perusahaan berkomitmen untuk berperan aktif dalam mendukung upaya pemerintah dan masyarakat Indonesia dalam menyelenggarakan ibadah haji dengan aman, nyaman, dan lancar.</p><p>JAS Airport Service senantiasa terus mendukung tumbuhnya dunia penerbangan Indonesia dengan selalu berupaya untuk memberikan kontribusi terbaiknya bagi dunia kebandaraan Indonesia memberikan pelayanan terbaik kepada seluruh costumer dan stakeholdernya dengan memenuhi sertifikasi internasional dalam melayani berbagai maskapai asing yang datang ke Indonesia.</p>', '1701829222_cac4cd19f5be65e4744b.jpg', '2023-10-31 00:00:00', '2023-10-31 01:25:20', '2023-12-06 02:20:22', '0000-00-00 00:00:00', 'jas-airport-services-sukses-menyelesaikan-penanganan-249-penerbangan-haji-2023', 'Published', 1, 0),
-(13, '1', 'JAS SIAP TANGANI OPERASIONAL PESAWAT PENUMPANG TERBESAR DI DUNIA, AIRBUS A380', 4, '<p>PT Jasa Angkasa Semesta (JAS Airport Services) penyedia layanan kebandarudaraan Indonesia siap menangani operasional pesawat penumpang terbesar di dunia, Airbus A380, yang dioperasikan oleh Emirates Airlines pada tanggal 1 Juni 2023 di Bandara Internasional I Gusti Ngurah Rai Denpasar, Bali.</p><p>“Kedatangan pesawat Airbus A380 merupakan sebuah milestone bagi JAS Airport Services dalam menangani salah satu pesawat penumpang terbesar di dunia. Untuk ini, JAS Airport Services bangga bahwa Emirates Airlines mempercayakan penanganan ground handling dan cargo handlingnya kepada kami,” kata Presiden Direktur &amp; CEO JAS Airport Services Adji Gunawan, di Denpasar, Kamis (1/6).</p><p>Untuk penanganan pesawat penumpang terbesar di dunia ini, JAS Airport Services juga telah menyiapkan personel tambahan serta peralatan pendukung khusus untuk penanganan pesawat buatan Perancis yang memiliki bentang sayap hingga 79,8 meter dan total panjang badan pesawat hingga 72,7 meter.</p><p>Adji menambahkan bahwa JAS Airport Services berkomitmen untuk memberikan pelayanan terbaik dalam penanganan pesawat A380 di Indonesia, dengan tim yang berpengalaman dan peralatan khusus yang memenuhi standar keselamatan internasional.</p><p>“Kami sangat bahagia karena armada A380 milik Emirates akhirnya tiba di Bali. Pencapaian ini merupakan hasil kerja seluruh tim, mulai tahap perencanaan hingga eksekusi yang apik. Awal beroperasinya A380 di Indonesia juga memaknai perpanjangan komitmen kami pada pasar Indonesia, serta pembuktian kerja sama yang semakin kuat dengan Bandara I Gusti Ngurah Rai dan pemerintah setempat. Kami siap melayani para pelanggan yang terbang dari dan ke Denpasar dengan layanan kelas dunia Emirates A380, sambil terus berupaya merespons tingginya permintaan destinasi internasional dengan pesawat Superjumbo untuk satu dari dua penerbangan harian ke Pulau Bali,” kata Orhan Abbas, Senior Vice President, Commercial Operations, Far East Emirates.</p><p>Ke depannya, pesawat Airbus A380 yang dilengkapi dengan kapasitas 516 penumpang dengan konfigurasi 14 kursi First Class, 76 kursi Kelas Bisnis dan 426 kursi Kelas Ekonomi yang akan menggantikan salah satu penerbangan harian ke Bali yang saat ini menggunakan armada Boeing 777-300ER.</p><p>Penerbangan EK368 menggunakan pesawat Airbus A380 ini dijadwalkan berangkat dari Bandara Internasional Dubai (DXB) pukul 03.25 waktu setempat, kemudian dijadwalkan tiba di Bandara Internasional I Gusti Ngurah Rai (DPS) pukul 16.35 Wita dengan membawa 483 penumpang. Sementara itu, penerbangan bernomor EK369 akan berangkat dari Bali pukul 19.40 Wita dengan membawa 493 penumpang, lalu dijadwalkan tiba di Dubai pukul 00.45 waktu setempat.</p><p>Selain dimensi yang besar, pesawat A380 ini diklaim mampu terbang dengan kecepatan 0,85 Mach di ketinggian 43.100 kaki dan dapat menempuh jarak hingga 8.000 nautical miles atau setara dengan 15.000 km dalam satu penerbangan.</p><p>JAS Airport Service senantiasa terus mendukung tumbuhnya dunia penerbangan Indonesia dengan selalu berupaya untuk memberikan kontribusi terbaiknya bagi dunia kebandaraan Indonesia memberikan pelayanan terbaik kepada seluruh costumer dan stakeholdernya dengan memenuhi sertifikasi internasional dalam melayani berbagai maskapai asing yang datang ke Indonesia.</p><p>Hal ini terwujud dengan re-sertifikasi ISAGO oleh IATA (Asosiasi Pengangkutan Udara Internasional / International Air Transport Association) yang diterima pada bulan Juni lalu untuk empat station PT Jasa Angkasa Semesta, yaitu Bandara Internasional Soekarno Hatta (CGK), Bandara Internasional I Gusti Ngurah Rai (DPS), Bandara Internasional Juanda (SUB) dan Bandara Internasional Kualanamu (KNO).</p><p>ISAGO merupakan sistem yang diakui secara internasional untuk menilai manajemen operasional dan sistem kontrol dari sebuah organisasi yang menyediakan layanan ground handling untuk maskapai penerbangan.</p>', '1701829249_54e8da13f6392ac0f5e6.jpeg', '2023-10-31 00:00:00', '2023-10-31 01:28:19', '2023-12-06 02:20:49', '0000-00-00 00:00:00', 'jas-siap-tangani-operasional-pesawat-penumpang-terbesar-di-dunia-airbus-a380', 'Published', 0, 0),
-(16, '2', 'JAS TANGANI KEBERANGKATAN JEMAAH HAJI JAWA BARAT DARI BANDARA KERTAJATI', 1, '<p>PT Jasa Angkasa Semesta (JAS Airport Services), penyedia layanan kebandarudaraan Indonesia menangani keberangkatan 366 calon jemaah haji berikut 8 petugas haji asal Jawa Barat dari Bandara Internasonal Kertajati, Minggu, 28 Mei 2023 pukul 22.20 WIB menggunakan Saudia Airlines.</p><p>“Ini merupakan sebuah kesempatan sekaligus kehormatan bagi JAS Airport Services untuk menjadi bagian dari sejarah keberangkatan jemaah haji pertama dari Bandara Internasional Kertajati serta berkomitmen untuk memberikan pengalaman perjalanan yang aman, nyaman, dan lancar bagi seluruh jemaah,” kata Adji Gunawan, Presiden Direktur JAS Airport Services, Senin (29/05).</p><p>Dalam penanganan keberangkatan Jemaah Haji tahun ini, JAS Airport Services juga dipercaya untuk menangani keberangkatan jemaah haji dari Bandara Internasional Soekarno Hatta Jakarta, Bandara Internasional Juanda Surabaya serta Bandara Internasional Kualanamu Medan.</p><p>JAS Airport Services berharap dapat mendukung kemudahan proses keberangkatan Haji di tahun-tahun mendatang, tambah Adji.</p><p>Keberangkatan haji pertama kali di Bandara Internasional Kertajati menandai sejarah baru bagi seluruh masyarakat, terlebih bagi Jemaah Haji di wilayah Jawa Barat</p><p>Jemaah haji yang berangkat melalui Bandara Kertajati berasal dari tujuh kabupaten dan kota di Jawa Barat, antara lain Kabupaten Cirebon, Kota Cirebon, Kabupaten Majalengka, Kabupaten Kuningan, Kabupaten Indramayu, Kabupaten Subang, dan Kabupaten Sumedang.</p><p>Penerbangan haji pertama kali di Bandara Kertajati ini diharapkan dapat membuka pintu bagi lebih banyak penerbangan lainnya, baik itu untuk umrah maupun penerbangan komersial lainnya, dari bandara yang menjadi kebanggaan masyarakat Jawa Barat.</p><p>Selain Bandara Internasional, JAS Airport Services juga menangani keberangkatan rombongan haji dari Bandara Soekarno Hatta Jakarta, Bandara Internasional Juanda Surabaya, dan Bandara Internasional&nbsp;Kualanamu.</p>', '1701829214_c21f228f624214e58431.jpg', '2023-11-21 00:00:00', '2023-11-21 07:32:12', '2023-12-06 02:20:14', '0000-00-00 00:00:00', 'jas-tangani-keberangkatan-jemaah-haji-jawa-barat-dari-bandara-kertajati', 'Published', 1, 0),
-(17, '2', 'JAS Successfully Handled The Arrival of Covid-19 Vaccine in Indonesia', 4, '<p>As many as 11 million doses of Covid-19 vaccine from Sinovac, China, arrived at the Soekarno-Hatta Airport Cargo Terminal, Tangerang, Banten, Tuesday afternoon (2/2/2020) using a Singapore Airlines.</p><p>JAS Airport Services as a ground handling service provider for Singapore Airlines has successfully handled the envirotainer unloading process. JAS has served Singapore Airlines ground and cargo handling for more than 30 years.</p><p>“The Covid-19 vaccine is our national interest. For this reason, we, as ground handlers, are doing our best to provide the best service for the Indonesian nation and airline customers,” said Adji Gunawan, CEO of JAS Airport Services.</p><p>With regard to pharmaceutical products as a whole, JAS is known to have begun to identify a number of additional cold chain facilities and is currently following procedures to obtain IATA CEIV Pharma certification.</p><p>IATA issued CEIV Pharma certification to help ground handling companies and the entire air cargo supply chain meet the industry’s needs for higher safety, security, compliance and efficiency. The IATA CEIV Pharma certification is essential to ensure the integrity of pharmaceutical products throughout the supply chain.</p><p>So that in the future JAS will become the first Cargo Terminal Operator [CTO] in Indonesia to get IATA CEIV Pharma certification. The goal is that in addition to compliance with international regulations and standards, JAS will be recognized globally and declared ready to handle pharmaceutical products consistently.</p><p>The IATA CEIV Pharma validation is expected to be completed in March 2021. But beyond that, JAS has had the GDP [Good Distribution Practices] certification from WHO since 2014.</p>', '1701829275_06437920866215dde269.jpg', '2021-02-21 00:00:00', '2023-11-21 07:35:09', '2023-12-06 02:21:15', '0000-00-00 00:00:00', 'jas-successfully-handled-the-arrival-of-covid-19-vaccine-in-indonesia', 'Published', 1, 0),
-(20, '1', 'asdf', 1, '<p>asdf</p>', '1701829163_42086eebeadf17e6cb6c.jpg', '2023-11-29 00:00:00', '2023-11-29 04:36:55', '2023-12-06 02:19:23', '0000-00-00 00:00:00', 'asdf', 'Published', 0, 0),
-(21, '1', 'berita 1', 1, '<p>berita 1</p>', '1701829312_e70c877c5da42f3237d2.jpeg', '2023-11-29 00:00:00', '2023-11-30 02:13:21', '2023-12-06 02:21:52', '0000-00-00 00:00:00', 'berita-1', 'Published', 0, 0),
-(22, '1', 'berita 2', 1, '<p>berita 2</p>', '1701830438_bcffc5438d56d1955c3c.jpg', '2023-11-29 00:00:00', '2023-11-30 02:13:37', '2023-12-06 02:40:38', '0000-00-00 00:00:00', 'berita-2', 'Published', 0, 0);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tinfo`
---
-
-CREATE TABLE `tinfo` (
-  `id` int(11) NOT NULL,
-  `content` varchar(256) NOT NULL,
-  `status` int(64) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `tinfo`
---
-
-INSERT INTO `tinfo` (`id`, `content`, `status`) VALUES
-(1, 'asdf', 0),
-(2, 'Human Capital Information System', 1),
-(3, 'Pembayaran SPT 2024 ', 1);
+(5, '1', 'DUKUNG KTT KE-43 ASEAN, JAS TANGANI 20 PENERBANGAN VVIP DELEGASI ENAM NEGARA PESERTA', 4, '<p>Dalam rangka mendukung Konferensi Tingkat Tinggi (KTT) ke-43 ASEAN yang akan diselenggarakan di Jakarta 5-7 September 2023, PT Jasa Angkasa Semesta Tbk (JAS Airport Services) telah memastikan kesiapan dalam menangani lebih dari 20 penerbangan yang akan mengangkut para kepala negara beserta delegasi peserta dari enam negara yang berpartisipasi dalam acara pertemuan regional dwitahunan ini.</p><blockquote><p>\"Dengan komitmen yang kuat dan pengalaman yang mendalam, PT Jasa Angkasa Semesta Tbk (JAS) sebagai perusahaan ground handling anak bangsa siap untuk memberikan dukungan penuh dalam menyuksesan KTT ke-43 ASEAN dan memastikan bahwa para delegasi VVIP dapat menjalani kunjungan mereka dengan lancar dan nyaman”<br>Presiden Direktur dan CEO JAS Airport Services, Adji Gunawan di Cengkareng, Senin (4/9).</p></blockquote><p>JAS Airport Services tidak hanya fokus pada ground handling dan logistik semata, tetapi juga pada aspek-aspek penting lainnya, seperti pengurusan perizinan operasional pesawat VVIP di Indonesia untuk memastikan kesuksesan KTT ke-43 ASEAN di Indonesia dan menjadi bagian dari sejarah kerjasama ASEAN, tambah Adji.</p><p>Selain kedatangan para kepala negara dan delegasi dari enam negara peserta KTT ke-43 ASEAN, JAS Airport Services juga menangani logistik dari salah satu negara peserta.</p><p>Hal ini mencerminkan komitmen JAS Airport Services dalam memastikan semua aspek keamanan dan kenyamanan delegasi selama kunjungan mereka dalam masa keketuaan Indonesia di ASEAN tahun ini yang mengusung tema ‘ASEAN Matters Epicentrum of Growth’.</p><blockquote><p>Diharapkan dengan tema tersebut dapat menjadikan kawasan ASEAN relevan dan penting bagi masyarakat Indonesia, ASEAN dan kawasan sekitar, serta mewujudkan keinginan Indonesia untuk mengapitalisasi ASEAN sebagai pusat pertumbuhan ekonomi.</p></blockquote><p>Dengan pengalaman lebih dari 39 tahun melayani berbagai maskapai domestik maupun internasional di sembilan bandara internasional Indonesia, JAS Airport Services terus memberikan layanan terbaiknya dalam mempertahankan kepercayaan para pelanggannya termasuk penanganan berbagai penerbangan kenegaraan seperti Raja Salman pada tahun 2017 lalu, dan berlanjut pada penanganan 11 kepala negara anggota G20 pada tahun 2022.</p><p>Demi menjaga kualitas layanan prima kepada seluruh pelanggannya, JAS Airport Services juga telah memiliki sertifikasi internasional seperti Sertifikasi “CEIV for Lithium Battery” untuk penanganan logistik baterai Lithium yang aman.</p><p>Belum lama ini, JAS Airport Services juga telah bergabung dan mendapatkan sertifikasi dari TAPA (Transported Asset Protection Association) dalam pengelolaan keamanan penanganan logistik. JAS Airport Services juga telah diakui dan dipercaya oleh Direktorat Jenderal Bea dan Cukai sebagai Operator Ekonomi Bersertifikat (Authorized Economic Operator – AEO) dalam menjalankan layanan Cargo Handlingnya.</p>', '1698129090_31bf6074cb9d709dbc9e.jpg', '2023-10-24 00:00:00', '2023-10-25 10:06:42', '2023-10-31 01:37:28', '0000-00-00 00:00:00', 'dukung-ktt-ke-43-asean-jas-tangani-20-penerbangan-vvip-delegasi-enam-negara-peserta', 'Published', 1, 0),
+(11, '1', 'JAS AIRPORT SERVICES SUKSES MENYELESAIKAN PENANGANAN 249 PENERBANGAN HAJI 2023', 1, '<p>PT Jasa Angkasa Semesta (JAS Airport Services) perusahaan ground handling Indonesia, telah berhasil menyelesaikan penanganan 249 penerbangan haji menggunakan Saudi Airlines pada tahun keberangkatan 2023 secara sukses dan lancar yang berlangsung sejak tanggal 24 Mei 2023 hingga 3 Agustus 2023.</p><p>“Dengan kerjasama yang erat bersama semua pemangku kepentingan, kami bersyukur telah menyelesaikan penanganan 249 penerbangan haji 2023 di lima kota yang menjadi bukti nyata komitmen dan dedikasi tinggi tim PT JAS Airport Services dalam mendukung penyelenggaraan ibadah haji Indonesia yang aman dan nyaman. Terima kasih atas kerjasama yang baik dari semua pihak yang terlibat dalam kesuksesan musim haji tahun ini,” kata Direktur Utama PT Jasa Angkasa Semesta Adji Gunawan di Cengkareng, Senin (7/8).</p><p>JAS Airport Services melayani penerbangan haji tahun 2023 Saudia Airlines di lima bandara utama Indonesia, yaitu Bandara Internasional Soekarno Hatta Jakarta, Bandara Internasional Kertajati, Bandara Internasional Hang Nadim Batam, Bandara Internasional Kualanamu Medan, dan Bandara Internasional Juanda Surabaya.</p><p>Dengan komitmen dan dedikasi tinggi, penanganan jemaah haji dan bagasi ini berjalan dengan lancar tanpa hambatan berarti, menjadikan perjalanan ibadah para jemaah menjadi lebih aman dan nyaman.</p><p>“Keberhasilan ini menunjukkan komitmen JAS Airport Services dalam mengembangkan layanan di berbagai bandara di Indonesia dan memberikan akses yang lebih baik bagi untuk pelaksanaan haji nasional,” tambah Adji.</p><p>JAS Airport Services juga berterima kasih kepada semua pemangku kepentingan terkait atas suksesnya penanganan penerbangan haji tahun 2023, diantaranya Kementerian Perhubungan, Kementerian Agama, Angkasa Pura I, Angkasa Pura II, otoritas bandara, pihak kepolisian, dan seluruh pihak terkait lainnya yang telah bersinergi dan berkolaborasi untuk menjamin kelancaran dan keberhasilan musim haji tahun ini.</p><p>Dengan prestasi ini, JAS Airport Services semakin terdorong untuk terus meningkatkan kualitas layanan dan inovasi dalam mendukung perjalanan jemaah haji di masa mendatang. Perusahaan berkomitmen untuk berperan aktif dalam mendukung upaya pemerintah dan masyarakat Indonesia dalam menyelenggarakan ibadah haji dengan aman, nyaman, dan lancar.</p><p>JAS Airport Service senantiasa terus mendukung tumbuhnya dunia penerbangan Indonesia dengan selalu berupaya untuk memberikan kontribusi terbaiknya bagi dunia kebandaraan Indonesia memberikan pelayanan terbaik kepada seluruh costumer dan stakeholdernya dengan memenuhi sertifikasi internasional dalam melayani berbagai maskapai asing yang datang ke Indonesia.</p>', '1700616011_8b60b23f15464c3d1c98.jpg', '2023-10-31 00:00:00', '2023-10-31 01:25:20', '2023-11-22 01:20:11', '0000-00-00 00:00:00', 'jas-airport-services-sukses-menyelesaikan-penanganan-249-penerbangan-haji-2023', 'Published', 1, 0),
+(13, '1', 'JAS SIAP TANGANI OPERASIONAL PESAWAT PENUMPANG TERBESAR DI DUNIA, AIRBUS A380', 4, '<p>PT Jasa Angkasa Semesta (JAS Airport Services) penyedia layanan kebandarudaraan Indonesia siap menangani operasional pesawat penumpang terbesar di dunia, Airbus A380, yang dioperasikan oleh Emirates Airlines pada tanggal 1 Juni 2023 di Bandara Internasional I Gusti Ngurah Rai Denpasar, Bali.</p><p>“Kedatangan pesawat Airbus A380 merupakan sebuah milestone bagi JAS Airport Services dalam menangani salah satu pesawat penumpang terbesar di dunia. Untuk ini, JAS Airport Services bangga bahwa Emirates Airlines mempercayakan penanganan ground handling dan cargo handlingnya kepada kami,” kata Presiden Direktur &amp; CEO JAS Airport Services Adji Gunawan, di Denpasar, Kamis (1/6).</p><p>Untuk penanganan pesawat penumpang terbesar di dunia ini, JAS Airport Services juga telah menyiapkan personel tambahan serta peralatan pendukung khusus untuk penanganan pesawat buatan Perancis yang memiliki bentang sayap hingga 79,8 meter dan total panjang badan pesawat hingga 72,7 meter.</p><p>Adji menambahkan bahwa JAS Airport Services berkomitmen untuk memberikan pelayanan terbaik dalam penanganan pesawat A380 di Indonesia, dengan tim yang berpengalaman dan peralatan khusus yang memenuhi standar keselamatan internasional.</p><p>“Kami sangat bahagia karena armada A380 milik Emirates akhirnya tiba di Bali. Pencapaian ini merupakan hasil kerja seluruh tim, mulai tahap perencanaan hingga eksekusi yang apik. Awal beroperasinya A380 di Indonesia juga memaknai perpanjangan komitmen kami pada pasar Indonesia, serta pembuktian kerja sama yang semakin kuat dengan Bandara I Gusti Ngurah Rai dan pemerintah setempat. Kami siap melayani para pelanggan yang terbang dari dan ke Denpasar dengan layanan kelas dunia Emirates A380, sambil terus berupaya merespons tingginya permintaan destinasi internasional dengan pesawat Superjumbo untuk satu dari dua penerbangan harian ke Pulau Bali,” kata Orhan Abbas, Senior Vice President, Commercial Operations, Far East Emirates.</p><p>Ke depannya, pesawat Airbus A380 yang dilengkapi dengan kapasitas 516 penumpang dengan konfigurasi 14 kursi First Class, 76 kursi Kelas Bisnis dan 426 kursi Kelas Ekonomi yang akan menggantikan salah satu penerbangan harian ke Bali yang saat ini menggunakan armada Boeing 777-300ER.</p><p>Penerbangan EK368 menggunakan pesawat Airbus A380 ini dijadwalkan berangkat dari Bandara Internasional Dubai (DXB) pukul 03.25 waktu setempat, kemudian dijadwalkan tiba di Bandara Internasional I Gusti Ngurah Rai (DPS) pukul 16.35 Wita dengan membawa 483 penumpang. Sementara itu, penerbangan bernomor EK369 akan berangkat dari Bali pukul 19.40 Wita dengan membawa 493 penumpang, lalu dijadwalkan tiba di Dubai pukul 00.45 waktu setempat.</p><p>Selain dimensi yang besar, pesawat A380 ini diklaim mampu terbang dengan kecepatan 0,85 Mach di ketinggian 43.100 kaki dan dapat menempuh jarak hingga 8.000 nautical miles atau setara dengan 15.000 km dalam satu penerbangan.</p><p>JAS Airport Service senantiasa terus mendukung tumbuhnya dunia penerbangan Indonesia dengan selalu berupaya untuk memberikan kontribusi terbaiknya bagi dunia kebandaraan Indonesia memberikan pelayanan terbaik kepada seluruh costumer dan stakeholdernya dengan memenuhi sertifikasi internasional dalam melayani berbagai maskapai asing yang datang ke Indonesia.</p><p>Hal ini terwujud dengan re-sertifikasi ISAGO oleh IATA (Asosiasi Pengangkutan Udara Internasional / International Air Transport Association) yang diterima pada bulan Juni lalu untuk empat station PT Jasa Angkasa Semesta, yaitu Bandara Internasional Soekarno Hatta (CGK), Bandara Internasional I Gusti Ngurah Rai (DPS), Bandara Internasional Juanda (SUB) dan Bandara Internasional Kualanamu (KNO).</p><p>ISAGO merupakan sistem yang diakui secara internasional untuk menilai manajemen operasional dan sistem kontrol dari sebuah organisasi yang menyediakan layanan ground handling untuk maskapai penerbangan.</p>', '1699925502_f763e6cbdc8a40045980.jpeg', '2023-10-31 00:00:00', '2023-10-31 01:28:19', '2023-11-14 01:31:42', '0000-00-00 00:00:00', 'jas-siap-tangani-operasional-pesawat-penumpang-terbesar-di-dunia-airbus-a380', 'Published', 0, 0),
+(16, '2', 'JAS TANGANI KEBERANGKATAN JEMAAH HAJI JAWA BARAT DARI BANDARA KERTAJATI', 1, '<p>PT Jasa Angkasa Semesta (JAS Airport Services), penyedia layanan kebandarudaraan Indonesia menangani keberangkatan 366 calon jemaah haji berikut 8 petugas haji asal Jawa Barat dari Bandara Internasonal Kertajati, Minggu, 28 Mei 2023 pukul 22.20 WIB menggunakan Saudia Airlines.</p><p>“Ini merupakan sebuah kesempatan sekaligus kehormatan bagi JAS Airport Services untuk menjadi bagian dari sejarah keberangkatan jemaah haji pertama dari Bandara Internasional Kertajati serta berkomitmen untuk memberikan pengalaman perjalanan yang aman, nyaman, dan lancar bagi seluruh jemaah,” kata Adji Gunawan, Presiden Direktur JAS Airport Services, Senin (29/05).</p><p>Dalam penanganan keberangkatan Jemaah Haji tahun ini, JAS Airport Services juga dipercaya untuk menangani keberangkatan jemaah haji dari Bandara Internasional Soekarno Hatta Jakarta, Bandara Internasional Juanda Surabaya serta Bandara Internasional Kualanamu Medan.</p><p>JAS Airport Services berharap dapat mendukung kemudahan proses keberangkatan Haji di tahun-tahun mendatang, tambah Adji.</p><p>Keberangkatan haji pertama kali di Bandara Internasional Kertajati menandai sejarah baru bagi seluruh masyarakat, terlebih bagi Jemaah Haji di wilayah Jawa Barat</p><p>Jemaah haji yang berangkat melalui Bandara Kertajati berasal dari tujuh kabupaten dan kota di Jawa Barat, antara lain Kabupaten Cirebon, Kota Cirebon, Kabupaten Majalengka, Kabupaten Kuningan, Kabupaten Indramayu, Kabupaten Subang, dan Kabupaten Sumedang.</p><p>Penerbangan haji pertama kali di Bandara Kertajati ini diharapkan dapat membuka pintu bagi lebih banyak penerbangan lainnya, baik itu untuk umrah maupun penerbangan komersial lainnya, dari bandara yang menjadi kebanggaan masyarakat Jawa Barat.</p><p>Selain Bandara Internasional, JAS Airport Services juga menangani keberangkatan rombongan haji dari Bandara Soekarno Hatta Jakarta, Bandara Internasional Juanda Surabaya, dan Bandara Internasional&nbsp;Kualanamu.</p>', '1700551932_9b6dba2be1de710aa0c1.jpg', '2023-11-21 00:00:00', '2023-11-21 07:32:12', '2023-11-21 07:32:12', '0000-00-00 00:00:00', 'jas-tangani-keberangkatan-jemaah-haji-jawa-barat-dari-bandara-kertajati', 'Published', 1, 0),
+(17, '2', 'JAS Successfully Handled The Arrival of Covid-19 Vaccine in Indonesia', 4, '<p>As many as 11 million doses of Covid-19 vaccine from Sinovac, China, arrived at the Soekarno-Hatta Airport Cargo Terminal, Tangerang, Banten, Tuesday afternoon (2/2/2020) using a Singapore Airlines.</p><p>JAS Airport Services as a ground handling service provider for Singapore Airlines has successfully handled the envirotainer unloading process. JAS has served Singapore Airlines ground and cargo handling for more than 30 years.</p><p>“The Covid-19 vaccine is our national interest. For this reason, we, as ground handlers, are doing our best to provide the best service for the Indonesian nation and airline customers,” said Adji Gunawan, CEO of JAS Airport Services.</p><p>With regard to pharmaceutical products as a whole, JAS is known to have begun to identify a number of additional cold chain facilities and is currently following procedures to obtain IATA CEIV Pharma certification.</p><p>IATA issued CEIV Pharma certification to help ground handling companies and the entire air cargo supply chain meet the industry’s needs for higher safety, security, compliance and efficiency. The IATA CEIV Pharma certification is essential to ensure the integrity of pharmaceutical products throughout the supply chain.</p><p>So that in the future JAS will become the first Cargo Terminal Operator [CTO] in Indonesia to get IATA CEIV Pharma certification. The goal is that in addition to compliance with international regulations and standards, JAS will be recognized globally and declared ready to handle pharmaceutical products consistently.</p><p>The IATA CEIV Pharma validation is expected to be completed in March 2021. But beyond that, JAS has had the GDP [Good Distribution Practices] certification from WHO since 2014.</p>', '1700552109_d606f354c0a0b4371eac.jpg', '2021-02-21 00:00:00', '2023-11-21 07:35:09', '2023-11-22 01:22:41', '0000-00-00 00:00:00', 'jas-successfully-handled-the-arrival-of-covid-19-vaccine-in-indonesia', 'Unpublished', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -138,14 +114,11 @@ INSERT INTO `tkomentar` (`id`, `id_berita`, `id_user`, `id_parent`, `comment_con
 (13, 11, 13, 0, 'bagus banget', '2023-11-16 08:16:58', '2023-11-17 07:50:15', '0000-00-00 00:00:00', 0),
 (14, 11, 13, 0, 'asdf', '2023-11-17 08:34:20', '2023-11-17 08:34:20', '0000-00-00 00:00:00', 1),
 (15, 11, 1, 10, 'test komen balasan', '2023-11-17 08:41:42', '2023-11-17 08:41:42', '0000-00-00 00:00:00', 1),
-(16, 17, 17, 0, 'cumi', '2023-11-21 08:23:00', '2023-11-29 08:17:11', '0000-00-00 00:00:00', 0),
-(17, 17, 17, 16, 'lagi', '2023-11-21 08:23:16', '2023-11-29 08:17:07', '0000-00-00 00:00:00', 0),
+(16, 17, 17, 0, 'cumi', '2023-11-21 08:23:00', '2023-11-21 08:23:00', '0000-00-00 00:00:00', 1),
+(17, 17, 17, 16, 'lagi', '2023-11-21 08:23:16', '2023-11-21 08:23:32', '0000-00-00 00:00:00', 0),
 (18, 17, 17, 16, 'au amat', '2023-11-21 08:23:26', '2023-11-21 08:23:26', '0000-00-00 00:00:00', 1),
 (19, 11, 1, 0, 'coba komen', '2023-11-22 01:08:15', '2023-11-22 01:08:15', '0000-00-00 00:00:00', 1),
-(20, 16, 1, 0, 'Berita ini jelek', '2023-11-28 01:52:34', '2023-11-28 01:52:51', '0000-00-00 00:00:00', 0),
-(21, 11, 13, 19, 'komen apa yaa', '2023-11-29 03:36:25', '2023-11-29 03:36:25', '0000-00-00 00:00:00', 1),
-(22, 20, 1, 0, 'asdf', '2023-11-29 08:13:46', '2023-11-29 08:13:54', '0000-00-00 00:00:00', 0),
-(23, 20, 1, 0, 'test komen', '2023-11-29 08:17:23', '2023-11-29 08:17:26', '0000-00-00 00:00:00', 0);
+(20, 16, 1, 0, 'Berita ini jelek', '2023-11-28 01:52:34', '2023-11-28 01:52:51', '0000-00-00 00:00:00', 0);
 
 -- --------------------------------------------------------
 
@@ -531,138 +504,7 @@ INSERT INTO `tlog` (`id_log`, `id_user`, `id_berita`, `ip_add`, `browser`, `rema
 (359, 1, 16, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Read News', '2023-11-28 02:17:54', 'jas-tangani-keberangkatan-jemaah-haji-jawa-barat-dari-bandara-kertajati'),
 (360, 1, 16, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Read News', '2023-11-28 02:18:02', 'jas-tangani-keberangkatan-jemaah-haji-jawa-barat-dari-bandara-kertajati'),
 (361, 1, 16, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Read News', '2023-11-28 02:18:08', 'jas-tangani-keberangkatan-jemaah-haji-jawa-barat-dari-bandara-kertajati'),
-(362, 3, 0, '192.168.111.183', 'Edge 119.0.0.0 (Windows 10)', 'Access Menu Profile', '2023-11-28 02:32:34', ''),
-(363, 0, 16, '192.168.111.70', 'Firefox 115.0 (Windows 7)', 'Read News', '2023-11-29 03:25:18', 'jas-tangani-keberangkatan-jemaah-haji-jawa-barat-dari-bandara-kertajati'),
-(364, 0, 11, '192.168.111.70', 'Firefox 115.0 (Windows 7)', 'Read News', '2023-11-29 03:33:28', 'jas-airport-services-sukses-menyelesaikan-penanganan-249-penerbangan-haji-2023'),
-(365, 0, 16, '192.168.111.70', 'Firefox 115.0 (Windows 7)', 'Read News', '2023-11-29 03:34:54', 'jas-tangani-keberangkatan-jemaah-haji-jawa-barat-dari-bandara-kertajati'),
-(366, 0, 11, '192.168.111.70', 'Firefox 115.0 (Windows 7)', 'Read News', '2023-11-29 03:35:07', 'jas-airport-services-sukses-menyelesaikan-penanganan-249-penerbangan-haji-2023'),
-(367, 13, 0, '192.168.111.70', 'Firefox 115.0 (Windows 7)', 'Login System', '2023-11-29 03:35:53', ''),
-(368, 13, 11, '192.168.111.70', 'Firefox 115.0 (Windows 7)', 'Read News', '2023-11-29 03:35:59', 'jas-airport-services-sukses-menyelesaikan-penanganan-249-penerbangan-haji-2023'),
-(369, 13, 11, '192.168.111.70', 'Firefox 115.0 (Windows 7)', 'Add Comment', '2023-11-29 03:36:25', 'jas-airport-services-sukses-menyelesaikan-penanganan-249-penerbangan-haji-2023'),
-(370, 13, 11, '192.168.111.70', 'Firefox 115.0 (Windows 7)', 'Read News', '2023-11-29 03:36:25', 'jas-airport-services-sukses-menyelesaikan-penanganan-249-penerbangan-haji-2023'),
-(371, 13, 0, '192.168.111.70', 'Firefox 115.0 (Windows 7)', 'Access Menu Profile', '2023-11-29 03:38:15', ''),
-(372, 13, 0, '192.168.111.70', 'Firefox 115.0 (Windows 7)', 'Logout System', '2023-11-29 03:39:23', ''),
-(373, 0, 0, '192.168.111.70', '', 'Register Account', '2023-11-29 03:40:27', ''),
-(374, 19, 0, '192.168.111.70', 'Firefox 115.0 (Windows 7)', 'Login System', '2023-11-29 03:41:17', ''),
-(375, 19, 0, '192.168.111.70', 'Firefox 115.0 (Windows 7)', 'Access Menu Profile', '2023-11-29 03:41:24', ''),
-(376, 19, 0, '192.168.111.70', 'Firefox 115.0 (Windows 7)', 'Edit Profile', '2023-11-29 03:41:49', ''),
-(377, 19, 0, '192.168.111.70', 'Firefox 115.0 (Windows 7)', 'Access Menu Profile', '2023-11-29 03:41:49', ''),
-(378, 19, 0, '192.168.111.70', 'Firefox 115.0 (Windows 7)', 'Logout System', '2023-11-29 04:12:32', ''),
-(379, 1, 0, '192.168.111.70', 'Firefox 115.0 (Windows 7)', 'Login System', '2023-11-29 04:12:56', ''),
-(380, 1, 0, '192.168.111.70', 'Firefox 115.0 (Windows 7)', 'Edit News', '2023-11-29 04:32:48', ''),
-(381, 1, 16, '192.168.111.70', 'Firefox 115.0 (Windows 7)', 'Read News', '2023-11-29 04:35:35', 'jas-tangani-keberangkatan-jemaah-haji-jawa-barat-dari-bandara-kertajati'),
-(382, 1, 0, '192.168.111.70', 'Firefox 115.0 (Windows 7)', 'Create News', '2023-11-29 04:36:55', ''),
-(383, 1, 0, '192.168.111.70', 'Firefox 115.0 (Windows 7)', 'Edit News', '2023-11-29 04:37:47', ''),
-(384, 1, 20, '192.168.111.70', 'Firefox 115.0 (Windows 7)', 'Read News', '2023-11-29 04:38:00', 'asdf'),
-(385, 1, 17, '192.168.111.70', 'Firefox 115.0 (Windows 7)', 'Read News', '2023-11-29 04:39:30', 'jas-successfully-handled-the-arrival-of-covid-19-vaccine-in-indonesia'),
-(386, 1, 17, '192.168.111.70', 'Firefox 115.0 (Windows 7)', 'Read News', '2023-11-29 04:39:51', 'jas-successfully-handled-the-arrival-of-covid-19-vaccine-in-indonesia'),
-(387, 1, 0, '192.168.111.70', 'Firefox 115.0 (Windows 7)', 'Logout System', '2023-11-29 04:40:46', ''),
-(388, 1, 0, '192.168.111.70', 'Firefox 115.0 (Windows 7)', 'Login System', '2023-11-29 04:41:24', ''),
-(389, 1, 0, '192.168.111.70', 'Firefox 115.0 (Windows 7)', 'Logout System', '2023-11-29 04:42:58', ''),
-(390, 2, 0, '192.168.111.70', 'Firefox 115.0 (Windows 7)', 'Login System', '2023-11-29 04:43:09', ''),
-(391, 2, 0, '192.168.111.70', 'Firefox 115.0 (Windows 7)', 'Logout System', '2023-11-29 04:47:58', ''),
-(392, 1, 0, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Login System', '2023-11-29 08:06:32', ''),
-(393, 1, 20, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Read News', '2023-11-29 08:13:43', 'asdf'),
-(394, 1, 20, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Add Comment', '2023-11-29 08:13:46', 'asdf'),
-(395, 1, 20, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Read News', '2023-11-29 08:13:46', 'asdf'),
-(396, 1, 20, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Read News', '2023-11-29 08:13:54', 'asdf'),
-(397, 1, 20, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Read News', '2023-11-29 08:14:59', 'asdf'),
-(398, 1, 20, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Read News', '2023-11-29 08:15:00', 'asdf'),
-(399, 1, 20, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Read News', '2023-11-29 08:16:54', 'asdf'),
-(400, 1, 20, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Read News', '2023-11-29 08:17:03', 'asdf'),
-(401, 1, 20, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Read News', '2023-11-29 08:17:06', 'asdf'),
-(402, 1, 20, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Add Comment', '2023-11-29 08:17:23', 'asdf'),
-(403, 1, 20, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Read News', '2023-11-29 08:17:23', 'asdf'),
-(404, 1, 20, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Read News', '2023-11-29 08:17:26', 'asdf'),
-(405, 1, 20, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Read News', '2023-11-29 08:17:35', 'asdf'),
-(406, 1, 20, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Read News', '2023-11-29 08:19:10', 'asdf'),
-(407, 1, 20, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Read News', '2023-11-29 08:19:12', 'asdf'),
-(408, 1, 20, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Read News', '2023-11-29 08:19:41', 'asdf'),
-(409, 1, 20, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Read News', '2023-11-29 08:19:43', 'asdf'),
-(410, 1, 20, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Read News', '2023-11-29 08:19:51', 'asdf'),
-(411, 1, 20, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Read News', '2023-11-29 08:19:52', 'asdf'),
-(412, 1, 20, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Read News', '2023-11-29 08:20:08', 'asdf'),
-(413, 1, 20, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Read News', '2023-11-29 08:20:09', 'asdf'),
-(414, 1, 20, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Read News', '2023-11-29 08:20:28', 'asdf'),
-(415, 1, 20, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Read News', '2023-11-29 08:20:44', 'asdf'),
-(416, 1, 20, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Read News', '2023-11-29 08:20:51', 'asdf'),
-(417, 1, 20, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Read News', '2023-11-29 08:20:56', 'asdf'),
-(418, 1, 20, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Read News', '2023-11-29 08:47:41', 'asdf'),
-(419, 1, 20, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Read News', '2023-11-29 08:47:54', 'asdf'),
-(420, 1, 20, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Read News', '2023-11-29 08:47:57', 'asdf'),
-(421, 1, 20, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Read News', '2023-11-29 08:47:57', 'asdf'),
-(422, 1, 20, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Read News', '2023-11-29 08:48:26', 'asdf'),
-(423, 1, 20, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Read News', '2023-11-29 08:48:39', 'asdf'),
-(424, 1, 20, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Read News', '2023-11-29 08:48:55', 'asdf'),
-(425, 1, 20, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Read News', '2023-11-29 08:49:09', 'asdf'),
-(426, 1, 20, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Read News', '2023-11-29 08:53:09', 'asdf'),
-(427, 1, 0, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Login System', '2023-11-30 02:08:45', ''),
-(428, 1, 0, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Create News', '2023-11-30 02:13:21', ''),
-(429, 1, 0, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Create News', '2023-11-30 02:13:37', ''),
-(430, 1, 0, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Create News', '2023-11-30 02:13:52', ''),
-(431, 1, 0, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Create News', '2023-11-30 02:14:17', ''),
-(432, 1, 0, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Create News', '2023-11-30 02:14:29', ''),
-(433, 1, 0, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Create News', '2023-11-30 02:14:45', ''),
-(434, 1, 0, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Login System', '2023-11-30 07:22:36', ''),
-(435, 1, 0, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Add Information', '2023-11-30 08:31:45', ''),
-(436, 1, 0, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Add Information', '2023-11-30 08:32:40', ''),
-(437, 1, 0, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Login System', '2023-12-04 02:26:33', ''),
-(438, 1, 0, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Add Information', '2023-12-04 02:34:20', ''),
-(439, 1, 0, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Add Information', '2023-12-04 02:34:37', ''),
-(440, 1, 21, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Read News', '2023-12-04 02:36:38', 'berita-1'),
-(441, 1, 21, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Read News', '2023-12-04 02:37:13', 'berita-1'),
-(442, 0, 21, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Read News', '2023-12-04 02:38:06', 'berita-1'),
-(443, 0, 20, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Read News', '2023-12-04 02:38:17', 'asdf'),
-(444, 1, 21, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Read News', '2023-12-04 02:41:45', 'berita-1'),
-(445, 1, 21, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Read News', '2023-12-04 02:41:57', 'berita-1'),
-(446, 1, 21, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Read News', '2023-12-04 02:42:14', 'berita-1'),
-(447, 1, 21, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Read News', '2023-12-04 02:57:54', 'berita-1'),
-(448, 1, 21, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Read News', '2023-12-04 02:58:10', 'berita-1'),
-(449, 1, 21, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Read News', '2023-12-04 02:58:18', 'berita-1'),
-(450, 1, 21, '192.168.111.183', 'Chrome 119.0.0.0 (Windows 10)', 'Read News', '2023-12-04 02:58:59', 'berita-1'),
-(451, 1, 0, '192.168.111.183', 'Edge 119.0.0.0 (Windows 10)', 'Login System', '2023-12-05 01:55:30', ''),
-(452, 1, 0, '192.168.111.183', 'Edge 119.0.0.0 (Windows 10)', 'Logout System', '2023-12-05 02:50:58', ''),
-(453, 0, 11, '192.168.111.36', 'Firefox 120.0 (Windows 10)', 'Read News', '2023-12-06 01:16:19', 'jas-airport-services-sukses-menyelesaikan-penanganan-249-penerbangan-haji-2023'),
-(454, 1, 0, '192.168.111.183', 'Chrome 120.0.0.0 (Windows 10)', 'Login System', '2023-12-06 01:16:32', ''),
-(455, 0, 11, '192.168.111.36', 'Firefox 120.0 (Windows 10)', 'Read News', '2023-12-06 01:16:34', 'jas-airport-services-sukses-menyelesaikan-penanganan-249-penerbangan-haji-2023'),
-(456, 1, 5, '192.168.111.183', 'Chrome 120.0.0.0 (Windows 10)', 'Read News', '2023-12-06 01:50:30', 'dukung-ktt-ke-43-asean-jas-tangani-20-penerbangan-vvip-delegasi-enam-negara-peserta'),
-(457, 1, 0, '192.168.111.183', 'Chrome 120.0.0.0 (Windows 10)', 'Edit News', '2023-12-06 02:02:00', ''),
-(458, 1, 0, '192.168.111.183', 'Chrome 120.0.0.0 (Windows 10)', 'Edit News', '2023-12-06 02:02:33', ''),
-(459, 1, 0, '192.168.111.183', 'Chrome 120.0.0.0 (Windows 10)', 'Edit News', '2023-12-06 02:06:50', ''),
-(460, 1, 0, '192.168.111.183', 'Chrome 120.0.0.0 (Windows 10)', 'Edit News', '2023-12-06 02:06:50', ''),
-(461, 1, 0, '192.168.111.183', 'Chrome 120.0.0.0 (Windows 10)', 'Edit News', '2023-12-06 02:09:41', ''),
-(462, 1, 0, '192.168.111.183', 'Chrome 120.0.0.0 (Windows 10)', 'Edit News', '2023-12-06 02:13:09', ''),
-(463, 1, 0, '192.168.111.183', 'Chrome 120.0.0.0 (Windows 10)', 'Edit News', '2023-12-06 02:14:22', ''),
-(464, 1, 0, '192.168.111.183', 'Chrome 120.0.0.0 (Windows 10)', 'Edit News', '2023-12-06 02:15:32', ''),
-(465, 1, 0, '192.168.111.183', 'Chrome 120.0.0.0 (Windows 10)', 'Edit News', '2023-12-06 02:18:36', ''),
-(466, 1, 0, '192.168.111.183', 'Chrome 120.0.0.0 (Windows 10)', 'Edit News', '2023-12-06 02:19:13', ''),
-(467, 1, 0, '192.168.111.183', 'Chrome 120.0.0.0 (Windows 10)', 'Edit News', '2023-12-06 02:19:23', ''),
-(468, 1, 0, '192.168.111.183', 'Chrome 120.0.0.0 (Windows 10)', 'Edit News', '2023-12-06 02:20:14', ''),
-(469, 1, 0, '192.168.111.183', 'Chrome 120.0.0.0 (Windows 10)', 'Edit News', '2023-12-06 02:20:22', ''),
-(470, 1, 0, '192.168.111.183', 'Chrome 120.0.0.0 (Windows 10)', 'Edit News', '2023-12-06 02:20:49', ''),
-(471, 1, 0, '192.168.111.183', 'Chrome 120.0.0.0 (Windows 10)', 'Edit News', '2023-12-06 02:21:05', ''),
-(472, 1, 0, '192.168.111.183', 'Chrome 120.0.0.0 (Windows 10)', 'Edit News', '2023-12-06 02:21:15', ''),
-(473, 1, 0, '192.168.111.183', 'Chrome 120.0.0.0 (Windows 10)', 'Edit News', '2023-12-06 02:21:41', ''),
-(474, 1, 0, '192.168.111.183', 'Chrome 120.0.0.0 (Windows 10)', 'Edit News', '2023-12-06 02:21:52', ''),
-(475, 1, 0, '192.168.111.183', 'Chrome 120.0.0.0 (Windows 10)', 'Edit News', '2023-12-06 02:40:13', ''),
-(476, 1, 0, '192.168.111.183', 'Chrome 120.0.0.0 (Windows 10)', 'Edit News', '2023-12-06 02:40:38', ''),
-(477, 1, 0, '192.168.111.183', 'Chrome 120.0.0.0 (Windows 10)', 'Logout System', '2023-12-06 02:42:39', ''),
-(478, 13, 0, '192.168.111.183', 'Chrome 120.0.0.0 (Windows 10)', 'Login System', '2023-12-06 02:42:46', ''),
-(479, 13, 0, '192.168.111.183', 'Chrome 120.0.0.0 (Windows 10)', 'Access Menu Profile', '2023-12-06 02:42:48', ''),
-(480, 13, 0, '192.168.111.183', 'Chrome 120.0.0.0 (Windows 10)', 'Access Menu Profile', '2023-12-06 02:44:07', ''),
-(481, 13, 0, '192.168.111.183', 'Chrome 120.0.0.0 (Windows 10)', 'Access Menu Profile', '2023-12-06 02:44:25', ''),
-(482, 13, 0, '192.168.111.183', 'Chrome 120.0.0.0 (Windows 10)', 'Edit Profile', '2023-12-06 02:47:21', ''),
-(483, 13, 0, '192.168.111.183', 'Chrome 120.0.0.0 (Windows 10)', 'Access Menu Profile', '2023-12-06 02:47:21', ''),
-(484, 13, 0, '192.168.111.183', 'Chrome 120.0.0.0 (Windows 10)', 'Logout System', '2023-12-06 02:47:32', ''),
-(485, 1, 0, '192.168.111.183', 'Chrome 120.0.0.0 (Windows 10)', 'Login System', '2023-12-06 02:47:40', ''),
-(486, 1, 0, '192.168.111.183', 'Chrome 120.0.0.0 (Windows 10)', 'Logout System', '2023-12-06 02:54:01', ''),
-(487, 1, 0, '192.168.111.183', 'Chrome 120.0.0.0 (Windows 10)', 'Login System', '2023-12-06 02:59:18', ''),
-(488, 1, 0, '192.168.111.183', 'Chrome 120.0.0.0 (Windows 10)', 'Logout System', '2023-12-06 02:59:51', ''),
-(489, 1, 0, '192.168.111.183', 'Chrome 120.0.0.0 (Windows 10)', 'Login System', '2023-12-06 03:04:15', ''),
-(490, 1, 0, '192.168.111.183', 'Chrome 120.0.0.0 (Windows 10)', 'Logout System', '2023-12-06 03:09:07', ''),
-(491, 1, 0, '192.168.111.183', 'Chrome 120.0.0.0 (Windows 10)', 'Login System', '2023-12-06 03:09:13', ''),
-(492, 1, 0, '192.168.111.183', 'Chrome 120.0.0.0 (Windows 10)', 'Login System', '2023-12-06 06:12:17', ''),
-(493, 1, 0, '192.168.111.183', 'Chrome 120.0.0.0 (Windows 10)', 'Logout System', '2023-12-06 06:13:10', '');
+(362, 3, 0, '192.168.111.183', 'Edge 119.0.0.0 (Windows 10)', 'Access Menu Profile', '2023-11-28 02:32:34', '');
 
 -- --------------------------------------------------------
 
@@ -686,11 +528,14 @@ CREATE TABLE `tuser` (
 --
 
 INSERT INTO `tuser` (`id`, `name_user`, `email_user`, `password_user`, `divisi_user`, `fotouser`, `role_user`, `create_date`) VALUES
-(0, 'Visitors', 'null', '$2y$10$5N.TI2XG4IdvLVSaVR2Hnuk2eYO0yl95ZQZ3iFpB0/2PAwVFNR./y', 'null', 'profile.png', 3, '2023-12-06 02:51:39'),
-(1, 'Dadang Indra', 'dadang@ptjas.co.id', '$2y$10$G0oFKT1iePqEQ1P1somFCua0hBJsXlnQU/IjmW2uQIdm35WJuwUr2', 'HC Information System', '1701832142_f6cbc41fc8178a406eb3.jpg', 1, '2023-12-06 03:09:02'),
-(2, 'Admin', 'admin@gmail.com', '$2y$10$gXPWb31xRg58MsPusZi/vO3P1VizvzILiMp1d4AKV7dpAInLdbJLu', 'HCIS', 'admin.jpg', 2, '2023-12-06 02:52:45'),
-(13, 'Tri Agnesti', 'triagnesti@gmail.com', '$2y$10$e22JC.Hm5VQ7gxWbeyVy3ejV4hD5pRyV8gvhk7W0AKDiizyYtrfVO', 'HCIS', '1701830841_fcfe78cc4f292bcfd3e2.jpg', 3, '2023-12-06 02:47:21'),
-(20, 'asdf', 'asdf@gmail.com', '$2y$10$ELSgwwegXOjTDOfQI.VZ3u/YVnOaJfDi2xn1ynB0FC.EF.qihWNua', 'HC Recruitment', '1701831226_a070fe72f08b31858e6e.jpg', 3, '2023-12-06 02:53:46');
+(0, 'Visitors', 'null', '$2y$10$FSWoVLbg1PJoLd4MBhDl.eTh1shdjohcjGBYouaXKS.dnuYdN9oXy', 'null', '1700714032_28775d618aae71502e0a.png', 1, '2023-11-23 04:33:52'),
+(1, 'Dadang Indra', 'dadang@ptjas.co.id', '$2y$10$G9QMMLjVojr0kXWs6LvVkOHzPhAlYlO9oeH/Kz0zBx6euuz3WCvE.', 'HC Information System', '1699252386_d5ec06d4f638c8217a40.jpg', 1, '2023-11-23 01:08:16'),
+(2, 'Admin', 'admin@gmail.com', '$2y$10$gXPWb31xRg58MsPusZi/vO3P1VizvzILiMp1d4AKV7dpAInLdbJLu', 'HCIS', '1699320452_e2d21afe4804414a19cf.jpg', 2, '2023-11-09 01:14:24'),
+(3, 'anes', 'anes@gmail.com', '$2y$10$T1cW1iDSPmke5CP4tJYq/uuSfWeB7YRduM7dLKtqA0.L0LG/xyvGC', 'HCIS', '1700115173_416a25418cb32724bcf3.jpg', 3, '2023-11-28 02:15:43'),
+(13, 'Tri Agnesti', 'triagnesti@gmail.com', '$2y$10$EddM3m.D235ISIxsKUVqK.En2Q7e0CmAiSThhpl9Rxw3gEfuTYli.', 'HCIS', '1700620003_bc075d9acdfa956d572e.jpg', 3, '2023-11-28 02:15:50'),
+(14, 'tes', 'tesfoto@gmail.com', '$2y$10$Hs0b85n2/xnGK5Csdy3WveaoMz13m9Gk/FKsjjSpbvhzxrc6vJLO2', 'hciss', '1699251843_b5154669f7979f1b3929.jpg', 2, '2023-11-06 06:24:03'),
+(17, 'i can', 'ican@mail.com', '$2y$10$PqJ9gE9RBTPRVo8UFQynme8MOqL4i1ooc4FOKEIeWoq9y7a3cptiC', 'hc', '', 3, '2023-11-21 08:19:57'),
+(18, 'asdf', 'sdf@gmail.com', '$2y$10$/s.V4dp3lfy/y2IrKVHOcO4GxOGBCkKJ8RyXquOx/m.aGy1FlX1tm', 'asdf', '', 3, '2023-11-21 08:22:06');
 
 --
 -- Indexes for dumped tables
@@ -700,12 +545,6 @@ INSERT INTO `tuser` (`id`, `name_user`, `email_user`, `password_user`, `divisi_u
 -- Indexes for table `tberita`
 --
 ALTER TABLE `tberita`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `tinfo`
---
-ALTER TABLE `tinfo`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -740,13 +579,7 @@ ALTER TABLE `tuser`
 -- AUTO_INCREMENT for table `tberita`
 --
 ALTER TABLE `tberita`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
-
---
--- AUTO_INCREMENT for table `tinfo`
---
-ALTER TABLE `tinfo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `tkategori`
@@ -758,19 +591,19 @@ ALTER TABLE `tkategori`
 -- AUTO_INCREMENT for table `tkomentar`
 --
 ALTER TABLE `tkomentar`
-  MODIFY `id` int(64) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(64) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `tlog`
 --
 ALTER TABLE `tlog`
-  MODIFY `id_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=494;
+  MODIFY `id_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=363;
 
 --
 -- AUTO_INCREMENT for table `tuser`
 --
 ALTER TABLE `tuser`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
