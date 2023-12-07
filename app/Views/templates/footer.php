@@ -18,24 +18,44 @@
                 Fax : +62 21 5695 6665
             </p>
         </div>
-        <div class="col-lg-3 col-md-6 mb-5">
-            <h5 class="mb-4 text-white text-uppercase font-weight-bold">
-                <!-- Follow Us -->&nbsp;
-            </h5>
-            <p class="font-weight-medium">
-                <a href="https://jasacademy.ptjas.co.id/profile/"><i class="fa fa-tag mr-2"></i>JAS Academy</a>
-            </p>
-            <p class="font-weight-medium">
-                <a href="https://recruitment.ptjas.co.id/"><i class="fa fa-tag mr-2"></i>JAS Recruitment</a>
-            </p>
-            <p class="font-weight-medium">
-                <a href="https://www.ptjas.co.id/"><i class="fa fa-tag mr-2"></i>JAS Website</a>
-            </p>
-            <p class="font-weight-medium">
-                <a href="https://jes.ptjas.co.id/"><i class="fa fa-tag mr-2"></i>JAS HRIS</a>
-            </p>
+        <div class="col-lg-4 col-md-4 mb-5">
+            <div class="row">
+                <div class="col-6">
+                    <h5 class="mb-4 text-white text-uppercase font-weight-bold">
+                        <!-- Follow Us -->&nbsp;
+                    </h5>
+                    <p class="font-weight-medium">
+                        <a href="https://192.168.4.169/jed"><i class="fa fa-tag mr-2"></i>JAS E-Document</a>
+                    </p>
+
+                    <p class="font-weight-medium">
+                        <a href="https://psychotest.ptjas.co.id/"><i class="fa fa-tag mr-2"></i>JAS Psychotest Test</a>
+                    </p>
+                    <p class="font-weight-medium">
+                        <a href="https://192.168.4.166/"><i class="fa fa-tag mr-2"></i>JAS E-Learning System</a>
+                    </p>
+                    <p class="font-weight-medium">
+                        <a href="https://192.168.4.166:8080/"><i class="fa fa-tag mr-2"></i>Online Certificate</a>
+                    </p>
+                </div>
+                <div class="col-6">
+                    <h5 class="mb-4 text-white text-uppercase font-weight-bold">
+                        <!-- Follow Us -->&nbsp;
+                    </h5>
+                    <p class="font-weight-medium">
+                        <a href="https://jes.ptjas.co.id/"><i class="fa fa-tag mr-2"></i>JAS HRIS</a>
+                    </p>
+                    <p class="font-weight-medium">
+                        <a href="https://192.168.4.169/symba/"><i class="fa fa-tag mr-2"></i>SYMBA</a>
+                    </p>
+
+                    <p class="font-weight-medium">
+                        <a href="https://recruitment.ptjas.co.id/jams"><i class="fa fa-tag mr-2"></i>JAMS</a>
+                    </p>
+                </div>
+            </div>
         </div>
-        <div class="col-lg-3 col-md-6 mb-5">
+        <div class="col-lg-2 col-md-6 mb-5">
             <h5 class="mb-4 text-white text-uppercase font-weight-bold">
                 Follow Us
             </h5>
