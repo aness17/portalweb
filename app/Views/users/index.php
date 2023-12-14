@@ -1,11 +1,11 @@
-<br />
-<div class="container-fluid">
+<div class="container-fluid bg-white">
+    <br />
     <div class="container">
         <div class="row">
             <div class="col-lg-8">
                 <div class="row">
-                    <div class="col-12">
-                        <div class="section-title">
+                    <div class="col-12 ">
+                        <div class="section-title shadow mb-2 bg-body rounded">
                             <div class="input-group ml-auto d-none d-lg-flex" style="width: 100%; max-width: 800px">
                                 <form action="<?= base_url('/') ?>" method="post" class="input-group ml-auto d-none d-lg-flex">
                                     <input type="text" class="form-control border-1" name="search" value="<?= $search ?>" />
@@ -25,20 +25,21 @@
                             $d = str_replace('<br>', '', $c);
                             $result = str_replace('</blockquote>', '', $d);
                         ?>
-                            <div class="d-flex align-items-center bg-white mb-3" style="height: 110px">
+                            <div class="d-flex align-items-center bg-white mb-3 shadow bg-body rounded" style="height: 110px">
                                 <img class="img-fluid" src="<?= base_url('foto/') ?><?= $u['doc'] ?>" width="110" height="110" alt="" />
                                 <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
                                     <div class="mb-2">
                                         <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href=""><?= $u['name_kategori'] ?></a>
-                                        <span class="text-body"><small>Cengkareng, <?= date('d M Y', strtotime($u['created_at'])) ?></small></span>
+                                        <span class="text-black"><small>Cengkareng, <?= date('d M Y', strtotime($u['created_at'])) ?></small></span>
                                     </div>
                                     <a class="h6 m-0 text-secondary text-uppercase font-weight-bold news-truncate" href="<?= base_url('news/' . $u['slug']) ?>"><?= $u['title_berita'] ?></a>
-                                    <span class="text-body news-truncate"><small><?= $result ?></small></span>
+                                    <span class="text-black news-truncate"><small><?= $result ?></small></span>
                                 </div>
                             </div>
                         <?php $no++;
                         endforeach; ?>
                     </div>
+                    &nbsp;&nbsp;
                     <?php
                     echo $pager->links('news', 'pagination');
 
@@ -49,7 +50,7 @@
             <div class="col-lg-4">
                 <!-- Social Follow End -->
                 <!-- Popular News Start -->
-                <div class="mb-3">
+                <div class="mb-3 shadow bg-body rounded">
                     <div class="section-title mb-0">
                         <h4 class="m-0 text-uppercase font-weight-bold">
                             Trending News
@@ -63,7 +64,7 @@
                                 <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
                                     <div class="mb-2">
                                         <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href=""><?= $bn['name_kategori'] ?></a>
-                                        <a class="text-body" href=""><small><?= date('M d, Y', strtotime($bn['created_at'])) ?></small></a>
+                                        <a class="text-black" href=""><small><?= date('M d, Y', strtotime($bn['created_at'])) ?></small></a>
                                     </div>
                                     <a class="h6 m-0 text-secondary text-uppercase font-weight-bold breaknews-truncate" href="<?= base_url('news/' . $bn['slug']) ?>"><?= $bn['title_berita'] ?></a>
                                 </div>

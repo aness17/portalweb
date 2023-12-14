@@ -391,7 +391,7 @@ class Admins extends BaseController
                     'title_berita' => $this->request->getPost('title'),
                     'isi_berita' => $this->request->getPost('news'),
                     'id_kategori' => $this->request->getVar('cat'),
-                    'status' => 'Published',
+                    'status' => 'Unpublished',
                     'doc' => $fileName,
                     'jadwal_tayang' => $this->request->getVar('brosche'),
                     'slug' => url_title($this->request->getVar('title'), '-', TRUE),

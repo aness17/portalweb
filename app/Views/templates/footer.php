@@ -66,7 +66,7 @@
         </div>
     </div>
 </div>
-<div class="container-fluid py-4 px-sm-3 px-md-5" style="background: #111111">
+<div class="container-fluid py-4 px-sm-3 px-md-5" style="background: #ffffff">
     <p class="m-0 text-center">
         &copy; <a href="#">PORTAL JAS</a>.HCIS
     </p>

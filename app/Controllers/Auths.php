@@ -99,6 +99,7 @@ class Auths extends BaseController
             return view('templates/header', $data)
                 . view('users/index', $data)
                 . view('templates/footer');
+            // return view('welcome_message');
         }
     }
 

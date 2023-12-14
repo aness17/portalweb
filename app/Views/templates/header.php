@@ -29,72 +29,74 @@
 
 <body>
     <!-- Topbar Start -->
-    <div class="container-fluid d-none d-lg-block">
-        <div class="row align-items-center bg-white px-lg-5">
-            <div class="col-lg-9">
+    <div class="container-fluid d-none d-lg-block border-bottom border-secondary">
+        <div class="row align-items-center bg-white ">
+            <div class="col-lg-2">
                 <nav class="navbar navbar-expand-sm bg-white p-0">
                     <ul class="navbar-nav ml-n2">
                         <li class="nav-item border-right border-secondary">
-                            <a class="nav-link text-body small" href="#"><?= date('l, d F Y') ?></a>
+                            <a class="nav-link text-black small" href="#"><?= date('l, d F Y') ?></a>
                         </li>
-                        <!-- <li class="nav-item border-right border-secondary">
-								<a class="nav-link text-body small" href="#">Advertise</a>
-							</li>
-							<li class="nav-item border-right border-secondary">
-								<a class="nav-link text-body small" href="#">Contact</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link text-body small" href="#">Login</a>
-							</li> -->
                     </ul>
                 </nav>
             </div>
-        </div>
-        <!-- <div class="row align-items-center bg-white py-3 px-lg-5">
-            <div class="col-lg-4">
-                <a href="index.html" class="navbar-brand p-0 d-none d-lg-block">
-                    <h1 class="m-0 display-4 text-uppercase text-primary">
-                        <img src="img/logo.png" style="width: 150px;" />
-                    </h1>
+            <div class="col-lg-10">
+                <a class="nav-link text-body small" href="#">
+                    <marquee style="color:black;font-size: larger;font-weight: bold;"><?php
+                                                                                        $no = 1;
+                                                                                        foreach ($info as $i) :
+                                                                                            echo $i['content'] . " | ";
+                                                                                            $no++;
+                                                                                        endforeach; ?></marquee>
                 </a>
             </div>
-            <div class="col-lg-8 text-center text-lg-right">
-                <a href="https://htmlcodex.com"><img class="img-fluid" src="img/ads-728x90.png" alt="" /></a>
-            </div>
-        </div> -->
+        </div>
     </div>
-    <!-- Topbar End -->
 
-    <!-- Navbar Start -->
-    <!-- Navbar Start -->
-    <div class="container-fluid p-0 ">
-        <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-2 py-lg-0 px-lg-5">
+    <div class="container-fluid p-0 sticky-top " style="box-shadow: 3px 5px 5px #cfe2f1;">
+        <!-- <nav class="navbar navbar-expand-lg bg-transparent navbar-dark py-2 py-lg-0 px-lg-5 border-bottom border-secondary"> -->
+        <nav class="navbar navbar-expand-lg bg-light py-2 py-lg-0 px-lg-5 border-bottom border-secondary">
             <div class="collapse navbar-collapse justify-content-between px-0 px-lg-3" id="navbarCollapse">
                 <div>
+                    <a href="<?= base_url('/') ?>" class="navbar-brand p-0 d-none d-lg-block">
+                        <h1 class="m-0 display-4 text-uppercase text-primary">
+                            <img src="<?= base_url('user/') ?>img/Logo JAS.png" style="width: 150px;" />
+                        </h1>
+                    </a>
+                </div>
+                <!-- <div>
                     <a href="index.php" class="navbar-brand p-0 d-none d-lg-block">
                         <h1 class="m-0 display-4 text-uppercase text-primary">
                             <img src="<?= base_url('user/') ?>img/logo.png" style="width: 100px;" />
                         </h1>
                     </a>
-                </div>
-                <div class="col-6">
-                    <marquee style="color:white"><?php
-                                                    $no = 1;
-                                                    foreach ($info as $i) :
-                                                        echo $i['content'] . " | ";
-                                                        $no++;
-                                                    endforeach; ?></marquee>
-                </div>
+                </div> -->
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
                 <div class="d-flex align-items-center">
                     <a class="nav-link collapsed" href="<?= base_url('login') ?>">
                         <i class="fa fa-sign-in" aria-hidden="true"></i> <span>Sign In</span>
+                    </a>
+                </div>
+                <div>
+                    <a href="<?= base_url('/') ?>" class="navbar-brand p-0 d-none d-lg-block">
+                        <h1 class="m-0 display-4 text-uppercase text-primary">
+                            <img src="<?= base_url('user/') ?>img/logo.png" style="width: 100px;" />
+                        </h1>
                     </a>
                 </div>
             </div>
         </nav>
     </div>
     <!-- Navbar End -->
-    <br />
+    <!-- <br /> -->
     <!-- Breaking News Start -->
     <!-- <div class="container py-3 mb-1 ">
         <div class="container">
