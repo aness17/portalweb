@@ -47,6 +47,8 @@
                             </div>
                             <div class="text-center">
                                 <button class="btn btn-primary font-weight-semi-bold px-4" style="height: 45px;" type="submit">Save</button>
+                                <!-- <button onclick="history.go(-1);">Back</button> -->
+                                <button type="button" onclick="history.go(-1);" class="btn btn-success font-weight-semi-bold px-4" style="height: 45px;">Kembali</button>
                             </div>
                         </form>
                     </div>
