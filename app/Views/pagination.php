@@ -17,7 +17,7 @@
 
         <?php foreach ($pager->links() as $link) : ?>
             <li class="page-item <?= $link['active'] ? 'active"' : '' ?>" style="box-shadow: 3px 5px 5px lightblue;">
-                <a class="page-link" style="color: white;font-weight: bold;" href="<?= $link['uri'] ?>">
+                <a class="page-link" style="color: ;font-weight: bold;" href="<?= $link['uri'] ?>">
                     <?= $link['title'] ?>
                 </a>
             </li>
