@@ -8,6 +8,10 @@
                         <div class="section-title shadow mb-2 bg-body rounded">
                             <div class="input-group ml-auto d-none d-lg-flex" style="width: 100%; max-width: 800px">
                                 <form action="<?= base_url('/') ?>" method="post" class="input-group ml-auto d-none d-lg-flex">
+                                    <select name="role" class="form-control col-4" id="exampleFormControlSelect1" name="role">
+                                        <option value="content">Search by Content</option>
+                                        <option value="category">Search by Category</option>
+                                    </select>
                                     <input type="text" class="form-control border-1" name="search" value="<?= $search ?>" />
                                     <button class="input-group-text bg-primary text-dark border-0 px-3"><i class="fa fa-search"></i></button>
                                 </form>
