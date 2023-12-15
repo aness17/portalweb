@@ -18,4 +18,11 @@ class Categorys_model extends Model
         $builder->selectSum('id');
         return $builder->get();
     }
+    public function getCategory($value)
+    {
+        $builder = $this->db->table($this->table);
+        $builder->select('name_kategori');
+        $builder->where('name_kategori like', '%' . $value . '%');
+        return $builder->get()->getRowArray();
+    }
 }

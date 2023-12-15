@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 $pager = \Config\Services::pager();
 
+use App\Models\Categorys_model;
 use App\Models\Comments_model;
 use App\Models\Info_model;
 use App\Models\Log_model;
@@ -22,6 +23,7 @@ class Auths extends BaseController
         $this->comment = new Comments_model();
         $this->log = new Log_model();
         $this->info = new Info_model();
+        $this->category = new Categorys_model();
         $this->cekauth();
         $session = session();
     }
@@ -73,23 +75,37 @@ class Auths extends BaseController
     public function index()
     {
         $search = $this->request->getVar('search');
+        $value = $this->request->getVar('value');
         $per_page = 5;
         if (isset($search)) {
-            session()->set('search', $search);
+            session()->set(['search' => $search, 'value' => $value]);
             redirect()->to('/');
         } else {
             $search = session()->get('search');
         }
-        $news = $this->news->selectnews($search);
+        $news = $this->news->selectnews($search, $value);
         $breknew = $this->news->breaking_news();
         $info = $this->info->select();
+        // var_dump($search);
+        // die;
+        if ($search == '' || $search == NULL || $value == 'content') {
+            $category = 'NEWS';
+        } else {
+            $category = $this->category->getCategory($search);
+            $category = $category['name_kategori'];
+            // $category = 'X';
+        }
+        // var_dump($value);
+        // die;
 
         $data = [
             'new' => $news->paginate($per_page, 'news'),
             'breknew' => $breknew,
             'pager' => $news->pager,
             'search' => $search,
-            'info' => $info
+            'info' => $info,
+            'value' => $value,
+            'category' => $category
         ];
         if (session('role') > 0) {
             return view('templates/header_usr', $data)
@@ -99,7 +115,6 @@ class Auths extends BaseController
             return view('templates/header', $data)
                 . view('users/index', $data)
                 . view('templates/footer');
-            // return view('welcome_message');
         }
     }
 
@@ -169,7 +184,7 @@ class Auths extends BaseController
     }
 
     // This is the counter function.. 
-    public function addcomment($id = null)
+    public function addcomment()
     {
         $idberita = $this->request->getVar('idberita');
         $idparent = $this->request->getVar('idparent');
