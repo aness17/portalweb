@@ -15,6 +15,8 @@
  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
  <!-- Vendor JS Files -->
+ <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
  <script src="<?= base_url('') ?>admin/assets/vendor/apexcharts/apexcharts.min.js"></script>
  <script src="<?= base_url('') ?>admin/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
  <script src="<?= base_url('') ?>admin/assets/vendor/chart.js/chart.umd.js"></script>
@@ -24,6 +26,7 @@
  <!-- <script src="<?= base_url('') ?>admin/assets/vendor/datatables/jquery.dataTables.min.js"></script> -->
  <script src="<?= base_url('') ?>admin/assets/vendor/tinymce/tinymce.min.js"></script>
  <script src="<?= base_url('') ?>admin/assets/vendor/php-email-form/validate.js"></script>
+ <script src="<?= base_url('user/') ?>js/detail_news.js"></script>
 
  <!-- Template Main JS File -->
  <script src="<?= base_url('') ?>admin/assets/js/main.js"></script>
