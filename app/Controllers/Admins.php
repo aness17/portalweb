@@ -27,6 +27,8 @@ class Admins extends BaseController
 
         //tes commit
         //tes fetch
+        //tes darisini
+        //lalalala
     }
     public function cekauth()
     {
