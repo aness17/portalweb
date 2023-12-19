@@ -26,6 +26,7 @@ class Admins extends BaseController
         $this->cekauth();
 
         //tes commit
+        //tes fetch
     }
     public function cekauth()
     {
