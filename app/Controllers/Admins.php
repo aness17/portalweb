@@ -24,6 +24,8 @@ class Admins extends BaseController
         $this->log = new Log_model();
         $this->info = new Info_model();
         $this->cekauth();
+
+        //tes commit
     }
     public function cekauth()
     {
