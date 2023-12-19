@@ -76,7 +76,6 @@
                 <div>
                     <h3>PORTAL <?= $category ?></h3>
                 </div>
-
                 <div></div>
                 <div></div>
                 <div class="d-flex align-items-center">

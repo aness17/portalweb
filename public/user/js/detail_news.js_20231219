@@ -1,5 +1,5 @@
 // let base_url = "https://192.168.111.183/portalweb/public/";
-let base_url = "http://localhost/portalweb/";
+let base_url = "http://localhost/portalweb/public/";
 
 function detailnews(id) {
   let id_berita = id;
@@ -38,18 +38,6 @@ function detailnews(id) {
     },
   });
 }
-function like(id){
-  $.ajax({
-    url : base_url + "like",
-    type : "POST",
-    data : { 
-      idberita: id,
-    },
-    headers: { "X-Requested-With": "XMLHttpRequest" },
-    success: function (r) {}
-  });  
-}
-
 function comment_reply(id) {
   let id_parent = id;
   let tbl = "";

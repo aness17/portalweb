@@ -15,6 +15,7 @@ $routes->get('news/(:segment)', 'Auths::view/$1');
 $routes->add('comment', 'Auths::addcomment');
 $routes->add('reply_comment', 'Auths::c omment_reply');
 $routes->add('delete_comment/(:segment)', 'Auths::delete_comment/$1');
+$routes->add('like', 'Auths::like');
 
 $routes->get('users', 'Users::index');
 $routes->get('users/coba', 'Users::coba');

@@ -6,10 +6,11 @@ $pager = \Config\Services::pager();
 
 use App\Models\Categorys_model;
 use App\Models\Comments_model;
+use App\Models\Likes_model;
 use App\Models\Info_model;
 use App\Models\Log_model;
 use App\Models\News_model;
-use \App\Models\Users_model;
+use App\Models\Users_model;
 
 use CodeIgniter\Exceptions\PageNotFoundException; // Add this line
 
@@ -21,6 +22,7 @@ class Auths extends BaseController
         $this->user = new Users_model();
         $this->news = new News_model();
         $this->comment = new Comments_model();
+        $this->like = new Likes_model();
         $this->log = new Log_model();
         $this->info = new Info_model();
         $this->category = new Categorys_model();
@@ -86,18 +88,14 @@ class Auths extends BaseController
         $news = $this->news->selectnews($search, $value);
         $breknew = $this->news->breaking_news();
         $info = $this->info->select();
-        // var_dump($search);
-        // die;
         if ($search == '' || $search == NULL || $value == 'content') {
             $category = 'NEWS';
         } else {
             $category = $this->category->getCategory($search);
-            $category = $category['name_kategori'];
-            // $category = 'X';
+            // $category = $category['name_kategori'];
+            $category = 'x';
         }
-        // var_dump($value);
-        // die;
-
+        // var_dump($category);die;
         $data = [
             'new' => $news->paginate($per_page, 'news'),
             'breknew' => $breknew,
@@ -131,7 +129,7 @@ class Auths extends BaseController
 
         $balas = array();
         $balas = $this->comment->balas($news[0]['berita']);
-
+        $cat_name = $this->category->find($news[0]['kategori']);
         $data = [
             'news' => $news,
             'info' => $info,
@@ -140,7 +138,8 @@ class Auths extends BaseController
             'countcomment' => $countcomment,
             'countview' => $countview,
             'user' => $users,
-            'breknew' => $breknew
+            'breknew' => $breknew,
+            'category' => $cat_name['name_kategori']
         ];
 
         // var_dump($comment);
@@ -382,4 +381,44 @@ class Auths extends BaseController
         // die;
         echo "<script>location.href='" . base_url('') . "';alert('You are already logged out');</script>";
     }
+    // like
+    public function like(){
+        $idberita = $this->request->getVar('idberita');
+        $berita = $this->news->find($idberita);
+
+        $agent = $this->request->getUserAgent();
+        if ($agent->isBrowser()) {
+            $currentAgent = $agent->getBrowser() . ' ' . $agent->getVersion();
+        } elseif ($agent->isRobot()) {
+            $currentAgent = $agent->getRobot();
+        } elseif ($agent->isMobile()) {
+            $currentAgent = $agent->getMobile();
+        } else {
+            $currentAgent = 'Unidentified User Agent';
+        }
+        $ip = $this->request->getIPAddress();
+        $db = [
+            'id_user' => session('id'),
+            'id_berita' => $idberita,
+            'remarks' => 'Add Like',
+            'ip_add' => $ip,
+            'slug' => $berita['slug'],
+            'browser' => $currentAgent . ' (' . $agent->getPlatform() . ')'
+        ];
+
+        $this->log->insert($db);
+        $data = [
+            'id_user' => session('id'),
+            'id_berita' => $idberita,
+            'status' => 1
+        ];
+
+        $result = $this->like->insert($data);
+        if ($result > 0) {
+            echo "<script>location.href='" . base_url('news/' . $berita['slug']) . "';</script>";
+        } else {
+            echo "<script>location.href='" . base_url('news/' . $berita['slug']) . "';</script>";
+        }
+    }
+
 }
