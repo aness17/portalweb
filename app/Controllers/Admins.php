@@ -24,18 +24,10 @@ class Admins extends BaseController
         $this->log = new Log_model();
         $this->info = new Info_model();
         $this->cekauth();
-
-        //tes commit
-        //tes fetch
-        //tes darisini
-        //lalalala
     }
     public function cekauth()
     {
         $session = session();
-        // var_dump(time());
-        // var_dump(session('login_time'));
-        // die;
         if (time() - session('login_time') >= 7200) {
             session_destroy();
             echo "<script>location.href='" . base_url('') . "';alert('Session Timeout.');</script>";

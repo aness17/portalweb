@@ -37,7 +37,7 @@
                             </div>
                             <div class="col-sm-2">
                                <?php if (session('id') > 0) { ?>
-                                    <span id="like" onclick="like(<?= $news[0]['berita'] ?>)"><i class="fa-regular fa-heart"></i> Like</span>
+                                    <span id="like" onclick="like(<?= $news[0]['berita'] ?>)"><i class="far fa-heart"></i> Like</span>
                                 <?php } ?>
                             </div>
                         </div>

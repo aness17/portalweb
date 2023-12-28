@@ -46,7 +46,10 @@ function like(id){
       idberita: id,
     },
     headers: { "X-Requested-With": "XMLHttpRequest" },
-    success: function (r) {}
+    success: function (r) {
+      let likeButton = $(".fa-heart").addClass("fas").removeClass("far");
+      console.log(likeButton);
+    }
   });  
 }
 
